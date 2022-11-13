@@ -1,12 +1,23 @@
-version: '3.8'
+version: '3.9'
 services:
   grafana:
     image: grafana/grafana
     restart: always
     ports: 
       - "3000:3000"
+    environment:
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_SECURITY_ALLOW_EMBEDDING=true
+      - GF_USERS_DEFAULT_THEME=light
+    volumes:
+      - ./datasources:/etc/grafana/provisioning/datasources/
+      - ./dashboards:/etc/grafana/provisioning/dashboards/
   db:
     image: postgres
     restart: always
+    ports:
+      - "5432:5432"
     environment:
-      POSTGRES_PASSWORD: G@viu5P1lot3
+      - POSTGRES_PASSWORD=12345678
+    volumes:
+      - ./create.sql:/docker-entrypoint-initdb.d/create.sql:ro
