@@ -49,7 +49,7 @@
         "content": "<h1><img width=\"150\" src=\"data:image/png;base64,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\"/>\nDiagnosi - Estat de les tramitacions</h1>\n",
         "mode": "html"
       },
-      "pluginVersion": "9.2.2",
+      "pluginVersion": "9.2.4",
       "type": "text"
     },
     {
@@ -76,7 +76,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 3,
         "x": 0,
         "y": 2
@@ -97,7 +97,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.2",
+      "pluginVersion": "9.2.4",
       "targets": [
         {
           "datasource": {
@@ -108,7 +108,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  daterequested\nFROM\n  gavius\nWHERE\n  $__timeFilter(daterequested)\n",
+          "rawSql": "SELECT\n  daterequested\nFROM\n  gavius\nWHERE\n  $__timeFilter(daterequested)\nORDER BY daterequested\n",
           "refId": "A",
           "select": [
             [
@@ -202,7 +202,7 @@
           "mode": "single",
           "sort": "none"
         },
-        "xField": "ssascscl0name",
+        "xField": "ssa_sc_scl_0_name",
         "xTickLabelMaxLength": 8,
         "xTickLabelRotation": 0,
         "xTickLabelSpacing": 0
@@ -226,7 +226,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  ssascscl0name,\n  (select count(*) from llenos where status = 'Evaluating' and llenos.ssascscl0name = gavius.ssascscl0name and $__timeFilter(daterequested)) as en_curs,\n  (select count(*) from llenos where status = 'Approved' and llenos.ssascscl0name = gavius.ssascscl0name and $__timeFilter(daterequested)) as favorables,\n  (select count(*) from llenos where status = 'Denied' and llenos.ssascscl0name = gavius.ssascscl0name and $__timeFilter(daterequested)) as desfavorables\nFROM gavius\nGROUP BY socialaidsocialaid_id, ssascscl0name\nORDER BY socialaidsocialaid_id",
+          "rawSql": "SELECT\r\n  \"ssa_sc_scl_0_name\",\r\n  (select count(*) from gavius where status = 'Evaluating' and llenos.\"ssa_sc_scl_0_name\" = gavius.\"ssa_sc_scl_0_name\" and $__timeFilter(daterequested)) as en_curs,\r\n  (select count(*) from gavius where status = 'Approved' and llenos.\"ssa_sc_scl_0_name\" = gavius.\"ssa_sc_scl_0_name\" and $__timeFilter(daterequested)) as favorables,\r\n  (select count(*) from gavius where status = 'Denied' and llenos.\"ssa_sc_scl_0_name\" = gavius.\"ssa_sc_scl_0_name\" and $__timeFilter(daterequested)) as desfavorables\r\nFROM gavius as llenos\r\nGROUP BY \"socialaid_socialaid_id\", \"ssa_sc_scl_0_name\"\r\nORDER BY \"socialaid_socialaid_id\"",
           "refId": "1",
           "select": [
             [
@@ -287,7 +287,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 11,
+        "h": 13,
         "w": 7,
         "x": 17,
         "y": 2
@@ -331,7 +331,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as ExclusioResidencial\nFROM gavius\nWHERE\nsocialaidsocialaid_id = 1 and\n  $__timeFilter(daterequested)\nORDER BY 1",
+          "rawSql": "SELECT\n  count(*) as ExclusioResidencial\nFROM gavius\nWHERE\n\"socialaid_socialaid_id\" = 1 and\n  $__timeFilter(daterequested)\nORDER BY 1",
           "refId": "1",
           "select": [
             [
@@ -384,7 +384,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as SolAliments\nFROM gavius\nWHERE\nsocialaidsocialaid_id = 2 and\n  $__timeFilter(daterequested)\nORDER BY 1",
+          "rawSql": "SELECT\n  count(*) as SolAliments\nFROM gavius\nWHERE\n\"socialaid_socialaid_id\" = 2 and\n  $__timeFilter(daterequested)\nORDER BY 1",
           "refId": "2",
           "select": [
             [
@@ -437,7 +437,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as  CarnetBlau\nFROM gavius\nWHERE\nsocialaidsocialaid_id = 3 and\n  $__timeFilter(daterequested)\nORDER BY 1",
+          "rawSql": "SELECT\n  count(*) as  CarnetBlau\nFROM gavius\nWHERE\n\"socialaid_socialaid_id\" = 3 and\n  $__timeFilter(daterequested)\nORDER BY 1",
           "refId": "3",
           "select": [
             [
@@ -490,7 +490,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as  AjutIBINombrosa\nFROM gavius\nWHERE\nsocialaidsocialaid_id = 4 and\n  $__timeFilter(daterequested)\nORDER BY 1",
+          "rawSql": "SELECT\n  count(*) as  AjutIBINombrosa\nFROM gavius\nWHERE\n\"socialaid_socialaid_id\" = 4 and\n  $__timeFilter(daterequested)\nORDER BY 1",
           "refId": "4",
           "select": [
             [
@@ -543,7 +543,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as  Teleassistencia \nFROM gavius\nWHERE\nsocialaidsocialaid_id = 4 and\n  $__timeFilter(daterequested)\nORDER BY 1",
+          "rawSql": "SELECT\n  count(*) as  Teleassistencia \nFROM gavius\nWHERE\n\"socialaid_socialaid_id\" = 5 and\n  $__timeFilter(daterequested)\nORDER BY 1",
           "refId": "5",
           "select": [
             [
@@ -596,7 +596,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as  BecaEscolaBressol  \nFROM gavius\nWHERE\nsocialaidsocialaid_id = 4 and\n  $__timeFilter(daterequested)\nORDER BY 1",
+          "rawSql": "SELECT\n  count(*) as  BecaEscolaBressol  \nFROM gavius\nWHERE\n\"socialaid_socialaid_id\" = 6 and\n  $__timeFilter(daterequested)\nORDER BY 1",
           "refId": "6",
           "select": [
             [
@@ -649,7 +649,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as  Subvencio   \nFROM gavius\nWHERE\nsocialaidsocialaid_id = 4 and\n  $__timeFilter(daterequested)\nORDER BY 1",
+          "rawSql": "SELECT\n  count(*) as  Subvencio   \nFROM gavius\nWHERE\n\"socialaid_socialaid_id\" = 7 and\n  $__timeFilter(daterequested)\nORDER BY 1",
           "refId": "7",
           "select": [
             [
@@ -702,7 +702,60 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as  ConsultaDades    \nFROM gavius\nWHERE\nsocialaidsocialaid_id = 4 and\n  $__timeFilter(daterequested)\nORDER BY 1",
+          "rawSql": "SELECT\n  count(*) as AjutIBIMonoparental     \nFROM gavius\nWHERE\n\"socialaid_socialaid_id\" = 8 and\n  $__timeFilter(daterequested)\nORDER BY 1",
+          "refId": "8",
+          "select": [
+            [
+              {
+                "params": [
+                  "file_id"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "count"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "file_id"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "gavius",
+          "timeColumn": "daterequested",
+          "timeColumnType": "date",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "format": "table",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  count(*) as ConsultaDades      \nFROM gavius\nWHERE\n\"socialaid_socialaid_id\" = 9 and\n  $__timeFilter(daterequested)\nORDER BY 1",
           "refId": "9",
           "select": [
             [
@@ -755,7 +808,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as  BecaMenjador     \nFROM gavius\nWHERE\nsocialaidsocialaid_id = 4 and\n  $__timeFilter(daterequested)\nORDER BY 1",
+          "rawSql": "SELECT\n  count(*) as  BecaMenjador      \nFROM gavius\nWHERE\n\"socialaid_socialaid_id\" = 10 and\n  $__timeFilter(daterequested)\nORDER BY 1",
           "refId": "10",
           "select": [
             [
@@ -808,8 +861,432 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as  BorsaTreball      \nFROM gavius\nWHERE\nsocialaidsocialaid_id = 4 and\n  $__timeFilter(daterequested)\nORDER BY 1",
+          "rawSql": "SELECT\n  count(*) as  BorsaTreball      \nFROM gavius\nWHERE\n\"socialaid_socialaid_id\" = 11 and\n  $__timeFilter(daterequested)\nORDER BY 1",
           "refId": "11",
+          "select": [
+            [
+              {
+                "params": [
+                  "file_id"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "count"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "file_id"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "gavius",
+          "timeColumn": "daterequested",
+          "timeColumnType": "date",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "format": "table",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  count(*) as  MeritsRequisits      \nFROM gavius\nWHERE\n\"socialaid_socialaid_id\" = 12 and\n  $__timeFilter(daterequested)\nORDER BY 1",
+          "refId": "12",
+          "select": [
+            [
+              {
+                "params": [
+                  "file_id"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "count"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "file_id"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "gavius",
+          "timeColumn": "daterequested",
+          "timeColumnType": "date",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "format": "table",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  count(*) as  IBI      \nFROM gavius\nWHERE\n\"socialaid_socialaid_id\" IN (13,14) and\n  $__timeFilter(daterequested)\nORDER BY 1",
+          "refId": "13",
+          "select": [
+            [
+              {
+                "params": [
+                  "file_id"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "count"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "file_id"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "gavius",
+          "timeColumn": "daterequested",
+          "timeColumnType": "date",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "format": "table",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  count(*) as  Habitatge      \nFROM gavius\nWHERE\n\"socialaid_socialaid_id\" = 15 and\n  $__timeFilter(daterequested)\nORDER BY 1",
+          "refId": "15",
+          "select": [
+            [
+              {
+                "params": [
+                  "file_id"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "count"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "file_id"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "gavius",
+          "timeColumn": "daterequested",
+          "timeColumnType": "date",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "format": "table",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  count(*) as  TaxaResidus       \nFROM gavius\nWHERE\n\"socialaid_socialaid_id\" = 16 and\n  $__timeFilter(daterequested)\nORDER BY 1",
+          "refId": "16",
+          "select": [
+            [
+              {
+                "params": [
+                  "file_id"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "count"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "file_id"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "gavius",
+          "timeColumn": "daterequested",
+          "timeColumnType": "date",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "format": "table",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  count(*) as  BenestarSocial       \nFROM gavius\nWHERE\n\"socialaid_socialaid_id\" = 17 and\n  $__timeFilter(daterequested)\nORDER BY 1",
+          "refId": "17",
+          "select": [
+            [
+              {
+                "params": [
+                  "file_id"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "count"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "file_id"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "gavius",
+          "timeColumn": "daterequested",
+          "timeColumnType": "date",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "format": "table",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  count(*) as  TargetaAparcament       \nFROM gavius\nWHERE\n\"socialaid_socialaid_id\" = 18 and\n  $__timeFilter(daterequested)\nORDER BY 1",
+          "refId": "18",
+          "select": [
+            [
+              {
+                "params": [
+                  "file_id"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "count"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "file_id"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "gavius",
+          "timeColumn": "daterequested",
+          "timeColumnType": "date",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "format": "table",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  count(*) as  AtencioSocialBasica       \nFROM gavius\nWHERE\n\"socialaid_socialaid_id\" = 19 and\n  $__timeFilter(daterequested)\nORDER BY 1",
+          "refId": "19",
+          "select": [
+            [
+              {
+                "params": [
+                  "file_id"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "count"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "file_id"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "table": "gavius",
+          "timeColumn": "daterequested",
+          "timeColumnType": "date",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "format": "table",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            }
+          ],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  count(*) as  UrgenciaSocial       \nFROM gavius\nWHERE\n\"socialaid_socialaid_id\" = 20 and\n  $__timeFilter(daterequested)\nORDER BY 1",
+          "refId": "20",
           "select": [
             [
               {
@@ -874,12 +1351,12 @@
         "h": 4,
         "w": 3,
         "x": 0,
-        "y": 6
+        "y": 7
       },
       "id": 13,
       "options": {
         "colorMode": "value",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
@@ -892,7 +1369,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.2",
+      "pluginVersion": "9.2.4",
       "targets": [
         {
           "datasource": {
@@ -955,7 +1432,7 @@
         "h": 3,
         "w": 3,
         "x": 0,
-        "y": 10
+        "y": 11
       },
       "id": 6,
       "options": {
@@ -973,7 +1450,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.2",
+      "pluginVersion": "9.2.4",
       "targets": [
         {
           "datasource": {
@@ -1007,87 +1484,6 @@
         }
       ],
       "title": "Ajudes Tramitades",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "postgres",
-        "uid": "PCC52D03280B7034C"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 0,
-        "y": 13
-      },
-      "id": 8,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.2.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "format": "table",
-          "group": [],
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as value\nFROM\n  gavius\nWHERE\n  status = 'Approved' AND\n  $__timeFilter(daterequested)\n",
-          "refId": "A",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "column"
-              }
-            ]
-          ],
-          "timeColumn": "time",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        }
-      ],
-      "title": "Ajudes Favorables",
       "type": "stat"
     },
     {
@@ -1160,7 +1556,7 @@
         ]
       },
       "gridPos": {
-        "h": 9,
+        "h": 10,
         "w": 14,
         "x": 3,
         "y": 13
@@ -1196,7 +1592,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  date_trunc('month',daterequested) as time,\n  count(*) AS \"favorables\"\nFROM llenos\nWHERE\n  status = 'Approved' and\n  $__timeFilter(daterequested)\nGROUP BY date_trunc('month',daterequested)\nORDER BY date_trunc('month',daterequested)",
+          "rawSql": "SELECT\n  date_trunc('month',daterequested) as time,\n  count(*) AS \"favorables\"\nFROM gavius\nWHERE\n  status = 'Approved' and\n  $__timeFilter(daterequested)\nGROUP BY date_trunc('month',daterequested)\nORDER BY date_trunc('month',daterequested)",
           "refId": "Acceptades",
           "select": [
             [
@@ -1241,7 +1637,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  date_trunc('month',daterequested) as time,\n  count(*) AS \"en_curs\"\nFROM llenos\nWHERE\n  status = 'Evaluating' and\n  $__timeFilter(daterequested)\nGROUP BY date_trunc('month',daterequested)\nORDER BY date_trunc('month',daterequested)\n",
+          "rawSql": "SELECT\n  date_trunc('month',daterequested) as time,\n  count(*) AS \"en_curs\"\nFROM gavius\nWHERE\n  status = 'Evaluating' and\n  $__timeFilter(daterequested)\nGROUP BY date_trunc('month',daterequested)\nORDER BY date_trunc('month',daterequested)\n",
           "refId": "En curs",
           "select": [
             [
@@ -1272,7 +1668,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  date_trunc('month',daterequested) as time,\n  count(*) AS \"desfavorables\"\nFROM llenos\nWHERE\n  status = 'Denied' and\n  $__timeFilter(daterequested)\nGROUP BY date_trunc('month',daterequested)\nORDER BY date_trunc('month',daterequested)\n",
+          "rawSql": "SELECT\n  date_trunc('month',daterequested) as time,\n  count(*) AS \"desfavorables\"\nFROM gavius\nWHERE\n  status = 'Denied' and\n  $__timeFilter(daterequested)\nGROUP BY date_trunc('month',daterequested)\nORDER BY date_trunc('month',daterequested)\n",
           "refId": "Desfavorables",
           "select": [
             [
@@ -1296,6 +1692,87 @@
       ],
       "title": "Evolució mensual",
       "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "PCC52D03280B7034C"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 0,
+        "y": 14
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.2.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "format": "table",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  count(*) as value\nFROM\n  gavius\nWHERE\n  status = 'Approved' AND\n  $__timeFilter(daterequested)\n",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Ajudes Favorables",
+      "type": "stat"
     },
     {
       "datasource": {
@@ -1344,21 +1821,48 @@
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           }
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "desfavorables"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "favorables"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
-        "h": 9,
+        "h": 8,
         "w": 7,
         "x": 17,
-        "y": 13
+        "y": 15
       },
       "id": 15,
       "options": {
@@ -1380,19 +1884,12 @@
             "uid": "PCC52D03280B7034C"
           },
           "format": "time_series",
-          "group": [
-            {
-              "params": [
-                "$__interval",
-                "month"
-              ],
-              "type": "time"
-            }
-          ],
+          "group": [],
+          "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  date_trunc('year',daterequested) as time,\n  count(*) AS \"favorables\"\nFROM llenos\nWHERE\n  status = 'Approved' and\n  $__timeFilter(daterequested)\nGROUP BY date_trunc('year',daterequested)\nORDER BY date_trunc('year',daterequested)",
-          "refId": "Acceptades",
+          "rawSql": "SELECT\n  date_trunc('year',daterequested) as time,\n  count(*) AS \"desfavorables\"\nFROM gavius\nWHERE\n  status = 'Denied' and\n  $__timeFilter(daterequested)\nGROUP BY date_trunc('year',daterequested)\nORDER BY date_trunc('year',daterequested)\n",
+          "refId": "Desfavorables",
           "select": [
             [
               {
@@ -1400,24 +1897,10 @@
                   "value"
                 ],
                 "type": "column"
-              },
-              {
-                "params": [
-                  "avg"
-                ],
-                "type": "aggregate"
-              },
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "alias"
               }
             ]
           ],
-          "table": "llenos",
-          "timeColumn": "daterequested",
-          "timeColumnType": "date",
+          "timeColumn": "time",
           "where": [
             {
               "name": "$__timeFilter",
@@ -1436,7 +1919,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  date_trunc('year',daterequested) as time,\n  count(*) AS \"en_curs\"\nFROM llenos\nWHERE\n  status = 'Evaluating' and\n  $__timeFilter(daterequested)\nGROUP BY date_trunc('year',daterequested)\nORDER BY date_trunc('year',daterequested)\n",
+          "rawSql": "SELECT\n  date_trunc('year',daterequested) as time,\n  count(*) AS \"en_curs\"\nFROM gavius\nWHERE\n  status = 'Evaluating' and\n  $__timeFilter(daterequested)\nGROUP BY date_trunc('year',daterequested)\nORDER BY date_trunc('year',daterequested)\n",
           "refId": "En curs",
           "select": [
             [
@@ -1463,12 +1946,19 @@
             "uid": "PCC52D03280B7034C"
           },
           "format": "time_series",
-          "group": [],
-          "hide": false,
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "month"
+              ],
+              "type": "time"
+            }
+          ],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  date_trunc('year',daterequested) as time,\n  count(*) AS \"desfavorables\"\nFROM llenos\nWHERE\n  status = 'Denied' and\n  $__timeFilter(daterequested)\nGROUP BY date_trunc('year',daterequested)\nORDER BY date_trunc('year',daterequested)\n",
-          "refId": "Desfavorables",
+          "rawSql": "SELECT\n  date_trunc('year',daterequested) as time,\n  count(*) AS \"favorables\"\nFROM gavius\nWHERE\n  status = 'Approved' and\n  $__timeFilter(daterequested)\nGROUP BY date_trunc('year',daterequested)\nORDER BY date_trunc('year',daterequested)",
+          "refId": "Acceptades",
           "select": [
             [
               {
@@ -1476,10 +1966,24 @@
                   "value"
                 ],
                 "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "alias"
               }
             ]
           ],
-          "timeColumn": "time",
+          "table": "llenos",
+          "timeColumn": "daterequested",
+          "timeColumnType": "date",
           "where": [
             {
               "name": "$__timeFilter",
@@ -1519,7 +2023,7 @@
         "h": 3,
         "w": 3,
         "x": 0,
-        "y": 16
+        "y": 17
       },
       "id": 7,
       "options": {
@@ -1537,7 +2041,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.2",
+      "pluginVersion": "9.2.4",
       "targets": [
         {
           "datasource": {
@@ -1600,7 +2104,7 @@
         "h": 3,
         "w": 3,
         "x": 0,
-        "y": 19
+        "y": 20
       },
       "id": 9,
       "options": {
@@ -1618,7 +2122,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.2",
+      "pluginVersion": "9.2.4",
       "targets": [
         {
           "datasource": {
@@ -1670,6 +2174,6 @@
   "timezone": "",
   "title": "GAVIUS",
   "uid": "kEtG3wD4z",
-  "version": 8,
+  "version": 3,
   "weekStart": ""
 }

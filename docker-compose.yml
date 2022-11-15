@@ -10,14 +10,13 @@ services:
       - GF_SECURITY_ALLOW_EMBEDDING=true
       - GF_USERS_DEFAULT_THEME=light
       - GF_SERVER_DOMAIN=gavius.cimne.com
+      - GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH=/etc/grafana/provisioning/dashboards/GAVIUS-dashboard.json
     volumes:
       - ./datasources:/etc/grafana/provisioning/datasources/
       - ./dashboards:/etc/grafana/provisioning/dashboards/
   db:
     image: postgres
     restart: always
-    ports: 
-      - "5432:5432"
     environment:
       - POSTGRES_PASSWORD=12345678
     volumes:
