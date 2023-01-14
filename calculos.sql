@@ -13,6 +13,5 @@ create table bolas
 
 
 
-select * from gavius where gaviususer_id in (select gaviususer_id from gavius group by gaviususer_id having count(*)>1);
 
 
