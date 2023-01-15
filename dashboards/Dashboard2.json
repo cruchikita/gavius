@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 6,
+  "id": 2,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -50,7 +50,7 @@
         "content": "    <script src=\"http://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script>\n    $(function(){\n        $('a').each(function(){\n            if ($(this).prop('href') == window.location.href) {\n                $(this).addClass('active'); $(this).addClass('active');\n            }\n        });\n    });\n</script>\n\n<style>\n    .navbar {\n        overflow: hidden;\n        background-color: #083566;\n        font-family: Arial, Helvetica, sans-serif;\n    }\n\n    .navbar a {\n        float: left;\n        font-size: 18px;\n        color: white;\n        text-align: center;\n        padding: 8px 12px;\n        text-decoration: none;\n    }\n\n    .navbar a:hover {\n        color: white;\n        text-decoration: underline;\n    }\n\n    .navbar .active{\n        color:            white;\n        background-color: #4f81bd;\n    }\n\n</style>\n\n<div class=\"navbar\">\n    <a href=\"/\">Estat de les tramitacions</a>\n    <a href=\"#\">Perfil sociodemogràfic</a>\n    <a href=\"/d/0PwjJe5Vz/dashboard-3?orgId=1\">Camins probables</a>\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "9.2.2",
+      "pluginVersion": "9.3.2",
       "transparent": true,
       "type": "text"
     },
@@ -59,190 +59,19 @@
         "type": "postgres",
         "uid": "PCC52D03280B7034C"
       },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "fillOpacity": 80,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineWidth": 1,
-            "scaleDistribution": {
-              "type": "linear"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
+      "description": "",
       "gridPos": {
-        "h": 8,
-        "w": 24,
+        "h": 16,
+        "w": 7,
         "x": 0,
         "y": 2
       },
-      "id": 12,
-      "options": {
-        "barRadius": 0,
-        "barWidth": 0.97,
-        "groupWidth": 0.7,
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "orientation": "auto",
-        "showValue": "auto",
-        "stacking": "none",
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        },
-        "xField": "Població",
-        "xTickLabelRotation": 0,
-        "xTickLabelSpacing": 0
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "format": "table",
-          "group": [],
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT count(*) AS \"Població\"\nFROM cens\nGROUP BY agerange",
-          "refId": "A",
-          "select": [
-            [
-              {
-                "params": [
-                  "recipient"
-                ],
-                "type": "column"
-              }
-            ]
-          ],
-          "table": "gavius",
-          "timeColumn": "daterequested",
-          "timeColumnType": "timestamp",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "format": "table",
-          "group": [],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT count(*) AS \"Peticionàries\"\nFROM gavius INNER JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id\nwhere gavius.status IS NOT NULL GROUP BY cens.agerange",
-          "refId": "B",
-          "select": [
-            [
-              {
-                "params": [
-                  "recipient"
-                ],
-                "type": "column"
-              }
-            ]
-          ],
-          "table": "gavius",
-          "timeColumn": "daterequested",
-          "timeColumnType": "timestamp",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "format": "table",
-          "group": [],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT count(*) AS \"Beneficiàries\"\nFROM gavius INNER JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id\nwhere gavius.status = 'Approved' GROUP BY cens.agerange",
-          "refId": "C",
-          "select": [
-            [
-              {
-                "params": [
-                  "recipient"
-                ],
-                "type": "column"
-              }
-            ]
-          ],
-          "table": "gavius",
-          "timeColumn": "daterequested",
-          "timeColumnType": "timestamp",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        }
-      ],
-      "title": "Distribució",
-      "type": "barchart"
-    },
-    {
-      "datasource": {
-        "type": "postgres",
-        "uid": "PCC52D03280B7034C"
-      },
-      "description": "",
-      "gridPos": {
-        "h": 8,
-        "w": 10,
-        "x": 0,
-        "y": 10
-      },
       "id": 14,
       "options": {
+        "config": "",
+        "layout": {
+          "showlegend": false
+        },
         "onclick": "console.log(data)\nwindow.updateVariables({query:{'var-project':'test'}, partial: true})",
         "script": "console.log(data)\n\nvar trace = {\n  type: 'funnelarea',\n  textinfo: \"value\",\n  values: [data.series[0].fields[0].values.buffer[0], \n  data.series[1].fields[0].values.buffer[0], \n  data.series[2].fields[0].values.buffer[0]],\n  text: [\"Població\",\"Peticionàries\",\"Beneficiàries\"]\n};  \nreturn {data:[trace],layout:{ separators: \",.\"}};"
       },
@@ -252,12 +81,13 @@
             "type": "postgres",
             "uid": "PCC52D03280B7034C"
           },
+          "editorMode": "code",
           "format": "table",
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) AS \"Població\"\nFROM cens",
-          "refId": "0",
+          "rawSql": "SELECT count(*) AS \"Població\" FROM cens where birthdate < $__timeTo() ",
+          "refId": "Població",
           "select": [
             [
               {
@@ -280,6 +110,23 @@
               }
             ]
           ],
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
           "table": "cens",
           "timeColumn": "daterequested",
           "timeColumnType": "timestamp",
@@ -290,13 +137,14 @@
             "type": "postgres",
             "uid": "PCC52D03280B7034C"
           },
+          "editorMode": "code",
           "format": "table",
           "group": [],
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) AS \"Peticionàries\"\nFROM (gavius\n     JOIN cens ON ((gavius.gaviususer_id = CAST(cens.gaviususer_id AS bigint))))\nwhere gavius.status IS NOT NULL AND gavius.socialaid_socialaid_id IN (${ajuda})",
-          "refId": "1",
+          "rawSql": "SELECT count(*) AS \"Peticionàries\"\nFROM gavius INNER JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id\nwhere  $__timeFilter(daterequested) AND sa_name IN (${ayuda})",
+          "refId": "Peticionaries",
           "select": [
             [
               {
@@ -307,6 +155,23 @@
               }
             ]
           ],
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
           "table": "gavius",
           "timeColumn": "daterequested",
           "timeColumnType": "timestamp",
@@ -323,6 +188,7 @@
             "type": "postgres",
             "uid": "PCC52D03280B7034C"
           },
+          "editorMode": "code",
           "format": "table",
           "group": [
             {
@@ -336,8 +202,8 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) AS \"Beneficiàries\"\nFROM (gavius\n     JOIN cens ON ((gavius.gaviususer_id = CAST(cens.gaviususer_id AS bigint))))\nwhere gavius.status = 'Approved' AND gavius.socialaid_socialaid_id IN (${ajuda})",
-          "refId": "2",
+          "rawSql": "SELECT count(*) AS \"Peticionàries\"\nFROM gavius INNER JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id\nwhere  $__timeFilter(daterequested) AND gavius.status = 'Approved' AND sa_name IN (${ayuda})",
+          "refId": "Peticionàries",
           "select": [
             [
               {
@@ -360,6 +226,23 @@
               }
             ]
           ],
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
           "table": "gavius",
           "timeColumn": "daterequested",
           "timeColumnType": "timestamp",
@@ -393,8 +276,134 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "green",
-            "mode": "fixed"
+            "mode": "continuous-RdYlGr"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 17,
+        "x": 7,
+        "y": 2
+      },
+      "id": 12,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": true
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xField": "rang_edat",
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "9.3.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  case when agerange=1 then '18-30' when agerange=2 then '30-45' when agerange=3 then '45-60' else '+60' end as rang_edat,\n  (select count(*) from cens where agerange = padre.agerange and birthdate < $__timeFrom()) as Població,\n  (select count(*) from gavius inner join cens on gavius.gaviususer_id = cens.gaviususer_id where agerange = padre.agerange and sa_name in (${ayuda}) and $__timeFilter(daterequested)) as Peticionàries,\n  (select count(*) from gavius inner join cens ON gavius.gaviususer_id = cens.gaviususer_id where agerange = padre.agerange and sa_name in (${ayuda}) and gavius.status = 'Approved' and $__timeFilter(daterequested)) as Beneficiàries\nFROM cens as padre\nGROUP BY agerange\nORDER BY agerange\n\n",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "recipient"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
+          "table": "gavius",
+          "timeColumn": "daterequested",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Distribució",
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "PCC52D03280B7034C"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
           },
           "custom": {
             "axisCenteredZero": false,
@@ -433,6 +442,10 @@
               {
                 "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           }
@@ -441,40 +454,22 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Habitants"
+              "options": "poblacio"
             },
             "properties": [
               {
-                "id": "color",
-                "value": {
-                  "fixedColor": "red",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Beneficiàries"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "blue",
-                  "mode": "fixed"
-                }
+                "id": "custom.axisPlacement",
+                "value": "right"
               }
             ]
           }
         ]
       },
       "gridPos": {
-        "h": 8,
-        "w": 14,
-        "x": 10,
-        "y": 10
+        "h": 9,
+        "w": 17,
+        "x": 7,
+        "y": 9
       },
       "id": 20,
       "options": {
@@ -495,11 +490,70 @@
             "type": "postgres",
             "uid": "PCC52D03280B7034C"
           },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  date_trunc('YEAR',daterequested) AS \"time\",\r\n  count(*) AS \"Beneficiàries\"\r\nFROM gavius\r\nWHERE status = 'Approved' AND sa_name IN (${ayuda}) and $__timeFilter(daterequested)\r\nGROUP BY date_trunc('YEAR',daterequested)",
+          "refId": "Beneficiàries",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  date_trunc('YEAR',daterequested) AS \"time\",\r\n  count(*) AS \"Peticionaries\"\r\nFROM gavius\r\nWHERE sa_name IN (${ayuda}) and $__timeFilter(daterequested)\r\nGROUP BY date_trunc('YEAR',daterequested)",
+          "refId": "Peticionaries",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "editorMode": "code",
           "format": "table",
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT \ntime,\n(SELECT sum(gent) FROM població t WHERE t.time <= p.time) AS \"Habitants\"\nFROM població p\nORDER BY 1",
+          "rawSql": "select anyo, (SELECT sum(total) FROM poblacion where anyo < padre.anyo) as Poblacio\nfrom poblacion as padre\nWHERE  $__timeFilter(anyo)",
           "refId": "Població",
           "select": [
             [
@@ -511,72 +565,23 @@
               }
             ]
           ],
-          "table": "gavius",
-          "timeColumn": "daterequested",
-          "timeColumnType": "timestamp",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "format": "table",
-          "group": [],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  date_trunc('YEAR',daterequested) AS \"time\",\n  count(*) AS \"Peticionàries\"\nFROM gavius\nWHERE status IS NOT NULL AND gavius.socialaid_socialaid_id IN (${ajuda})\nGROUP BY date_trunc('YEAR',daterequested)\nORDER BY 1",
-          "refId": "A",
-          "select": [
-            [
+          "sql": {
+            "columns": [
               {
-                "params": [
-                  "recipient"
-                ],
-                "type": "column"
+                "parameters": [],
+                "type": "function"
               }
-            ]
-          ],
-          "table": "gavius",
-          "timeColumn": "daterequested",
-          "timeColumnType": "timestamp",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "format": "table",
-          "group": [],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  date_trunc('YEAR',daterequested) AS \"time\",\n  count(*) AS \"Beneficiàries\"\nFROM gavius\nWHERE status = 'Approved' AND gavius.socialaid_socialaid_id IN (${ajuda})\nGROUP BY date_trunc('YEAR',daterequested)\nORDER BY 1",
-          "refId": "B",
-          "select": [
-            [
+            ],
+            "groupBy": [
               {
-                "params": [
-                  "recipient"
-                ],
-                "type": "column"
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
               }
-            ]
-          ],
+            ],
+            "limit": 50
+          },
           "table": "gavius",
           "timeColumn": "daterequested",
           "timeColumnType": "timestamp",
@@ -601,7 +606,7 @@
     "list": [
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "All",
           "value": "$__all"
         },
@@ -619,7 +624,7 @@
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
-        "sort": 0,
+        "sort": 1,
         "type": "query"
       }
     ]
@@ -632,6 +637,6 @@
   "timezone": "",
   "title": "Perfil Sociodemografic",
   "uid": "EJrGvUcVk",
-  "version": 4,
+  "version": 14,
   "weekStart": ""
 }
