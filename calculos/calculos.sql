@@ -1,3 +1,4 @@
+create view ayudas as select sa_socialaid_id, sa_name, count(*) as total from gavius group by sa_socialaid_id, sa_name;
 update cens set agerange = 1;
 update cens set agerange = 2 where extract(years from age(birthdate)) > 30;
 update cens set agerange = 3 where extract(years from age(birthdate)) > 45;

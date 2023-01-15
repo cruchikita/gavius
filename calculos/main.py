@@ -2,15 +2,17 @@ import pandas as pd
 from sqlalchemy import create_engine
 import psycopg2
 
-#DROP TABLE bolas;DROP TABLE cens;DROP TABLE gavius;
+#DROP VIEW ayudas;DROP TABLE bolas;DROP TABLE cens;DROP TABLE gavius;
+#baseurl = "https://net.cimne.com/gava/"
+baseurl = "https://net.cimne.com/mataro/"
 
 print("Cargando gavius...")
 engine = create_engine('postgresql://postgres:12345678@db:5432/postgres')
-df=pd.read_csv('https://net.cimne.com/gava/statistics.csv', dayfirst=True, parse_dates=['daterequested','dateresolution','dateupdated','datestart','dateend'])
+df=pd.read_csv(baseurl + 'statistics.csv', dayfirst=True, parse_dates=['daterequested','dateresolution','dateupdated','datestart','dateend'])
 df.to_sql('gavius', engine)
 
 print("Cargando cens...")
-df2 = pd.read_csv('https://net.cimne.com/gava/demographic.csv', dayfirst=True, parse_dates=['birthdate','dateregunemployservices'])
+df2 = pd.read_csv(baseurl + 'demographic.csv', dayfirst=True, parse_dates=['birthdate','dateregunemployservices'])
 df2.to_sql('cens', engine)
 conn = engine.raw_connection()
 conn.set_session(readonly=False, autocommit=True)
@@ -21,7 +23,7 @@ with conn.cursor() as cursor:
         cursor.execute(sql_file.read())
 
         print("Calculos procedurales...")
-        sqlst = "SELECT DISTINCT sa_socialaid_id FROM gavius;"
+        sqlst = "SELECT sa_socialaid_id FROM ayudas;"
         cursor.execute(sqlst)
         ayudas = [item[0] for item in cursor.fetchall()]
         for i in ayudas:
