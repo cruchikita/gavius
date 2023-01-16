@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 3,
+  "id": 2,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -35,46 +35,22 @@
       },
       "description": "",
       "gridPos": {
-        "h": 3,
+        "h": 2,
         "w": 24,
         "x": 0,
         "y": 0
       },
-      "id": 5,
-      "libraryPanel": {
-        "description": "",
-        "meta": {
-          "connectedDashboards": 4,
-          "created": "2022-12-23T10:08:04Z",
-          "createdBy": {
-            "avatarUrl": "/avatar/46d229b033af06a191ff2267bca9ae56",
-            "id": 1,
-            "name": "admin"
-          },
-          "folderName": "General",
-          "folderUid": "",
-          "updated": "2023-01-02T07:30:18Z",
-          "updatedBy": {
-            "avatarUrl": "/avatar/46d229b033af06a191ff2267bca9ae56",
-            "id": 1,
-            "name": "admin"
-          }
-        },
-        "name": "Navbar",
-        "type": "text",
-        "uid": "Mlw0ektVk",
-        "version": 26
-      },
+      "id": 9,
       "options": {
         "code": {
           "language": "plaintext",
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "    <script src=\"http://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script>\n    $(function(){\n        $('a').each(function(){\n            if ($(this).prop('href') == window.location.href) {\n                $(this).addClass('active'); $(this).addClass('active');\n            }\n        });\n    });\n</script>\n\n<style>\n    .navbar {\n        overflow: hidden;\n        background-color: #333;\n        font-family: Arial, Helvetica, sans-serif;\n        border-radius: 14px;\n    }\n\n    .navbar a {\n        float: left;\n        font-size: 26px;\n        color: white;\n        text-align: center;\n        padding: 18px 22px;\n        text-decoration: none;\n        border-radius: 14px;\n    }\n\n    .navbar a:hover {\n        color: white;\n        background-color: #808080;\n        text-decoration: none;\n    }\n\n    .navbar .active{\n        color:            white;\n        background-color: #4f81bd;\n    }\n\n</style>\n\n<div class=\"navbar\">\n    <a href=\"\">Inicio</a>\n    <a href=\"https://gavius.cimne.com/d/kEtG3wD4z/gavius?orgId=1\">Dashboard 1</a>\n    <a href=\"https://gavius.cimne.com/d/EJrGvUcVk/new-dashboard?orgId=1\">Dashboard 2</a>\n    <a href=\"https://gavius.cimne.com/d/0PwjJe5Vz/dashboard-3?orgId=1\">Dashboard 3</a>\n    <a href=\"https://gavius.cimne.com/d/owOc12tVz/dashboard-4?orgId=1\">Dashboard 4</a>\n</div>",
+        "content": "    <script src=\"http://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script>\n    $(function(){\n        $('a').each(function(){\n            if ($(this).prop('href') == window.location.href) {\n                $(this).addClass('active'); $(this).addClass('active');\n            }\n        });\n    });\n</script>\n\n<style>\n    .navbar {\n        overflow: hidden;\n        background-color: #083566;\n        font-family: Arial, Helvetica, sans-serif;\n    }\n\n    .navbar a {\n        float: left;\n        font-size: 18px;\n        color: white;\n        text-align: center;\n        padding: 8px 12px;\n        text-decoration: none;\n    }\n\n    .navbar a:hover {\n        color: white;\n        text-decoration: underline;\n    }\n\n    .navbar .active{\n        color:            white;\n        background-color: #4f81bd;\n    }\n\n</style>\n\n<div class=\"navbar\">\n    <a href=\"/d/kEtG3wD4z/estat-de-les-tramitacions?orgId=1\">Estat de les tramitacions</a>\n    <a href=\"/d/EJrGvUcVk/new-dashboard?orgId=1\">Perfil sociodemogràfic</a>\n    <a href=\"/d/0PwjJe5Vz/camins-probables?orgId=1\">Camins probables</a>\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "9.2.2",
+      "pluginVersion": "9.3.2",
       "transparent": true,
       "type": "text"
     },
@@ -84,10 +60,10 @@
         "uid": "PCC52D03280B7034C"
       },
       "gridPos": {
-        "h": 19,
+        "h": 17,
         "w": 24,
         "x": 0,
-        "y": 3
+        "y": 2
       },
       "id": 7,
       "options": {
@@ -105,11 +81,12 @@
             "type": "postgres",
             "uid": "PCC52D03280B7034C"
           },
+          "editorMode": "code",
           "format": "table",
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  socialaid_socialaid_id AS \"id\",\n  ssa_sc_scl_0_name AS \"title\",\n  count(*) AS \"mainstat\"\nFROM gavius\nWHERE status IS NOT NULL\nGROUP BY socialaid_socialaid_id , ssa_sc_scl_0_name\nORDER BY 1",
+          "rawSql": "SELECT\n  sa_socialaid_id AS \"id\",\n  sa_name AS \"title\",\n  total AS \"mainstat\"\nFROM ayudas JOIN caminos ON ayudas.sa_socialaid_id = caminos.source\nWHERE ayudas.total > 0 and caminos.mainstat > 0\nORDER BY 1",
           "refId": "A",
           "select": [
             [
@@ -121,6 +98,23 @@
               }
             ]
           ],
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
           "table": "gavius",
           "timeColumn": "daterequested",
           "timeColumnType": "timestamp",
@@ -137,12 +131,13 @@
             "type": "postgres",
             "uid": "PCC52D03280B7034C"
           },
+          "editorMode": "code",
           "format": "table",
           "group": [],
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  id,\n  source,\n  target,\n  mainstat\nFROM camins\nORDER BY 1",
+          "rawSql": "SELECT\n  *\nFROM caminos\nWHERE caminos.mainstat > 5\nORDER BY 1",
           "refId": "B",
           "select": [
             [
@@ -154,6 +149,23 @@
               }
             ]
           ],
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
           "table": "camins",
           "timeColumn": "daterequested",
           "timeColumnType": "timestamp",
@@ -177,8 +189,8 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Dashboard 3",
+  "title": "Camins Probables",
   "uid": "0PwjJe5Vz",
-  "version": 20,
+  "version": 10,
   "weekStart": ""
 }

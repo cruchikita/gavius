@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 2,
+  "id": 3,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -47,7 +47,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "    <script src=\"http://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script>\n    $(function(){\n        $('a').each(function(){\n            if ($(this).prop('href') == window.location.href) {\n                $(this).addClass('active'); $(this).addClass('active');\n            }\n        });\n    });\n</script>\n\n<style>\n    .navbar {\n        overflow: hidden;\n        background-color: #083566;\n        font-family: Arial, Helvetica, sans-serif;\n    }\n\n    .navbar a {\n        float: left;\n        font-size: 18px;\n        color: white;\n        text-align: center;\n        padding: 8px 12px;\n        text-decoration: none;\n    }\n\n    .navbar a:hover {\n        color: white;\n        text-decoration: underline;\n    }\n\n    .navbar .active{\n        color:            white;\n        background-color: #4f81bd;\n    }\n\n</style>\n\n<div class=\"navbar\">\n    <a href=\"/\">Estat de les tramitacions</a>\n    <a href=\"#\">Perfil sociodemogràfic</a>\n    <a href=\"/d/0PwjJe5Vz/dashboard-3?orgId=1\">Camins probables</a>\n</div>",
+        "content": "    <script src=\"http://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script>\n    $(function(){\n        $('a').each(function(){\n            if ($(this).prop('href') == window.location.href) {\n                $(this).addClass('active'); $(this).addClass('active');\n            }\n        });\n    });\n</script>\n\n<style>\n    .navbar {\n        overflow: hidden;\n        background-color: #083566;\n        font-family: Arial, Helvetica, sans-serif;\n    }\n\n    .navbar a {\n        float: left;\n        font-size: 18px;\n        color: white;\n        text-align: center;\n        padding: 8px 12px;\n        text-decoration: none;\n    }\n\n    .navbar a:hover {\n        color: white;\n        text-decoration: underline;\n    }\n\n    .navbar .active{\n        color:            white;\n        background-color: #4f81bd;\n    }\n\n</style>\n\n<div class=\"navbar\">\n    <a href=\"/d/kEtG3wD4z/estat-de-les-tramitacions?orgId=1\">Estat de les tramitacions</a>\n    <a href=\"/d/EJrGvUcVk/perfil-sociodemografic?orgId=1\">Perfil sociodemogràfic</a>\n    <a href=\"/d/0PwjJe5Vz/camins-probables?orgId=1\">Camins probables</a>\n</div>",
         "mode": "html"
       },
       "pluginVersion": "9.3.2",
@@ -61,7 +61,7 @@
       },
       "description": "",
       "gridPos": {
-        "h": 16,
+        "h": 15,
         "w": 7,
         "x": 0,
         "y": 2
@@ -309,7 +309,53 @@
             ]
           }
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "població"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "peticionàries"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "beneficiàries"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 7,
@@ -466,7 +512,7 @@
         ]
       },
       "gridPos": {
-        "h": 9,
+        "h": 8,
         "w": 17,
         "x": 7,
         "y": 9
@@ -606,7 +652,7 @@
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "All",
           "value": "$__all"
         },
@@ -637,6 +683,6 @@
   "timezone": "",
   "title": "Perfil Sociodemografic",
   "uid": "EJrGvUcVk",
-  "version": 14,
+  "version": 7,
   "weekStart": ""
 }

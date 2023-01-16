@@ -47,7 +47,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "    <script src=\"http://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script>\n    $(function(){\n        $('a').each(function(){\n            if ($(this).prop('href') == window.location.href) {\n                $(this).addClass('active'); $(this).addClass('active');\n            }\n        });\n    });\n</script>\n\n<style>\n    .navbar {\n        overflow: hidden;\n        background-color: #083566;\n        font-family: Arial, Helvetica, sans-serif;\n    }\n\n    .navbar a {\n        float: left;\n        font-size: 18px;\n        color: white;\n        text-align: center;\n        padding: 8px 12px;\n        text-decoration: none;\n    }\n\n    .navbar a:hover {\n        color: white;\n        text-decoration: underline;\n    }\n\n    .navbar .active{\n        color:            white;\n        background-color: #4f81bd;\n    }\n\n</style>\n\n<div class=\"navbar\">\n    <a href=\"/\">Estat de les tramitacions</a>\n    <a href=\"/d/EJrGvUcVk/new-dashboard?orgId=1\">Perfil sociodemogràfic</a>\n    <a href=\"/d/0PwjJe5Vz/dashboard-3?orgId=1\">Camins probables</a>\n</div>",
+        "content": "    <script src=\"http://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script>\n    $(function(){\n        $('a').each(function(){\n            if ($(this).prop('href') == window.location.href) {\n                $(this).addClass('active'); $(this).addClass('active');\n            }\n        });\n    });\n</script>\n\n<style>\n    .navbar {\n        overflow: hidden;\n        background-color: #083566;\n        font-family: Arial, Helvetica, sans-serif;\n    }\n\n    .navbar a {\n        float: left;\n        font-size: 18px;\n        color: white;\n        text-align: center;\n        padding: 8px 12px;\n        text-decoration: none;\n    }\n\n    .navbar a:hover {\n        color: white;\n        text-decoration: underline;\n    }\n\n    .navbar .active{\n        color:            white;\n        background-color: #4f81bd;\n    }\n\n</style>\n\n<div class=\"navbar\">\n    <a href=\"/d/kEtG3wD4z/estat-de-les-tramitacions?orgId=1\">Estat de les tramitacions</a>\n    <a href=\"/d/EJrGvUcVk/new-dashboard?orgId=1\">Perfil sociodemogràfic</a>\n    <a href=\"/d/0PwjJe5Vz/camins-probables?orgId=1\">Camins probables</a>\n</div>",
         "mode": "html"
       },
       "pluginVersion": "9.3.2",
@@ -198,8 +198,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 14,
+        "h": 9,
+        "w": 12,
         "x": 3,
         "y": 2
       },
@@ -233,6 +233,7 @@
             "type": "postgres",
             "uid": "PCC52D03280B7034C"
           },
+          "editorMode": "code",
           "format": "table",
           "group": [
             {
@@ -245,7 +246,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  \"sa_name\",\r\n  (select count(*) from gavius where status = 'Approved' and llenos.\"sa_name\" = gavius.\"sa_name\" and $__timeFilter(daterequested)) as favorables,\r\n  (select count(*) from gavius where status = 'Evaluating' and llenos.\"sa_name\" = gavius.\"sa_name\" and $__timeFilter(daterequested)) as en_curs,\r\n  (select count(*) from gavius where status = 'Denied' and llenos.\"sa_name\" = gavius.\"sa_name\" and $__timeFilter(daterequested)) as desfavorables\r\nFROM gavius as llenos\r\nGROUP BY \"sa_socialaid_id\", \"sa_name\"\r\nORDER BY \"sa_socialaid_id\"",
+          "rawSql": "SELECT\r\n  \"sa_name\",\r\n  (select count(*) from gavius where status = 'Approved' and llenos.\"sa_name\" = gavius.\"sa_name\" and $__timeFilter(daterequested)) as favorables,\r\n  (select count(*) from gavius where status = 'Evaluating' and llenos.\"sa_name\" = gavius.\"sa_name\" and $__timeFilter(daterequested)) as en_curs,\r\n  (select count(*) from gavius where status = 'Denied' and llenos.\"sa_name\" = gavius.\"sa_name\" and $__timeFilter(daterequested)) as desfavorables\r\nFROM gavius as llenos LEFT JOIN cens ON llenos.gaviususer_id = cens.gaviususer_id \r\nWHERE (ge_name IN (${sexe}))\r\n  AND (gu_da_0_n_name IN (${barri}))\r\n  AND (agerange IN (${edat}))\r\nGROUP BY \"sa_socialaid_id\", \"sa_name\"\r\nORDER BY \"sa_socialaid_id\"",
           "refId": "1",
           "select": [
             [
@@ -269,6 +270,23 @@
               }
             ]
           ],
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
           "table": "gavius",
           "timeColumn": "daterequested",
           "timeColumnType": "date",
@@ -309,8 +327,8 @@
       },
       "gridPos": {
         "h": 2,
-        "w": 7,
-        "x": 17,
+        "w": 9,
+        "x": 15,
         "y": 2
       },
       "id": 14,
@@ -388,11 +406,11 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 7,
-        "x": 17,
+        "w": 9,
+        "x": 15,
         "y": 4
       },
-      "id": 11,
+      "id": 19,
       "options": {
         "legend": {
           "displayMode": "list",
@@ -405,1023 +423,44 @@
             "lastNotNull"
           ],
           "fields": "",
-          "values": false
+          "values": true
         },
         "tooltip": {
           "mode": "single",
           "sort": "none"
         }
       },
-      "pluginVersion": "9.2.4",
       "targets": [
         {
           "datasource": {
             "type": "postgres",
             "uid": "PCC52D03280B7034C"
           },
+          "editorMode": "code",
           "format": "table",
-          "group": [
-            {
-              "params": [
-                "$__interval",
-                "none"
-              ],
-              "type": "time"
-            }
-          ],
-          "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as ExclusioResidencial\nFROM gavius\nWHERE\n\"sa_socialaid_id\" = 1 and\n  $__timeFilter(daterequested)\nORDER BY 1",
-          "refId": "1",
-          "select": [
-            [
+          "rawSql": "SELECT\r\n  sa_name,\r\n  count(*)\r\nFROM gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \r\nWHERE\r\n  $__timeFilter(daterequested) \r\n  AND (ge_name IN (${sexe}))\r\n  AND (gu_da_0_n_name IN (${barri}))\r\n  AND (agerange IN (${edat}))\r\n  GROUP BY sa_name\r\nORDER BY 1",
+          "refId": "A",
+          "sql": {
+            "columns": [
               {
-                "params": [
-                  "file_id"
-                ],
-                "type": "column"
-              },
-              {
-                "params": [
-                  "count"
-                ],
-                "type": "aggregate"
-              },
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "alias"
+                "parameters": [],
+                "type": "function"
               }
-            ]
-          ],
-          "table": "gavius",
-          "timeColumn": "daterequested",
-          "timeColumnType": "date",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "format": "table",
-          "group": [
-            {
-              "params": [
-                "$__interval",
-                "none"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as SolAliments\nFROM gavius\nWHERE\n\"sa_socialaid_id\" = 2 and\n  $__timeFilter(daterequested)\nORDER BY 1",
-          "refId": "2",
-          "select": [
-            [
+            ],
+            "groupBy": [
               {
-                "params": [
-                  "file_id"
-                ],
-                "type": "column"
-              },
-              {
-                "params": [
-                  "count"
-                ],
-                "type": "aggregate"
-              },
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "alias"
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
               }
-            ]
-          ],
-          "table": "gavius",
-          "timeColumn": "daterequested",
-          "timeColumnType": "date",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "format": "table",
-          "group": [
-            {
-              "params": [
-                "$__interval",
-                "none"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as  CarnetBlau\nFROM gavius\nWHERE\n\"sa_socialaid_id\" = 3 and\n  $__timeFilter(daterequested)\nORDER BY 1",
-          "refId": "3",
-          "select": [
-            [
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "column"
-              },
-              {
-                "params": [
-                  "count"
-                ],
-                "type": "aggregate"
-              },
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "alias"
-              }
-            ]
-          ],
-          "table": "gavius",
-          "timeColumn": "daterequested",
-          "timeColumnType": "date",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "format": "table",
-          "group": [
-            {
-              "params": [
-                "$__interval",
-                "none"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as  AjutIBINombrosa\nFROM gavius\nWHERE\n\"sa_socialaid_id\" = 4 and\n  $__timeFilter(daterequested)\nORDER BY 1",
-          "refId": "4",
-          "select": [
-            [
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "column"
-              },
-              {
-                "params": [
-                  "count"
-                ],
-                "type": "aggregate"
-              },
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "alias"
-              }
-            ]
-          ],
-          "table": "gavius",
-          "timeColumn": "daterequested",
-          "timeColumnType": "date",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "format": "table",
-          "group": [
-            {
-              "params": [
-                "$__interval",
-                "none"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as  Teleassistencia \nFROM gavius\nWHERE\n\"sa_socialaid_id\" = 5 and\n  $__timeFilter(daterequested)\nORDER BY 1",
-          "refId": "5",
-          "select": [
-            [
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "column"
-              },
-              {
-                "params": [
-                  "count"
-                ],
-                "type": "aggregate"
-              },
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "alias"
-              }
-            ]
-          ],
-          "table": "gavius",
-          "timeColumn": "daterequested",
-          "timeColumnType": "date",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "format": "table",
-          "group": [
-            {
-              "params": [
-                "$__interval",
-                "none"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as  BecaEscolaBressol  \nFROM gavius\nWHERE\n\"sa_socialaid_id\" = 6 and\n  $__timeFilter(daterequested)\nORDER BY 1",
-          "refId": "6",
-          "select": [
-            [
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "column"
-              },
-              {
-                "params": [
-                  "count"
-                ],
-                "type": "aggregate"
-              },
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "alias"
-              }
-            ]
-          ],
-          "table": "gavius",
-          "timeColumn": "daterequested",
-          "timeColumnType": "date",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "format": "table",
-          "group": [
-            {
-              "params": [
-                "$__interval",
-                "none"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as  Subvencio   \nFROM gavius\nWHERE\n\"sa_socialaid_id\" = 7 and\n  $__timeFilter(daterequested)\nORDER BY 1",
-          "refId": "7",
-          "select": [
-            [
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "column"
-              },
-              {
-                "params": [
-                  "count"
-                ],
-                "type": "aggregate"
-              },
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "alias"
-              }
-            ]
-          ],
-          "table": "gavius",
-          "timeColumn": "daterequested",
-          "timeColumnType": "date",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "format": "table",
-          "group": [
-            {
-              "params": [
-                "$__interval",
-                "none"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as AjutIBIMonoparental     \nFROM gavius\nWHERE\n\"sa_socialaid_id\" = 8 and\n  $__timeFilter(daterequested)\nORDER BY 1",
-          "refId": "8",
-          "select": [
-            [
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "column"
-              },
-              {
-                "params": [
-                  "count"
-                ],
-                "type": "aggregate"
-              },
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "alias"
-              }
-            ]
-          ],
-          "table": "gavius",
-          "timeColumn": "daterequested",
-          "timeColumnType": "date",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "format": "table",
-          "group": [
-            {
-              "params": [
-                "$__interval",
-                "none"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as ConsultaDades      \nFROM gavius\nWHERE\n\"sa_socialaid_id\" = 9 and\n  $__timeFilter(daterequested)\nORDER BY 1",
-          "refId": "9",
-          "select": [
-            [
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "column"
-              },
-              {
-                "params": [
-                  "count"
-                ],
-                "type": "aggregate"
-              },
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "alias"
-              }
-            ]
-          ],
-          "table": "gavius",
-          "timeColumn": "daterequested",
-          "timeColumnType": "date",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "format": "table",
-          "group": [
-            {
-              "params": [
-                "$__interval",
-                "none"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as  BecaMenjador      \nFROM gavius\nWHERE\n\"sa_socialaid_id\" = 10 and\n  $__timeFilter(daterequested)\nORDER BY 1",
-          "refId": "10",
-          "select": [
-            [
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "column"
-              },
-              {
-                "params": [
-                  "count"
-                ],
-                "type": "aggregate"
-              },
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "alias"
-              }
-            ]
-          ],
-          "table": "gavius",
-          "timeColumn": "daterequested",
-          "timeColumnType": "date",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "format": "table",
-          "group": [
-            {
-              "params": [
-                "$__interval",
-                "none"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as  BorsaTreball      \nFROM gavius\nWHERE\n\"sa_socialaid_id\" = 11 and\n  $__timeFilter(daterequested)\nORDER BY 1",
-          "refId": "11",
-          "select": [
-            [
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "column"
-              },
-              {
-                "params": [
-                  "count"
-                ],
-                "type": "aggregate"
-              },
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "alias"
-              }
-            ]
-          ],
-          "table": "gavius",
-          "timeColumn": "daterequested",
-          "timeColumnType": "date",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "format": "table",
-          "group": [
-            {
-              "params": [
-                "$__interval",
-                "none"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as  MeritsRequisits      \nFROM gavius\nWHERE\n\"sa_socialaid_id\" = 12 and\n  $__timeFilter(daterequested)\nORDER BY 1",
-          "refId": "12",
-          "select": [
-            [
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "column"
-              },
-              {
-                "params": [
-                  "count"
-                ],
-                "type": "aggregate"
-              },
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "alias"
-              }
-            ]
-          ],
-          "table": "gavius",
-          "timeColumn": "daterequested",
-          "timeColumnType": "date",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "format": "table",
-          "group": [
-            {
-              "params": [
-                "$__interval",
-                "none"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as  IBI      \nFROM gavius\nWHERE\n\"sa_socialaid_id\" IN (13,14) and\n  $__timeFilter(daterequested)\nORDER BY 1",
-          "refId": "13",
-          "select": [
-            [
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "column"
-              },
-              {
-                "params": [
-                  "count"
-                ],
-                "type": "aggregate"
-              },
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "alias"
-              }
-            ]
-          ],
-          "table": "gavius",
-          "timeColumn": "daterequested",
-          "timeColumnType": "date",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "format": "table",
-          "group": [
-            {
-              "params": [
-                "$__interval",
-                "none"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as  Habitatge      \nFROM gavius\nWHERE\n\"sa_socialaid_id\" = 15 and\n  $__timeFilter(daterequested)\nORDER BY 1",
-          "refId": "15",
-          "select": [
-            [
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "column"
-              },
-              {
-                "params": [
-                  "count"
-                ],
-                "type": "aggregate"
-              },
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "alias"
-              }
-            ]
-          ],
-          "table": "gavius",
-          "timeColumn": "daterequested",
-          "timeColumnType": "date",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "format": "table",
-          "group": [
-            {
-              "params": [
-                "$__interval",
-                "none"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as  TaxaResidus       \nFROM gavius\nWHERE\n\"sa_socialaid_id\" = 16 and\n  $__timeFilter(daterequested)\nORDER BY 1",
-          "refId": "16",
-          "select": [
-            [
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "column"
-              },
-              {
-                "params": [
-                  "count"
-                ],
-                "type": "aggregate"
-              },
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "alias"
-              }
-            ]
-          ],
-          "table": "gavius",
-          "timeColumn": "daterequested",
-          "timeColumnType": "date",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "format": "table",
-          "group": [
-            {
-              "params": [
-                "$__interval",
-                "none"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as  BenestarSocial       \nFROM gavius\nWHERE\n\"sa_socialaid_id\" = 17 and\n  $__timeFilter(daterequested)\nORDER BY 1",
-          "refId": "17",
-          "select": [
-            [
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "column"
-              },
-              {
-                "params": [
-                  "count"
-                ],
-                "type": "aggregate"
-              },
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "alias"
-              }
-            ]
-          ],
-          "table": "gavius",
-          "timeColumn": "daterequested",
-          "timeColumnType": "date",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "format": "table",
-          "group": [
-            {
-              "params": [
-                "$__interval",
-                "none"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as  TargetaAparcament       \nFROM gavius\nWHERE\n\"sa_socialaid_id\" = 18 and\n  $__timeFilter(daterequested)\nORDER BY 1",
-          "refId": "18",
-          "select": [
-            [
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "column"
-              },
-              {
-                "params": [
-                  "count"
-                ],
-                "type": "aggregate"
-              },
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "alias"
-              }
-            ]
-          ],
-          "table": "gavius",
-          "timeColumn": "daterequested",
-          "timeColumnType": "date",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "format": "table",
-          "group": [
-            {
-              "params": [
-                "$__interval",
-                "none"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as  AtencioSocialBasica       \nFROM gavius\nWHERE\n\"sa_socialaid_id\" = 19 and\n  $__timeFilter(daterequested)\nORDER BY 1",
-          "refId": "19",
-          "select": [
-            [
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "column"
-              },
-              {
-                "params": [
-                  "count"
-                ],
-                "type": "aggregate"
-              },
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "alias"
-              }
-            ]
-          ],
-          "table": "gavius",
-          "timeColumn": "daterequested",
-          "timeColumnType": "date",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "format": "table",
-          "group": [
-            {
-              "params": [
-                "$__interval",
-                "none"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as  UrgenciaSocial       \nFROM gavius\nWHERE\n\"sa_socialaid_id\" = 20 and\n  $__timeFilter(daterequested)\nORDER BY 1",
-          "refId": "20",
-          "select": [
-            [
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "column"
-              },
-              {
-                "params": [
-                  "count"
-                ],
-                "type": "aggregate"
-              },
-              {
-                "params": [
-                  "file_id"
-                ],
-                "type": "alias"
-              }
-            ]
-          ],
-          "table": "gavius",
-          "timeColumn": "daterequested",
-          "timeColumnType": "date",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
+            ],
+            "limit": 50
+          }
         }
       ],
-      "title": "Tipologia",
+      "title": "Panel Title",
       "type": "piechart"
     },
     {
@@ -1476,11 +515,12 @@
             "type": "postgres",
             "uid": "PCC52D03280B7034C"
           },
+          "editorMode": "code",
           "format": "table",
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as value\nFROM\n  gavius\nWHERE\n  $__timeFilter(daterequested)\n",
+          "rawSql": "SELECT\n  count(*) as value\nFROM\n  gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \nWHERE\n  $__timeFilter(daterequested) \n  AND (ge_name IN (${sexe}))\n  AND (gu_da_0_n_name IN (${barri}))\n  AND (agerange IN (${edat}))\n",
           "refId": "A",
           "select": [
             [
@@ -1492,6 +532,23 @@
               }
             ]
           ],
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
           "timeColumn": "time",
           "where": [
             {
@@ -1557,11 +614,12 @@
             "type": "postgres",
             "uid": "PCC52D03280B7034C"
           },
+          "editorMode": "code",
           "format": "table",
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as value\nFROM\n  gavius\nWHERE\n  status = 'Approved' AND\n  $__timeFilter(daterequested)\n",
+          "rawSql": "SELECT\n  count(*) as value\nFROM\n  gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \nWHERE\n  status = 'Approved' AND\n  $__timeFilter(daterequested) \n  AND (ge_name IN (${sexe}))\n  AND (gu_da_0_n_name IN (${barri}))\n  AND (agerange IN (${edat}))\n",
           "refId": "A",
           "select": [
             [
@@ -1573,6 +631,23 @@
               }
             ]
           ],
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
           "timeColumn": "time",
           "where": [
             {
@@ -1584,6 +659,105 @@
         }
       ],
       "title": "Ajudes Favorables",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "PCC52D03280B7034C"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "yellow",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 0,
+        "y": 11
+      },
+      "id": 7,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.3.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  count(*) as value\nFROM\n  gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \nWHERE\n  status = 'Evaluating' AND\n  $__timeFilter(daterequested) \n  AND (ge_name IN (${sexe}))\n  AND (gu_da_0_n_name IN (${barri}))\n  AND (agerange IN (${edat}))",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Ajudes en curs",
       "type": "stat"
     },
     {
@@ -1656,10 +830,10 @@
         ]
       },
       "gridPos": {
-        "h": 7,
-        "w": 14,
+        "h": 6,
+        "w": 12,
         "x": 3,
-        "y": 10
+        "y": 11
       },
       "id": 4,
       "options": {
@@ -1680,6 +854,7 @@
             "type": "postgres",
             "uid": "PCC52D03280B7034C"
           },
+          "editorMode": "code",
           "format": "time_series",
           "group": [
             {
@@ -1692,7 +867,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  date_trunc('month',daterequested) as time,\n  count(*) AS \"favorables\"\nFROM gavius\nWHERE\n  status = 'Approved' and\n  $__timeFilter(daterequested)\nGROUP BY date_trunc('month',daterequested)\nORDER BY date_trunc('month',daterequested)",
+          "rawSql": "SELECT\n  date_trunc('month',daterequested) as time,\n  count(*) AS \"favorables\"\nFROM gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \nWHERE\n  status = 'Approved' and\n  $__timeFilter(daterequested) \n  AND (ge_name IN (${sexe}))\n  AND (gu_da_0_n_name IN (${barri}))\n  AND (agerange IN (${edat}))\nGROUP BY date_trunc('month',daterequested)\nORDER BY date_trunc('month',daterequested)",
           "refId": "Acceptades",
           "select": [
             [
@@ -1716,6 +891,23 @@
               }
             ]
           ],
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
           "table": "llenos",
           "timeColumn": "daterequested",
           "timeColumnType": "date",
@@ -1732,12 +924,13 @@
             "type": "postgres",
             "uid": "PCC52D03280B7034C"
           },
+          "editorMode": "code",
           "format": "time_series",
           "group": [],
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  date_trunc('month',daterequested) as time,\n  count(*) AS \"en_curs\"\nFROM gavius\nWHERE\n  status = 'Evaluating' and\n  $__timeFilter(daterequested)\nGROUP BY date_trunc('month',daterequested)\nORDER BY date_trunc('month',daterequested)\n",
+          "rawSql": "SELECT\n  date_trunc('month',daterequested) as time,\n  count(*) AS \"en_curs\"\nFROM gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \nWHERE\n  status = 'Evaluating' and\n  $__timeFilter(daterequested) \n  AND (ge_name IN (${sexe}))\n  AND (gu_da_0_n_name IN (${barri}))\n  AND (agerange IN (${edat}))\nGROUP BY date_trunc('month',daterequested)\nORDER BY date_trunc('month',daterequested)\n",
           "refId": "En curs",
           "select": [
             [
@@ -1749,6 +942,23 @@
               }
             ]
           ],
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
           "timeColumn": "time",
           "where": [
             {
@@ -1763,12 +973,13 @@
             "type": "postgres",
             "uid": "PCC52D03280B7034C"
           },
+          "editorMode": "code",
           "format": "time_series",
           "group": [],
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  date_trunc('month',daterequested) as time,\n  count(*) AS \"desfavorables\"\nFROM gavius\nWHERE\n  status = 'Denied' and\n  $__timeFilter(daterequested)\nGROUP BY date_trunc('month',daterequested)\nORDER BY date_trunc('month',daterequested)\n",
+          "rawSql": "SELECT\n  date_trunc('month',daterequested) as time,\n  count(*) AS \"desfavorables\"\nFROM gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \nWHERE\n  status = 'Denied' and\n  $__timeFilter(daterequested) \n  AND (ge_name IN (${sexe}))\n  AND (gu_da_0_n_name IN (${barri}))\n  AND (agerange IN (${edat}))\nGROUP BY date_trunc('month',daterequested)\nORDER BY date_trunc('month',daterequested)\n",
           "refId": "Desfavorables",
           "select": [
             [
@@ -1780,6 +991,23 @@
               }
             ]
           ],
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
           "timeColumn": "time",
           "where": [
             {
@@ -1792,87 +1020,6 @@
       ],
       "title": "Evolució mensual",
       "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "postgres",
-        "uid": "PCC52D03280B7034C"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "yellow",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 0,
-        "y": 11
-      },
-      "id": 7,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.3.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "format": "table",
-          "group": [],
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as value\nFROM\n  gavius\nWHERE\n  status = 'Evaluating' AND\n  $__timeFilter(daterequested)\n",
-          "refId": "A",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "column"
-              }
-            ]
-          ],
-          "timeColumn": "time",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        }
-      ],
-      "title": "Ajudes en curs",
-      "type": "stat"
     },
     {
       "datasource": {
@@ -1960,8 +1107,8 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 7,
-        "x": 17,
+        "w": 9,
+        "x": 15,
         "y": 12
       },
       "id": 15,
@@ -1983,12 +1130,13 @@
             "type": "postgres",
             "uid": "PCC52D03280B7034C"
           },
+          "editorMode": "code",
           "format": "time_series",
           "group": [],
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  date_trunc('year',daterequested) as time,\n  count(*) AS \"desfavorables\"\nFROM gavius\nWHERE\n  status = 'Denied' and\n  $__timeFilter(daterequested)\nGROUP BY date_trunc('year',daterequested)\nORDER BY date_trunc('year',daterequested)\n",
+          "rawSql": "SELECT\n  date_trunc('year',daterequested) as time,\n  count(*) AS \"desfavorables\"\nFROM gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \nWHERE\n  status = 'Denied' and\n  $__timeFilter(daterequested) \n  AND (ge_name IN (${sexe}))\n  AND (gu_da_0_n_name IN (${barri}))\n  AND (agerange IN (${edat}))\nGROUP BY date_trunc('year',daterequested)\nORDER BY date_trunc('year',daterequested)\n",
           "refId": "Desfavorables",
           "select": [
             [
@@ -2000,6 +1148,23 @@
               }
             ]
           ],
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
           "timeColumn": "time",
           "where": [
             {
@@ -2014,12 +1179,13 @@
             "type": "postgres",
             "uid": "PCC52D03280B7034C"
           },
+          "editorMode": "code",
           "format": "time_series",
           "group": [],
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  date_trunc('year',daterequested) as time,\n  count(*) AS \"en_curs\"\nFROM gavius\nWHERE\n  status = 'Evaluating' and\n  $__timeFilter(daterequested)\nGROUP BY date_trunc('year',daterequested)\nORDER BY date_trunc('year',daterequested)\n",
+          "rawSql": "SELECT\n  date_trunc('year',daterequested) as time,\n  count(*) AS \"en_curs\"\nFROM gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \nWHERE\n  status = 'Evaluating' and\n  $__timeFilter(daterequested) \n  AND (ge_name IN (${sexe}))\n  AND (gu_da_0_n_name IN (${barri}))\n  AND (agerange IN (${edat}))\nGROUP BY date_trunc('year',daterequested)\nORDER BY date_trunc('year',daterequested)\n",
           "refId": "En curs",
           "select": [
             [
@@ -2031,6 +1197,23 @@
               }
             ]
           ],
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
           "timeColumn": "time",
           "where": [
             {
@@ -2045,6 +1228,7 @@
             "type": "postgres",
             "uid": "PCC52D03280B7034C"
           },
+          "editorMode": "code",
           "format": "time_series",
           "group": [
             {
@@ -2057,7 +1241,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  date_trunc('year',daterequested) as time,\n  count(*) AS \"favorables\"\nFROM gavius\nWHERE\n  status = 'Approved' and\n  $__timeFilter(daterequested)\nGROUP BY date_trunc('year',daterequested)\nORDER BY date_trunc('year',daterequested)",
+          "rawSql": "SELECT\n  date_trunc('year',daterequested) as time,\n  count(*) AS \"favorables\"\nFROM gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \nWHERE\n  status = 'Approved' and\n  $__timeFilter(daterequested) \n  AND (ge_name IN (${sexe}))\n  AND (gu_da_0_n_name IN (${barri}))\n  AND (agerange IN (${edat}))\nGROUP BY date_trunc('year',daterequested)\nORDER BY date_trunc('year',daterequested)",
           "refId": "Acceptades",
           "select": [
             [
@@ -2081,6 +1265,23 @@
               }
             ]
           ],
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
           "table": "llenos",
           "timeColumn": "daterequested",
           "timeColumnType": "date",
@@ -2148,11 +1349,12 @@
             "type": "postgres",
             "uid": "PCC52D03280B7034C"
           },
+          "editorMode": "code",
           "format": "table",
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as value\nFROM\n  gavius\nWHERE\n  status = 'Denied' AND\n  $__timeFilter(daterequested)\n",
+          "rawSql": "SELECT\n  count(*) as value\nFROM\n  gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \nWHERE\n  status = 'Denied' AND\n  $__timeFilter(daterequested) \n  AND (ge_name IN (${sexe}))\n  AND (gu_da_0_n_name IN (${barri}))\n  AND (agerange IN (${edat}))",
           "refId": "A",
           "select": [
             [
@@ -2164,6 +1366,23 @@
               }
             ]
           ],
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
           "timeColumn": "time",
           "where": [
             {
@@ -2186,7 +1405,7 @@
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "All",
           "value": "$__all"
         },
@@ -2213,41 +1432,40 @@
         "current": {
           "selected": true,
           "text": [
-            "18-30",
-            "30-45",
-            "45-60",
-            "60+"
+            "All"
           ],
           "value": [
-            "1",
-            "2",
-            "3",
-            "4"
+            "$__all"
           ]
         },
         "hide": 0,
-        "includeAll": false,
+        "includeAll": true,
         "label": "Grup d'edat",
         "multi": true,
         "name": "edat",
         "options": [
           {
             "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
             "text": "18-30",
             "value": "1"
           },
           {
-            "selected": true,
+            "selected": false,
             "text": "30-45",
             "value": "2"
           },
           {
-            "selected": true,
+            "selected": false,
             "text": "45-60",
             "value": "3"
           },
           {
-            "selected": true,
+            "selected": false,
             "text": "60+",
             "value": "4"
           }
@@ -2259,7 +1477,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "All",
           "value": "$__all"
         },
@@ -2291,6 +1509,6 @@
   "timezone": "",
   "title": "Estat de les tramitacions",
   "uid": "kEtG3wD4z",
-  "version": 9,
+  "version": 3,
   "weekStart": ""
 }

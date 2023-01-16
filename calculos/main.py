@@ -31,5 +31,35 @@ with conn.cursor() as cursor:
                 if j!=i:
                     sqlst = "INSERT INTO bolas SELECT "+ str(i) +","+ str(j) +",COUNT(*) FROM (SELECT * FROM (SELECT  gaviususer_id, min(daterequested) AS datetime FROM gavius WHERE sa_socialaid_id="+ str(i) +" GROUP BY gaviususer_id) AS pre INNER JOIN (SELECT  gaviususer_id, max(daterequested) AS datetime FROM gavius WHERE sa_socialaid_id="+ str(j) +" GROUP BY gaviususer_id) AS post ON pre.gaviususer_id = post.gaviususer_id WHERE pre.datetime < post.datetime) AS cuantos;"
                     cursor.execute(sqlst)
+        
+        for i in ayudas:
+            sqlst = "SELECT total FROM ayudas WHERE sa_socialaid_id ="+str(i)+";"
+            cursor.execute(sqlst)
+            total = cursor.fetchone()
+            for j in ayudas:
+                if j!=i and i>j:
+                    sqlst = "SELECT count FROM bolas WHERE sa_id_ini="+str(i)+" AND sa_id_next="+str(j)+";"
+                    cursor.execute(sqlst)
+                    percent = cursor.fetchone()
+                    per1 = percent[0]
+
+                    sqlst = "SELECT count FROM bolas WHERE sa_id_ini="+str(j)+" AND sa_id_next="+str(i)+";"
+                    cursor.execute(sqlst)
+                    percent = cursor.fetchone()
+                    per2 = percent[0]
+                    
+                    if per1 > per2:
+                        perfinal = per1
+                        source = i
+                        target = j
+                    else:
+                        perfinal = per2
+                        source = j
+                        target = i
+                    
+                    perfinal = (int(perfinal) / int(total[0])) * 100
+                    sqlst = "INSERT INTO caminos (source,target,mainstat) VALUES("+str(source)+","+str(target)+","+str(perfinal)+");"
+                    cursor.execute(sqlst)
+                    
 
 print("Calculos finalizados con éxito")
