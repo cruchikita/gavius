@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 2,
+  "id": 1,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -678,6 +678,7 @@
         "definition": "select distinct sa_name from gavius",
         "hide": 0,
         "includeAll": true,
+        "label": "Ajuda",
         "multi": false,
         "name": "ayuda",
         "options": [],
@@ -698,6 +699,6 @@
   "timezone": "",
   "title": "Perfil Sociodemografic",
   "uid": "EJrGvUcVk",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }
