@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 3,
+  "id": 2,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -276,7 +276,7 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "continuous-RdYlGr"
+            "mode": "palette-classic"
           },
           "custom": {
             "axisCenteredZero": false,
@@ -334,7 +334,7 @@
               {
                 "id": "color",
                 "value": {
-                  "fixedColor": "yellow",
+                  "fixedColor": "orange",
                   "mode": "fixed"
                 }
               }
@@ -506,6 +506,21 @@
               {
                 "id": "custom.axisPlacement",
                 "value": "right"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Peticionaries"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
               }
             ]
           }
@@ -683,6 +698,6 @@
   "timezone": "",
   "title": "Perfil Sociodemografic",
   "uid": "EJrGvUcVk",
-  "version": 7,
+  "version": 1,
   "weekStart": ""
 }

@@ -36,8 +36,14 @@ with conn.cursor() as cursor:
             sqlst = "SELECT total FROM ayudas WHERE sa_socialaid_id ="+str(i)+";"
             cursor.execute(sqlst)
             total = cursor.fetchone()
+            total1 = total[0]
             for j in ayudas:
                 if j!=i and i>j:
+                    sqlst = "SELECT total FROM ayudas WHERE sa_socialaid_id ="+str(j)+";"
+                    cursor.execute(sqlst)
+                    total = cursor.fetchone()
+                    total2 = total[0]
+
                     sqlst = "SELECT count FROM bolas WHERE sa_id_ini="+str(i)+" AND sa_id_next="+str(j)+";"
                     cursor.execute(sqlst)
                     percent = cursor.fetchone()
@@ -47,17 +53,20 @@ with conn.cursor() as cursor:
                     cursor.execute(sqlst)
                     percent = cursor.fetchone()
                     per2 = percent[0]
-                    
-                    if per1 > per2:
-                        perfinal = per1
+
+                    perfinal1 = (int(per1) / int(total1)) * 100
+                    perfinal2 = (int(per2) / int(total2)) * 100
+
+                    if perfinal1 > perfinal2:
+                        perfinal = perfinal1
                         source = i
                         target = j
                     else:
-                        perfinal = per2
+                        perfinal = perfinal2
                         source = j
                         target = i
                     
-                    perfinal = (int(perfinal) / int(total[0])) * 100
+                    
                     sqlst = "INSERT INTO caminos (source,target,mainstat) VALUES("+str(source)+","+str(target)+","+str(perfinal)+");"
                     cursor.execute(sqlst)
                     

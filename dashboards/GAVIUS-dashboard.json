@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 3,
+  "id": 4,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -867,7 +867,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  date_trunc('month',daterequested) as time,\n  count(*) AS \"favorables\"\nFROM gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \nWHERE\n  status = 'Approved' and\n  $__timeFilter(daterequested) \n  AND (ge_name IN (${sexe}))\n  AND (gu_da_0_n_name IN (${barri}))\n  AND (agerange IN (${edat}))\nGROUP BY date_trunc('month',daterequested)\nORDER BY date_trunc('month',daterequested)",
+          "rawSql": "SELECT\n  date_trunc('month',daterequested) as time,\n  count(*) AS \"favorables\"\nFROM gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \nWHERE\n  status = 'Approved' AND\n  $__timeFilter(daterequested) \n  AND (ge_name IN (${sexe}))\n  AND (gu_da_0_n_name IN (${barri}))\n  AND (agerange IN (${edat}))\nGROUP BY date_trunc('month',daterequested)\nORDER BY date_trunc('month',daterequested)",
           "refId": "Acceptades",
           "select": [
             [
@@ -930,7 +930,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  date_trunc('month',daterequested) as time,\n  count(*) AS \"en_curs\"\nFROM gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \nWHERE\n  status = 'Evaluating' and\n  $__timeFilter(daterequested) \n  AND (ge_name IN (${sexe}))\n  AND (gu_da_0_n_name IN (${barri}))\n  AND (agerange IN (${edat}))\nGROUP BY date_trunc('month',daterequested)\nORDER BY date_trunc('month',daterequested)\n",
+          "rawSql": "SELECT\n  date_trunc('month',daterequested) as time,\n  count(*) AS \"en_curs\"\nFROM gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \nWHERE\n\n  status = 'Evaluating' AND\n  $__timeFilter(daterequested) \n  AND (ge_name IN (${sexe}))\n  AND (gu_da_0_n_name IN (${barri}))\n  AND (agerange IN (${edat}))\nGROUP BY date_trunc('month',daterequested)\nORDER BY date_trunc('month',daterequested)\n",
           "refId": "En curs",
           "select": [
             [
@@ -979,7 +979,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  date_trunc('month',daterequested) as time,\n  count(*) AS \"desfavorables\"\nFROM gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \nWHERE\n  status = 'Denied' and\n  $__timeFilter(daterequested) \n  AND (ge_name IN (${sexe}))\n  AND (gu_da_0_n_name IN (${barri}))\n  AND (agerange IN (${edat}))\nGROUP BY date_trunc('month',daterequested)\nORDER BY date_trunc('month',daterequested)\n",
+          "rawSql": "SELECT\n  date_trunc('month',daterequested) as time,\n  count(*) AS \"desfavorables\"\nFROM gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \nWHERE\n  status = 'Denied' AND\n  $__timeFilter(daterequested) \n  AND (ge_name IN (${sexe}))\n  AND (gu_da_0_n_name IN (${barri}))\n  AND (agerange IN (${edat}))\nGROUP BY date_trunc('month',daterequested)\nORDER BY date_trunc('month',daterequested)\n",
           "refId": "Desfavorables",
           "select": [
             [
@@ -1029,37 +1029,12 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
+            "mode": "thresholds"
           },
           "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "bars",
-            "fillOpacity": 100,
-            "gradientMode": "hue",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "normal"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
+            "align": "auto",
+            "displayMode": "auto",
+            "inspect": false
           },
           "mappings": [],
           "thresholds": {
@@ -1068,6 +1043,10 @@
               {
                 "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           }
@@ -1076,30 +1055,16 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "desfavorables"
+              "options": "mainstat"
             },
             "properties": [
               {
-                "id": "color",
-                "value": {
-                  "fixedColor": "red",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "favorables"
-            },
-            "properties": [
+                "id": "custom.width",
+                "value": 45
+              },
               {
-                "id": "color",
-                "value": {
-                  "fixedColor": "green",
-                  "mode": "fixed"
-                }
+                "id": "custom.align",
+                "value": "left"
               }
             ]
           }
@@ -1111,19 +1076,19 @@
         "x": 15,
         "y": 12
       },
-      "id": 15,
+      "id": 21,
       "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
+        "footer": {
+          "enablePagination": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
         },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
+        "showHeader": false
       },
+      "pluginVersion": "9.3.2",
       "targets": [
         {
           "datasource": {
@@ -1131,23 +1096,10 @@
             "uid": "PCC52D03280B7034C"
           },
           "editorMode": "code",
-          "format": "time_series",
-          "group": [],
-          "hide": false,
-          "metricColumn": "none",
+          "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT\n  date_trunc('year',daterequested) as time,\n  count(*) AS \"desfavorables\"\nFROM gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \nWHERE\n  status = 'Denied' and\n  $__timeFilter(daterequested) \n  AND (ge_name IN (${sexe}))\n  AND (gu_da_0_n_name IN (${barri}))\n  AND (agerange IN (${edat}))\nGROUP BY date_trunc('year',daterequested)\nORDER BY date_trunc('year',daterequested)\n",
-          "refId": "Desfavorables",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "column"
-              }
-            ]
-          ],
+          "rawSql": "SELECT\r\n(SELECT sa_name FROM ayudas WHERE sa_socialaid_id = source) AS source,\r\n(SELECT sa_name FROM ayudas WHERE sa_socialaid_id = target) AS target,\r\nmainstat\r\nFROM caminos\r\nWHERE mainstat > 5\r\nORDER BY 3 DESC\r\nLIMIT 20;",
+          "refId": "A",
           "sql": {
             "columns": [
               {
@@ -1164,138 +1116,11 @@
               }
             ],
             "limit": 50
-          },
-          "timeColumn": "time",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "editorMode": "code",
-          "format": "time_series",
-          "group": [],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  date_trunc('year',daterequested) as time,\n  count(*) AS \"en_curs\"\nFROM gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \nWHERE\n  status = 'Evaluating' and\n  $__timeFilter(daterequested) \n  AND (ge_name IN (${sexe}))\n  AND (gu_da_0_n_name IN (${barri}))\n  AND (agerange IN (${edat}))\nGROUP BY date_trunc('year',daterequested)\nORDER BY date_trunc('year',daterequested)\n",
-          "refId": "En curs",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "column"
-              }
-            ]
-          ],
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          },
-          "timeColumn": "time",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "editorMode": "code",
-          "format": "time_series",
-          "group": [
-            {
-              "params": [
-                "$__interval",
-                "month"
-              ],
-              "type": "time"
-            }
-          ],
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  date_trunc('year',daterequested) as time,\n  count(*) AS \"favorables\"\nFROM gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \nWHERE\n  status = 'Approved' and\n  $__timeFilter(daterequested) \n  AND (ge_name IN (${sexe}))\n  AND (gu_da_0_n_name IN (${barri}))\n  AND (agerange IN (${edat}))\nGROUP BY date_trunc('year',daterequested)\nORDER BY date_trunc('year',daterequested)",
-          "refId": "Acceptades",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "column"
-              },
-              {
-                "params": [
-                  "avg"
-                ],
-                "type": "aggregate"
-              },
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "alias"
-              }
-            ]
-          ],
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          },
-          "table": "llenos",
-          "timeColumn": "daterequested",
-          "timeColumnType": "date",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
+          }
         }
       ],
-      "title": "Evolució anual",
-      "type": "timeseries"
+      "title": "Traça d'ajudes",
+      "type": "table"
     },
     {
       "datasource": {
@@ -1509,6 +1334,6 @@
   "timezone": "",
   "title": "Estat de les tramitacions",
   "uid": "kEtG3wD4z",
-  "version": 3,
+  "version": 7,
   "weekStart": ""
 }
