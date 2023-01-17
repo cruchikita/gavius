@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
+  "id": 4,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -555,7 +555,7 @@
           "format": "table",
           "hide": false,
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  date_trunc('YEAR',daterequested) AS \"time\",\r\n  count(*) AS \"Beneficiàries\"\r\nFROM gavius\r\nWHERE status = 'Approved' AND sa_name IN (${ayuda}) and $__timeFilter(daterequested)\r\nGROUP BY date_trunc('YEAR',daterequested)",
+          "rawSql": "SELECT\r\n  date_trunc('YEAR',daterequested) AS \"time\",\r\n  count(*) AS \"Beneficiàries\"\r\nFROM gavius\r\nWHERE status = 'Approved' AND sa_name IN (${ayuda}) and daterequested >=  date_trunc('YEAR',to_timestamp( ${__from:YYYY-MM-DD}/1000)::date)\r\nGROUP BY date_trunc('YEAR',daterequested)",
           "refId": "Beneficiàries",
           "sql": {
             "columns": [
@@ -584,7 +584,7 @@
           "format": "table",
           "hide": false,
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  date_trunc('YEAR',daterequested) AS \"time\",\r\n  count(*) AS \"Peticionaries\"\r\nFROM gavius\r\nWHERE sa_name IN (${ayuda}) and $__timeFilter(daterequested)\r\nGROUP BY date_trunc('YEAR',daterequested)",
+          "rawSql": "SELECT\r\n  date_trunc('YEAR',daterequested) AS \"time\",\r\n  count(*) AS \"Peticionaries\"\r\nFROM gavius\r\nWHERE sa_name IN (${ayuda}) and daterequested >=  date_trunc('YEAR',to_timestamp( ${__from:YYYY-MM-DD}/1000)::date)\r\nGROUP BY date_trunc('YEAR',daterequested)",
           "refId": "Peticionaries",
           "sql": {
             "columns": [
@@ -614,7 +614,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "select anyo, (SELECT sum(total) FROM poblacion where anyo < padre.anyo) as Poblacio\nfrom poblacion as padre\nWHERE  $__timeFilter(anyo)",
+          "rawSql": "select anyo, (SELECT sum(total) FROM poblacion where anyo < padre.anyo) as Poblacio\nfrom poblacion as padre\nWHERE  anyo >=  date_trunc('YEAR',to_timestamp( ${__from:YYYY-MM-DD}/1000)::date)",
           "refId": "Població",
           "select": [
             [

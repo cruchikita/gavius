@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 4,
+  "id": 2,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -64,6 +64,7 @@
           "color": {
             "mode": "thresholds"
           },
+          "displayName": "Usuaris registrats",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -97,7 +98,7 @@
           "values": false
         },
         "text": {},
-        "textMode": "auto"
+        "textMode": "value"
       },
       "pluginVersion": "9.3.2",
       "targets": [
@@ -310,8 +311,10 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "fixedColor": "blue",
+            "mode": "fixed"
           },
+          "displayName": "Ultima dada",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -326,7 +329,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 2,
+        "h": 3,
         "w": 9,
         "x": 15,
         "y": 2
@@ -334,18 +337,18 @@
       "id": 14,
       "options": {
         "colorMode": "value",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
           ],
-          "fields": "/^daterequested$/",
+          "fields": "/.*/",
           "values": false
         },
         "text": {},
-        "textMode": "auto"
+        "textMode": "value"
       },
       "pluginVersion": "9.3.2",
       "targets": [
@@ -354,11 +357,12 @@
             "type": "postgres",
             "uid": "PCC52D03280B7034C"
           },
+          "editorMode": "code",
           "format": "table",
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  daterequested\nFROM\n  gavius\nWHERE\n  $__timeFilter(daterequested)\nORDER BY daterequested\n",
+          "rawSql": "SELECT\n  daterequested \nFROM\n  gavius\nWHERE\n  $__timeFilter(daterequested)\nORDER BY daterequested\n",
           "refId": "A",
           "select": [
             [
@@ -370,6 +374,23 @@
               }
             ]
           ],
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
           "timeColumn": "time",
           "where": [
             {
@@ -381,6 +402,106 @@
         }
       ],
       "title": "Ultima dada",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "PCC52D03280B7034C"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "Ajudes Tramitades",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 0,
+        "y": 5
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value"
+      },
+      "pluginVersion": "9.3.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  count(*) as value\nFROM\n  gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \nWHERE\n  $__timeFilter(daterequested) \n  AND (ge_name IN (${sexe}))\n  AND (gu_da_0_n_name IN (${barri}))\n  AND (agerange IN (${edat}))\n",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Ajudes Tramitades",
       "type": "stat"
     },
     {
@@ -405,10 +526,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 7,
         "w": 9,
         "x": 15,
-        "y": 4
+        "y": 5
       },
       "id": 19,
       "options": {
@@ -473,105 +594,7 @@
           "color": {
             "mode": "thresholds"
           },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 0,
-        "y": 5
-      },
-      "id": 6,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.3.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "editorMode": "code",
-          "format": "table",
-          "group": [],
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  count(*) as value\nFROM\n  gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \nWHERE\n  $__timeFilter(daterequested) \n  AND (ge_name IN (${sexe}))\n  AND (gu_da_0_n_name IN (${barri}))\n  AND (agerange IN (${edat}))\n",
-          "refId": "A",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "column"
-              }
-            ]
-          ],
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          },
-          "timeColumn": "time",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        }
-      ],
-      "title": "Ajudes Tramitades",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "postgres",
-        "uid": "PCC52D03280B7034C"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
+          "displayName": "Ajudes Favorables",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -605,7 +628,7 @@
           "values": false
         },
         "text": {},
-        "textMode": "auto"
+        "textMode": "value"
       },
       "pluginVersion": "9.3.2",
       "targets": [
@@ -671,6 +694,7 @@
           "color": {
             "mode": "thresholds"
           },
+          "displayName": "Ajudes en curs",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -704,7 +728,7 @@
           "values": false
         },
         "text": {},
-        "textMode": "auto"
+        "textMode": "value"
       },
       "pluginVersion": "9.3.2",
       "targets": [
@@ -1060,7 +1084,7 @@
             "properties": [
               {
                 "id": "custom.width",
-                "value": 45
+                "value": 50
               },
               {
                 "id": "custom.align",
@@ -1132,6 +1156,7 @@
           "color": {
             "mode": "thresholds"
           },
+          "displayName": "Ajudes Desfavorables",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -1165,7 +1190,7 @@
           "values": false
         },
         "text": {},
-        "textMode": "auto"
+        "textMode": "value"
       },
       "pluginVersion": "9.3.2",
       "targets": [
@@ -1334,6 +1359,6 @@
   "timezone": "",
   "title": "Estat de les tramitacions",
   "uid": "kEtG3wD4z",
-  "version": 7,
+  "version": 8,
   "weekStart": ""
 }
