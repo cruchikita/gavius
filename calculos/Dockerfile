@@ -4,7 +4,5 @@ WORKDIR /app
 RUN pip3 install pandas sqlalchemy psycopg2
 COPY main.py main.py
 COPY calculos.sql calculos.sql
-COPY ejecucion.sh ejecucion.sh
-RUN chmod 0655 /app/ejecucion.sh
 RUN crontab -l | { cat; echo "0 1 * * *  /usr/local/bin/python /app/main.py > /proc/1/fd/1 2>/proc/1/fd/2"; } | crontab -
-CMD ["/bin/bash","-c","/app/ejecucion.sh"]
+CMD ["cron","-f"]

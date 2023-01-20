@@ -2,7 +2,6 @@ import pandas as pd
 from sqlalchemy import create_engine
 import psycopg2
 
-#DROP VIEW ayudas;DROP TABLE bolas;DROP TABLE cens;DROP TABLE gavius;
 #baseurl = "https://net.cimne.com/gava/"
 baseurl = "https://net.cimne.com/mataro/"
 
@@ -12,11 +11,7 @@ engine = create_engine('postgresql://postgres:12345678@db:5432/postgres')
 conn = engine.raw_connection()
 conn.set_session(readonly=False, autocommit=True)
 with conn.cursor() as cursor:
-
-    sqlst = "DROP VIEW IF EXISTS ayudas;"
-    cursor.execute(sqlst)
-
-    sqlst = "DROP VIEW IF EXISTS poblacion;"
+    sqlst = "DROP VIEW IF EXISTS ayudas;DROP VIEW IF EXISTS poblacion;"
     cursor.execute(sqlst)
     
 df=pd.read_csv(baseurl + 'statistics.csv', dayfirst=True, parse_dates=['daterequested','dateresolution','dateupdated','datestart','dateend'])
