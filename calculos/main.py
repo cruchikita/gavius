@@ -21,6 +21,8 @@ print("Cargando cens...")
 df2 = pd.read_csv(baseurl + 'demographic.csv', dayfirst=True, parse_dates=['birthdate','dateregunemployservices'])
 df2.to_sql('cens', engine, if_exists='replace')
 
+df3 = pd.read_csv('/app/barris.csv')
+df3.to_sql('barris', engine, if_exists='replace')
 
 print("Cargando calculos SQL...")
 with conn.cursor() as cursor:

@@ -11,3 +11,4 @@ create table if not exists bolas(sa_id_ini  integer not null, sa_id_next integer
 create table if not exists caminos(id SERIAL, source integer not null, target integer not null, mainstat decimal not null, constraint caminos_pk primary key(source,target));
 DELETE FROM bolas;
 DELETE FROM caminos;
+ALTER SEQUENCE caminos_id_seq RESTART WITH 1;
