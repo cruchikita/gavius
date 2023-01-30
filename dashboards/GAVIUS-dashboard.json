@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 5,
+  "id": 4,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -50,7 +50,7 @@
         "content": "    <script src=\"http://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script>\n    $(function(){\n        $('a').each(function(){\n            if ($(this).prop('href') == window.location.href) {\n                $(this).addClass('active'); $(this).addClass('active');\n            }\n        });\n    });\n</script>\n\n<style>\n    .navbar {\n        overflow: hidden;\n        background-color: #116ACC;\n        font-family: Arial, Helvetica, sans-serif;\n    }\n\n    .navbar a {\n        float: left;\n        font-size: 18px;\n        color: white;\n        text-align: center;\n        padding: 8px 12px;\n        text-decoration: none;\n    }\n\n    .navbar a:hover {\n        color: white;\n        text-decoration: underline;\n    }\n\n    /*.navbar .active{\n        color:            white;\n        background-color: #4f81bd;\n    }*/\n\n</style>\n\n<div class=\"navbar\">\n    <a href=\"/d/kEtG3wD4z/estat-de-les-tramitacions?orgId=1\">Estat de les tramitacions</a>\n    <a href=\"/d/EJrGvUcVk/perfil-sociodemografic?orgId=1\">Perfil sociodemogràfic</a>\n    <a href=\"/d/0PwjJe5Vz/camins-probables?orgId=1\">Camins probables</a>\n    <a href=\"/d/lU48FST4z/diagnosi-social?orgId=1\">Diagnosi social</a>\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "transparent": true,
       "type": "text"
     },
@@ -74,7 +74,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "locale"
         },
         "overrides": []
       },
@@ -100,7 +101,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "datasource": {
@@ -194,7 +195,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "locale"
         },
         "overrides": []
       },
@@ -247,7 +249,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  \"sa_name\",\r\n  (select count(*) from gavius where status = 'Approved' and llenos.\"sa_name\" = gavius.\"sa_name\" and $__timeFilter(daterequested)) as favorables,\r\n  (select count(*) from gavius where status = 'Evaluating' and llenos.\"sa_name\" = gavius.\"sa_name\" and $__timeFilter(daterequested)) as en_curs,\r\n  (select count(*) from gavius where status = 'Denied' and llenos.\"sa_name\" = gavius.\"sa_name\" and $__timeFilter(daterequested)) as desfavorables\r\nFROM gavius as llenos LEFT JOIN cens ON llenos.gaviususer_id = cens.gaviususer_id \r\nWHERE (ge_name IN (${sexe}))\r\n  AND (gu_da_0_n_name IN (${barri}))\r\n  AND (agerange IN (${edat}))\r\nGROUP BY \"sa_socialaid_id\", \"sa_name\"\r\nORDER BY \"sa_socialaid_id\"",
+          "rawSql": "SELECT\r\n  \"sa_name\",\r\n  (select count(*) from gavius LEFT JOIN cens as c ON gavius.gaviususer_id = c.gaviususer_id where (c.ge_name IN (${sexe})) AND (c.gu_da_0_n_name IN (${barri})) AND (c.agerange IN (${edat})) and status = 'Approved' and llenos.\"sa_name\" = gavius.\"sa_name\" and $__timeFilter(daterequested)) as favorables,\r\n  (select count(*) from gavius LEFT JOIN cens as c ON gavius.gaviususer_id = c.gaviususer_id where (c.ge_name IN (${sexe})) AND (c.gu_da_0_n_name IN (${barri})) AND (c.agerange IN (${edat})) and status = 'Evaluating' and llenos.\"sa_name\" = gavius.\"sa_name\" and $__timeFilter(daterequested)) as en_curs,\r\n  (select count(*) from gavius LEFT JOIN cens as c ON gavius.gaviususer_id = c.gaviususer_id where (c.ge_name IN (${sexe})) AND (c.gu_da_0_n_name IN (${barri})) AND (c.agerange IN (${edat})) and status = 'Denied' and llenos.\"sa_name\" = gavius.\"sa_name\" and $__timeFilter(daterequested)) as desfavorables\r\nFROM gavius as llenos\r\nGROUP BY \"sa_socialaid_id\", \"sa_name\"\r\nORDER BY \"sa_socialaid_id\"",
           "refId": "1",
           "select": [
             [
@@ -350,7 +352,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "datasource": {
@@ -424,7 +426,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "locale"
         },
         "overrides": []
       },
@@ -450,7 +453,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "datasource": {
@@ -521,7 +524,8 @@
               "viz": false
             }
           },
-          "mappings": []
+          "mappings": [],
+          "unit": "locale"
         },
         "overrides": []
       },
@@ -604,7 +608,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "locale"
         },
         "overrides": []
       },
@@ -630,7 +635,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "datasource": {
@@ -704,7 +709,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "locale"
         },
         "overrides": []
       },
@@ -730,7 +736,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "datasource": {
@@ -833,7 +839,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "locale"
         },
         "overrides": [
           {
@@ -1060,6 +1067,7 @@
             "displayMode": "auto",
             "inspect": false
           },
+          "decimals": 2,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -1073,7 +1081,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "locale"
         },
         "overrides": [
           {
@@ -1112,7 +1121,7 @@
         },
         "showHeader": false
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "datasource": {
@@ -1166,7 +1175,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "locale"
         },
         "overrides": []
       },
@@ -1192,7 +1202,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "datasource": {
@@ -1359,6 +1369,6 @@
   "timezone": "",
   "title": "Estat de les tramitacions",
   "uid": "kEtG3wD4z",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }
