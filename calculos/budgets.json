@@ -1,0 +1,29 @@
+{
+	"exec_id":"20230202_102504",
+	"check":true,
+	"message":null,
+	"results":[
+		{"type":"ideal",
+		"aids":[
+			{"id":1,"budget":88292.0,"assigned":14889,"declined":0},
+			{"id":2,"budget":239104.0,"assigned":9447,"declined":0},
+			{"id":3,"budget":214072.0,"assigned":13247,"declined":0},
+			{"id":4,"budget":95614.0,"assigned":821,"declined":0},
+			{"id":5,"budget":521436.0,"assigned":799,"declined":0},
+			{"id":6,"budget":879947.0,"assigned":1476,"declined":0},
+			{"id":7,"budget":795602.0,"assigned":7006,"declined":0},
+			{"id":8,"budget":4508.0,"assigned":288,"declined":0}]},
+		{"type":"suggested",
+		"aids":[
+			{"id":1,"budget":85926.0,"assigned":14490,"declined":399},
+			{"id":2,"budget":0.0,"assigned":0,"declined":9447},
+			{"id":3,"budget":214072.0,"assigned":13247,"declined":0},
+			{"id":4,"budget":0.0,"assigned":0,"declined":821},
+			{"id":5,"budget":521436.0,"assigned":798,"declined":1},
+			{"id":6,"budget":324266.0,"assigned":543,"declined":933},
+			{"id":7,"budget":324799.0,"assigned":2860,"declined":4146},
+			{"id":8,"budget":4508.0,"assigned":288,"declined":0}
+			]
+		}
+	]
+}

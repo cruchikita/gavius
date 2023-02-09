@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 4,
+  "id": 7,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -202,7 +202,7 @@
       },
       "gridPos": {
         "h": 9,
-        "w": 12,
+        "w": 14,
         "x": 3,
         "y": 2
       },
@@ -225,7 +225,6 @@
           "sort": "none"
         },
         "xField": "sa_name",
-        "xTickLabelMaxLength": 8,
         "xTickLabelRotation": 15,
         "xTickLabelSpacing": 0
       },
@@ -249,7 +248,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  \"sa_name\",\r\n  (select count(*) from gavius LEFT JOIN cens as c ON gavius.gaviususer_id = c.gaviususer_id where (c.ge_name IN (${sexe})) AND (c.gu_da_0_n_name IN (${barri})) AND (c.agerange IN (${edat})) and status = 'Approved' and llenos.\"sa_name\" = gavius.\"sa_name\" and $__timeFilter(daterequested)) as favorables,\r\n  (select count(*) from gavius LEFT JOIN cens as c ON gavius.gaviususer_id = c.gaviususer_id where (c.ge_name IN (${sexe})) AND (c.gu_da_0_n_name IN (${barri})) AND (c.agerange IN (${edat})) and status = 'Evaluating' and llenos.\"sa_name\" = gavius.\"sa_name\" and $__timeFilter(daterequested)) as en_curs,\r\n  (select count(*) from gavius LEFT JOIN cens as c ON gavius.gaviususer_id = c.gaviususer_id where (c.ge_name IN (${sexe})) AND (c.gu_da_0_n_name IN (${barri})) AND (c.agerange IN (${edat})) and status = 'Denied' and llenos.\"sa_name\" = gavius.\"sa_name\" and $__timeFilter(daterequested)) as desfavorables\r\nFROM gavius as llenos\r\nGROUP BY \"sa_socialaid_id\", \"sa_name\"\r\nORDER BY \"sa_socialaid_id\"",
+          "rawSql": "SELECT\r\n  \"sa_name\",\r\n  (select count(*) from gavius LEFT JOIN cens as c ON gavius.gaviususer_id = c.gaviususer_id where (c.ge_name IN (${sexe})) AND (c.gu_da_0_n_name IN (${barri})) AND (c.agerange IN (${edat})) and status = 'Approved' and gavius.sa_name = llenos.sa_name and $__timeFilter(daterequested)) as favorables,\r\n  (select count(*) from gavius LEFT JOIN cens as c ON gavius.gaviususer_id = c.gaviususer_id where (c.ge_name IN (${sexe})) AND (c.gu_da_0_n_name IN (${barri})) AND (c.agerange IN (${edat})) and status = 'Evaluating' and gavius.sa_name = llenos.sa_name and $__timeFilter(daterequested)) as en_curs,\r\n  (select count(*) from gavius LEFT JOIN cens as c ON gavius.gaviususer_id = c.gaviususer_id where (c.ge_name IN (${sexe})) AND (c.gu_da_0_n_name IN (${barri})) AND (c.agerange IN (${edat})) and status = 'Denied' and gavius.sa_name = llenos.sa_name and $__timeFilter(daterequested)) as desfavorables\r\nFROM gavius as llenos\r\nGROUP BY \"sa_socialaid_id\", \"sa_name\"\r\nORDER BY \"sa_socialaid_id\"",
           "refId": "1",
           "select": [
             [
@@ -332,8 +331,8 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 9,
-        "x": 15,
+        "w": 7,
+        "x": 17,
         "y": 2
       },
       "id": 14,
@@ -531,8 +530,8 @@
       },
       "gridPos": {
         "h": 7,
-        "w": 9,
-        "x": 15,
+        "w": 7,
+        "x": 17,
         "y": 5
       },
       "id": 19,
@@ -564,7 +563,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  sa_name,\r\n  count(*)\r\nFROM gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \r\nWHERE\r\n  $__timeFilter(daterequested) \r\n  AND (ge_name IN (${sexe}))\r\n  AND (gu_da_0_n_name IN (${barri}))\r\n  AND (agerange IN (${edat}))\r\n  GROUP BY sa_name\r\nORDER BY 1",
+          "rawSql": "SELECT\r\n  sa_name,\r\n  count(*)\r\nFROM gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \r\nWHERE\r\n  $__timeFilter(daterequested) \r\n  AND (ge_name IN (${sexe}))\r\n  AND (gu_da_0_n_name IN (${barri}))\r\n  AND (agerange IN (${edat}))\r\n  GROUP BY sa_name, sa_socialaid_id\r\nORDER BY sa_socialaid_id",
           "refId": "A",
           "sql": {
             "columns": [
@@ -862,7 +861,7 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 12,
+        "w": 14,
         "x": 3,
         "y": 11
       },
@@ -1093,11 +1092,15 @@
             "properties": [
               {
                 "id": "custom.width",
-                "value": 50
+                "value": 75
               },
               {
                 "id": "custom.align",
                 "value": "left"
+              },
+              {
+                "id": "unit",
+                "value": "percent"
               }
             ]
           }
@@ -1105,8 +1108,8 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 9,
-        "x": 15,
+        "w": 7,
+        "x": 17,
         "y": 12
       },
       "id": 21,
