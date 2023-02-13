@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 2,
+  "id": 4,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -344,7 +344,7 @@
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "1",
           "value": "1"
         },
@@ -376,6 +376,6 @@
   "timezone": "",
   "title": "Cronicitat",
   "uid": "nBXKCKA4k",
-  "version": 2,
+  "version": 1,
   "weekStart": ""
 }
