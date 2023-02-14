@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 4,
+  "id": 17,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -78,7 +78,7 @@
           "key": "",
           "plugin": "AMap.Scale,AMap.ToolBar"
         },
-        "getOption": "let ajudas = [];\nlet budgets = [];\n\ndata.series.map((s) => {\n  ajudas = s.fields.find((f) => f.name === 'Ajuda').values.buffer;\n  budgets = s.fields.find((f) => f.name === 'budget').values.buffer;\n  assigned = s.fields.find((f) => f.name === 'assigned').values.buffer;\n});\n\nconst oReturn = new Object();\noReturn.legend = {};\noReturn.grid = {};\noReturn.grid.left = '3%';\noReturn.grid.right = '4%';\noReturn.grid.bottom = '3%';\noReturn.grid.containLabel = true;\noReturn.yAxis = [];\noReturn.yAxis.push({\n  type: 'value',\n  splitLine: { show: false }\n})\noReturn.yAxis.push({\n  type: 'value',\n  splitLine: { show: false }\n})\noReturn.xAxis = {};\noReturn.xAxis.type = 'category';\noReturn.xAxis.data = ['Import', 'Beneficiaris'];\noReturn.series = [];\n\nfor (let i = 0; i < ajudas.length; i++) {\n  oReturn.series.push({\n    name: ajudas[i],\n    type: 'bar',\n    yAxisIndex: 0,\n    stack: 'total',\n    label: { show: true },\n    emphasis: { focus: 'series' },\n    data: [budgets[i],]\n  });\n}\nfor (let i = 0; i < ajudas.length; i++) {\n  oReturn.series.push({\n    name: ajudas[i],\n    type: 'bar',\n    yAxisIndex: 1,\n    stack: 'total',\n    label: { show: true },\n    emphasis: { focus: 'series' },\n    data: [, assigned[i]]\n  });\n}\n\nreturn oReturn;",
+        "getOption": "let ajudas = [];\nlet budgets = [];\n\ndata.series.map((s) => {\n  ajudas = s.fields.find((f) => f.name === 'Ajuda').values.buffer;\n  budgets = s.fields.find((f) => f.name === 'budget').values.buffer;\n  assigned = s.fields.find((f) => f.name === 'assigned').values.buffer;\n});\n\nconst oReturn = new Object();\noReturn.tooltip = {};\noReturn.legend = {};\noReturn.grid = {};\noReturn.grid.left = '3%';\noReturn.grid.right = '4%';\noReturn.grid.bottom = '3%';\noReturn.grid.containLabel = true;\noReturn.yAxis = [];\noReturn.yAxis.push({\n  type: 'value',\n  splitLine: { show: false }\n})\noReturn.yAxis.push({\n  type: 'value',\n  splitLine: { show: false }\n})\noReturn.xAxis = {};\noReturn.xAxis.type = 'category';\noReturn.xAxis.data = ['Import', 'Beneficiaris'];\noReturn.series = [];\n\nfor (let i = 0; i < ajudas.length; i++) {\n  oReturn.series.push({\n    name: ajudas[i],\n    type: 'bar',\n    yAxisIndex: 0,\n    stack: 'total',\n    label: { show: true, fontSize: 16 },\n    emphasis: { focus: 'series' },\n    data: [budgets[i],]\n  });\n}\nfor (let i = 0; i < ajudas.length; i++) {\n  oReturn.series.push({\n    name: ajudas[i],\n    type: 'bar',\n    yAxisIndex: 1,\n    stack: 'total',\n    label: { show: true, fontSize: 16 },\n    emphasis: { focus: 'series' },\n    data: [, assigned[i]]\n  });\n}\n\nreturn oReturn;",
         "google": {
           "callback": "gmapReady",
           "key": ""
@@ -287,7 +287,10 @@
           "fields": "/^cost_assignment$/",
           "values": true
         },
-        "showUnfilled": false
+        "showUnfilled": false,
+        "text": {
+          "valueSize": 22
+        }
       },
       "pluginVersion": "9.3.6",
       "targets": [
@@ -366,7 +369,10 @@
           "fields": "/^cost_inhabitant$/",
           "values": true
         },
-        "showUnfilled": false
+        "showUnfilled": false,
+        "text": {
+          "valueSize": 22
+        }
       },
       "pluginVersion": "9.3.6",
       "targets": [
@@ -418,6 +424,6 @@
   "timezone": "",
   "title": "Visualització dels resultats",
   "uid": "Iwi9480Vk",
-  "version": 18,
+  "version": 2,
   "weekStart": ""
 }

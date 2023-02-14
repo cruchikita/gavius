@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 9,
+  "id": 8,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -224,7 +224,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  times,\r\n  survival,\r\n  lower_estimate,\r\n  upper_estimate\r\nFROM\r\n  cronicitat\r\nWHERE id = $ajuda \r\nORDER BY 1;\r\n",
+          "rawSql": "SELECT\r\n  times,\r\n  survival,\r\n  lower_estimate,\r\n  upper_estimate\r\nFROM\r\n  cronicitat LEFT JOIN ayudas ON cronicitat.id = ayudas.sa_socialaid_id\r\nWHERE ayudas.sa_name = '$ajuda'\r\nORDER BY 1;\r\n",
           "refId": "A",
           "sql": {
             "columns": [
@@ -311,7 +311,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT \r\nEXTRACT(year FROM p.anyo) AS \"Ciutadans\",\r\ncount(DISTINCT(p.gaviususer_id)) AS \"Start\",\r\n(SELECT count(DISTINCT(o.gaviususer_id)) FROM renoven o INNER JOIN renoven d ON o.sa_socialaid_id = d.sa_socialaid_id AND (o.anyo + interval '1 year') = d.anyo AND o.gaviususer_id = d.gaviususer_id  WHERE o.sa_socialaid_id = $ajuda AND o.anyo = p.anyo GROUP BY o.anyo ORDER BY 1)  AS \"Renoven 1 any\",\r\n(SELECT count(DISTINCT(o.gaviususer_id)) FROM renoven o INNER JOIN renoven d ON o.sa_socialaid_id = d.sa_socialaid_id AND (o.anyo + interval '1 year') = d.anyo AND o.gaviususer_id = d.gaviususer_id INNER JOIN renoven s ON o.sa_socialaid_id = s.sa_socialaid_id AND (o.anyo + interval '2 years') = s.anyo AND o.gaviususer_id = s.gaviususer_id  WHERE o.sa_socialaid_id = $ajuda AND o.anyo = p.anyo GROUP BY o.anyo ORDER BY 1)  AS \"2on any\" ,\r\n(SELECT count(DISTINCT(o.gaviususer_id)) FROM renoven o INNER JOIN renoven d ON o.sa_socialaid_id = d.sa_socialaid_id AND (o.anyo + interval '1 year') = d.anyo AND o.gaviususer_id = d.gaviususer_id INNER JOIN renoven s ON o.sa_socialaid_id = s.sa_socialaid_id AND (o.anyo + interval '2 years') = s.anyo AND o.gaviususer_id = s.gaviususer_id INNER JOIN renoven t ON o.sa_socialaid_id = t.sa_socialaid_id AND (o.anyo + interval '3 years') = t.anyo AND o.gaviususer_id = t.gaviususer_id  WHERE o.sa_socialaid_id = $ajuda AND o.anyo = p.anyo GROUP BY o.anyo ORDER BY 1)  AS \"3er any\",\r\n(SELECT count(DISTINCT(o.gaviususer_id)) FROM renoven o INNER JOIN renoven d ON o.sa_socialaid_id = d.sa_socialaid_id AND (o.anyo + interval '1 year') = d.anyo AND o.gaviususer_id = d.gaviususer_id INNER JOIN renoven s ON o.sa_socialaid_id = s.sa_socialaid_id AND (o.anyo + interval '2 years') = s.anyo AND o.gaviususer_id = s.gaviususer_id INNER JOIN renoven t ON o.sa_socialaid_id = t.sa_socialaid_id AND (o.anyo + interval '3 years') = t.anyo AND o.gaviususer_id = t.gaviususer_id INNER JOIN renoven r ON o.sa_socialaid_id = r.sa_socialaid_id AND (o.anyo + interval '4 years') = r.anyo AND o.gaviususer_id = r.gaviususer_id WHERE o.sa_socialaid_id = $ajuda AND o.anyo = p.anyo GROUP BY o.anyo ORDER BY 1)  AS \"4t any\"\r\nFROM renoven p \r\nWHERE p.sa_socialaid_id = $ajuda  \r\nGROUP BY p.anyo \r\nORDER BY 1;",
+          "rawSql": "SELECT \r\nEXTRACT(year FROM p.anyo) AS \"Ciutadans\",\r\ncount(DISTINCT(p.gaviususer_id)) AS \"Start\",\r\n(SELECT count(DISTINCT(o.gaviususer_id)) FROM renoven o INNER JOIN renoven d ON o.sa_socialaid_id = d.sa_socialaid_id AND (o.anyo + interval '1 year') = d.anyo AND o.gaviususer_id = d.gaviususer_id  WHERE o.sa_socialaid_id = p.sa_socialaid_id AND o.anyo = p.anyo GROUP BY o.anyo ORDER BY 1)  AS \"Renoven 1 any\",\r\n(SELECT count(DISTINCT(o.gaviususer_id)) FROM renoven o INNER JOIN renoven d ON o.sa_socialaid_id = d.sa_socialaid_id AND (o.anyo + interval '1 year') = d.anyo AND o.gaviususer_id = d.gaviususer_id INNER JOIN renoven s ON o.sa_socialaid_id = s.sa_socialaid_id AND (o.anyo + interval '2 years') = s.anyo AND o.gaviususer_id = s.gaviususer_id  WHERE o.sa_socialaid_id = p.sa_socialaid_id AND o.anyo = p.anyo GROUP BY o.anyo ORDER BY 1)  AS \"2on any\" ,\r\n(SELECT count(DISTINCT(o.gaviususer_id)) FROM renoven o INNER JOIN renoven d ON o.sa_socialaid_id = d.sa_socialaid_id AND (o.anyo + interval '1 year') = d.anyo AND o.gaviususer_id = d.gaviususer_id INNER JOIN renoven s ON o.sa_socialaid_id = s.sa_socialaid_id AND (o.anyo + interval '2 years') = s.anyo AND o.gaviususer_id = s.gaviususer_id INNER JOIN renoven t ON o.sa_socialaid_id = t.sa_socialaid_id AND (o.anyo + interval '3 years') = t.anyo AND o.gaviususer_id = t.gaviususer_id  WHERE o.sa_socialaid_id = p.sa_socialaid_id AND o.anyo = p.anyo GROUP BY o.anyo ORDER BY 1)  AS \"3er any\",\r\n(SELECT count(DISTINCT(o.gaviususer_id)) FROM renoven o INNER JOIN renoven d ON o.sa_socialaid_id = d.sa_socialaid_id AND (o.anyo + interval '1 year') = d.anyo AND o.gaviususer_id = d.gaviususer_id INNER JOIN renoven s ON o.sa_socialaid_id = s.sa_socialaid_id AND (o.anyo + interval '2 years') = s.anyo AND o.gaviususer_id = s.gaviususer_id INNER JOIN renoven t ON o.sa_socialaid_id = t.sa_socialaid_id AND (o.anyo + interval '3 years') = t.anyo AND o.gaviususer_id = t.gaviususer_id INNER JOIN renoven r ON o.sa_socialaid_id = r.sa_socialaid_id AND (o.anyo + interval '4 years') = r.anyo AND o.gaviususer_id = r.gaviususer_id WHERE o.sa_socialaid_id = p.sa_socialaid_id AND o.anyo = p.anyo GROUP BY o.anyo ORDER BY 1)  AS \"4t any\"\r\nFROM renoven p LEFT JOIN ayudas ON p.sa_socialaid_id = ayudas.sa_socialaid_id\r\nWHERE ayudas.sa_name = '$ajuda'\r\nGROUP BY p.anyo, p.sa_socialaid_id \r\nORDER BY 1;",
           "refId": "A",
           "sql": {
             "columns": [
@@ -345,25 +345,25 @@
       {
         "current": {
           "selected": false,
-          "text": "1",
-          "value": "1"
+          "text": "AjutIBIMonoparental",
+          "value": "AjutIBIMonoparental"
         },
         "datasource": {
           "type": "postgres",
           "uid": "PCC52D03280B7034C"
         },
-        "definition": "SELECT id FROM cronicitat GROUP BY id;",
+        "definition": "SELECT DISTINCT ayudas.sa_name FROM cronicitat INNER JOIN ayudas ON cronicitat.id = ayudas.sa_socialaid_id",
         "hide": 0,
         "includeAll": false,
         "label": "Ajuda",
         "multi": false,
         "name": "ajuda",
         "options": [],
-        "query": "SELECT id FROM cronicitat GROUP BY id;",
+        "query": "SELECT DISTINCT ayudas.sa_name FROM cronicitat INNER JOIN ayudas ON cronicitat.id = ayudas.sa_socialaid_id",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
-        "sort": 3,
+        "sort": 1,
         "type": "query"
       }
     ]
@@ -376,6 +376,6 @@
   "timezone": "",
   "title": "Cronicitat",
   "uid": "nBXKCKA4k",
-  "version": 2,
+  "version": 4,
   "weekStart": ""
 }

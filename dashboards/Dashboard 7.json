@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 6,
+  "id": 4,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -126,7 +126,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  id AS \"Ajuda\",\r\n  (SELECT i.budget FROM budgets i WHERE i.id = s.id AND i.type = 'ideal') AS \"Pressupost ideal\",\r\n  budget AS \"Pressupost suggerit\",\r\n  assigned AS \"Beneficiaris coberts\",\r\n  declined AS \"Beneficiaris no coberts\",\r\n  s.budget / (SELECT i.budget FROM budgets i WHERE i.id = s.id AND i.type = 'ideal') AS \"Cobertura\"\r\nFROM\r\n  budgets s\r\nWHERE type = 'suggested'\r\nORDER BY 1;",
+          "rawSql": "SELECT\r\n  (SELECT sa_name FROM ayudas WHERE ayudas.sa_socialaid_id = id) AS \"Ajuda\",\r\n  (SELECT i.budget FROM budgets i WHERE i.id = s.id AND i.type = 'ideal') AS \"Pressupost ideal (€)\",\r\n  budget AS \"Pressupost suggerit (€)\",\r\n  assigned AS \"Beneficiaris coberts\",\r\n  declined AS \"Beneficiaris no coberts\",\r\n  s.budget / (SELECT i.budget FROM budgets i WHERE i.id = s.id AND i.type = 'ideal') AS \"Cobertura\"\r\nFROM\r\n  budgets s\r\nWHERE type = 'suggested'\r\nORDER BY 1;",
           "refId": "A",
           "sql": {
             "columns": [
@@ -147,7 +147,7 @@
           }
         }
       ],
-      "title": "Panel Title",
+      "title": "Assignació de pressupost",
       "type": "table"
     }
   ],
