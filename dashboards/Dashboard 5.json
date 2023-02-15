@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 8,
+  "id": 2,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -78,13 +78,13 @@
           },
           "showlegend": true,
           "xaxis": {
-            "rangemode": "normal",
+            "rangemode": "tozero",
             "showgrid": true,
             "type": "linear",
             "zeroline": true
           },
           "yaxis": {
-            "rangemode": "normal",
+            "rangemode": "tozero",
             "showgrid": true,
             "type": "linear",
             "zeroline": true
@@ -116,7 +116,7 @@
               "line": {
                 "color": "#24292e",
                 "dash": "solid",
-                "shape": "vh",
+                "shape": "linear",
                 "width": 4
               },
               "marker": {
@@ -153,7 +153,7 @@
               "line": {
                 "color": "#56A64B",
                 "dash": "solid",
-                "shape": "vh",
+                "shape": "linear",
                 "width": 4
               },
               "marker": {
@@ -189,7 +189,7 @@
               "line": {
                 "color": "#E02F44",
                 "dash": "solid",
-                "shape": "vh",
+                "shape": "linear",
                 "width": 4
               },
               "marker": {
@@ -344,7 +344,7 @@
     "list": [
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "AjutIBIMonoparental",
           "value": "AjutIBIMonoparental"
         },
@@ -376,6 +376,6 @@
   "timezone": "",
   "title": "Cronicitat",
   "uid": "nBXKCKA4k",
-  "version": 4,
+  "version": 5,
   "weekStart": ""
 }
