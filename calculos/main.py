@@ -32,7 +32,12 @@ df4.to_sql('cronicitat',engine, if_exists='replace')
 
 print("Cargando prediccio...")
 df5 = pd.read_csv('/app/predictions_requests.csv')
+df5["status"] = "Requested"
 df5.to_sql('prediccio',engine, if_exists='replace')
+
+df6 = pd.read_csv('/app/predictions_approvals.csv')
+df6["status"] = "Approved"
+df6.to_sql('prediccio',engine, if_exists='append')
 
 print("Cargando budgets...")
 with conn.cursor() as cursor:

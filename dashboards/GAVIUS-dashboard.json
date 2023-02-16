@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 7,
+  "id": 14,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -699,6 +699,7 @@
           "color": {
             "mode": "thresholds"
           },
+          "displayName": "Respecte mes anterior",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -742,7 +743,7 @@
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "textMode": "value"
       },
       "pluginVersion": "9.3.6",
       "targets": [
@@ -997,6 +998,7 @@
           "color": {
             "mode": "thresholds"
           },
+          "displayName": "Respecte la mitjana anual",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -1040,7 +1042,7 @@
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "textMode": "value"
       },
       "pluginVersion": "9.3.6",
       "targets": [
@@ -1052,7 +1054,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  count(*)/EXTRACT('month' FROM CURRENT_DATE)  - (SELECT count(*)/12 FROM gavius a LEFT JOIN cens c on a.gaviususer_id = c.gaviususer_id WHERE a.daterequested >= (date_trunc('year', CURRENT_DATE) - interval '1 year') AND a.daterequested < (date_trunc('year', CURRENT_DATE)) AND (c.ge_name IN (${sexe})) AND (c.gu_da_0_n_name IN (${barri})) AND (c.agerange IN (${edat})))\r\nFROM\r\n  gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \r\nWHERE\r\n  daterequested >= date_trunc('year', CURRENT_DATE)\r\n  AND (ge_name IN (${sexe}))\r\n  AND (gu_da_0_n_name IN (${barri}))\r\n  AND (agerange IN (${edat}))\r\n",
+          "rawSql": "SELECT\r\n  count(*)  - (SELECT count(*)/EXTRACT(month FROM CURRENT_DATE) FROM gavius a LEFT JOIN cens c on a.gaviususer_id = c.gaviususer_id WHERE a.daterequested >= (date_trunc('year', CURRENT_DATE)) AND (c.ge_name IN (${sexe})) AND (c.gu_da_0_n_name IN (${barri})) AND (c.agerange IN (${edat})))\r\nFROM\r\n  gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \r\nWHERE\r\n  daterequested >= date_trunc('month', CURRENT_DATE)\r\n  AND (ge_name IN (${sexe}))\r\n  AND (gu_da_0_n_name IN (${barri}))\r\n  AND (agerange IN (${edat}))\r\n",
           "refId": "A",
           "sql": {
             "columns": [
@@ -1450,6 +1452,7 @@
           "color": {
             "mode": "thresholds"
           },
+          "displayName": "Respecte el mateix mes de l'any anterior",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -1493,7 +1496,7 @@
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "textMode": "value"
       },
       "pluginVersion": "9.3.6",
       "targets": [
@@ -1538,9 +1541,9 @@
     "list": [
       {
         "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "selected": true,
+          "text": "Home",
+          "value": "Home"
         },
         "datasource": {
           "type": "postgres",
@@ -1610,7 +1613,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "All",
           "value": "$__all"
         },
@@ -1642,6 +1645,6 @@
   "timezone": "",
   "title": "Estat de les tramitacions",
   "uid": "kEtG3wD4z",
-  "version": 13,
+  "version": 2,
   "weekStart": ""
 }

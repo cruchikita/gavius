@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
+  "id": 7,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -209,6 +209,14 @@
                   "fixedColor": "super-light-red",
                   "mode": "fixed"
                 }
+              },
+              {
+                "id": "custom.fillBelowTo",
+                "value": "Límite inferior"
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 10
               }
             ]
           }
@@ -243,7 +251,7 @@
           "format": "table",
           "hide": false,
           "rawQuery": true,
-          "rawSql": "SELECT\r\nmake_date(CAST(LEFT(CAST(period AS TEXT),4) AS INT), CAST(RIGHT(CAST(period AS TEXT),2) AS INT) * 3 -2 , 1)::date AS \"time\",\r\n(SELECT SUM(values) FROM prediccio t WHERE t.period <= p.period AND t.id = p.id) AS \"Modelados\"\r\nFROM\r\nprediccio p LEFT JOIN ayudas ON p.id = ayudas.sa_socialaid_id\r\nWHERE ayudas.sa_name = '$ajuda'\r\nAND p.period >= (SELECT MAX(s.period) FROM prediccio s LEFT JOIN ayudas a ON p.id = a.sa_socialaid_id WHERE a.sa_name = '$ajuda' AND NOT s.predict);",
+          "rawSql": "SELECT\r\nmake_date(CAST(LEFT(CAST(period AS TEXT),4) AS INT), CAST(RIGHT(CAST(period AS TEXT),2) AS INT) * 3 -2 , 1)::date AS \"time\",\r\n(SELECT SUM(values) FROM prediccio t WHERE t.period <= p.period AND t.id = p.id AND t.status = p.status) AS \"Modelados\"\r\nFROM\r\nprediccio p LEFT JOIN ayudas ON p.id = ayudas.sa_socialaid_id\r\nWHERE ayudas.sa_name = '$ajuda'\r\nAND p.status = '$estat'\r\nAND p.period >= (SELECT MAX(s.period) FROM prediccio s LEFT JOIN ayudas a ON p.id = a.sa_socialaid_id WHERE a.sa_name = '$ajuda' AND NOT s.predict AND s.status = '$estat');",
           "refId": "Modelados",
           "sql": {
             "columns": [
@@ -272,7 +280,7 @@
           "format": "table",
           "hide": false,
           "rawQuery": true,
-          "rawSql": "SELECT\r\nmake_date(CAST(LEFT(CAST(period AS TEXT),4) AS INT), CAST(RIGHT(CAST(period AS TEXT),2) AS INT) * 3 -2 , 1)::date AS \"time\",\r\n(SELECT SUM(COALESCE(mean_ci_lower,values)) FROM prediccio t WHERE t.period <= p.period AND t.id = p.id) AS \"Límite inferior\"\r\nFROM\r\nprediccio p LEFT JOIN ayudas ON p.id = ayudas.sa_socialaid_id\r\nWHERE ayudas.sa_name = '$ajuda'\r\nAND p.period >= (SELECT MAX(s.period) FROM prediccio s LEFT JOIN ayudas a ON p.id = a.sa_socialaid_id WHERE a.sa_name = '$ajuda' AND NOT s.predict);",
+          "rawSql": "SELECT\r\nmake_date(CAST(LEFT(CAST(period AS TEXT),4) AS INT), CAST(RIGHT(CAST(period AS TEXT),2) AS INT) * 3 -2 , 1)::date AS \"time\",\r\n(SELECT SUM(COALESCE(mean_ci_lower,values)) FROM prediccio t WHERE t.period <= p.period AND t.id = p.id AND t.status = p.status) AS \"Límite inferior\"\r\nFROM\r\nprediccio p LEFT JOIN ayudas ON p.id = ayudas.sa_socialaid_id\r\nWHERE ayudas.sa_name = '$ajuda'\r\nAND p.status = '$estat'\r\nAND p.period >= (SELECT MAX(s.period) FROM prediccio s LEFT JOIN ayudas a ON p.id = a.sa_socialaid_id WHERE a.sa_name = '$ajuda' AND NOT s.predict AND s.status = '$estat');",
           "refId": "Límite inferior",
           "sql": {
             "columns": [
@@ -301,7 +309,7 @@
           "format": "table",
           "hide": false,
           "rawQuery": true,
-          "rawSql": "SELECT\r\nmake_date(CAST(LEFT(CAST(period AS TEXT),4) AS INT), CAST(RIGHT(CAST(period AS TEXT),2) AS INT) * 3 -2 , 1)::date AS \"time\",\r\n(SELECT SUM(COALESCE(mean_ci_upper,values)) FROM prediccio t WHERE t.period <= p.period AND t.id = p.id) AS \"Límite superior\"\r\nFROM\r\nprediccio p LEFT JOIN ayudas ON p.id = ayudas.sa_socialaid_id\r\nWHERE ayudas.sa_name = '$ajuda'\r\nAND p.period >= (SELECT MAX(s.period) FROM prediccio s LEFT JOIN ayudas a ON p.id = a.sa_socialaid_id WHERE a.sa_name = '$ajuda' AND NOT s.predict);",
+          "rawSql": "SELECT\r\nmake_date(CAST(LEFT(CAST(period AS TEXT),4) AS INT), CAST(RIGHT(CAST(period AS TEXT),2) AS INT) * 3 -2 , 1)::date AS \"time\",\r\n(SELECT SUM(COALESCE(mean_ci_upper,values)) FROM prediccio t WHERE t.period <= p.period AND t.id = p.id AND t.status = p.status) AS \"Límite superior\"\r\nFROM\r\nprediccio p LEFT JOIN ayudas ON p.id = ayudas.sa_socialaid_id\r\nWHERE ayudas.sa_name = '$ajuda'\r\nAND p.status = '$estat'\r\nAND p.period >= (SELECT MAX(s.period) FROM prediccio s LEFT JOIN ayudas a ON p.id = a.sa_socialaid_id WHERE a.sa_name = '$ajuda' AND NOT s.predict AND s.status = '$estat');",
           "refId": "Límite superior",
           "sql": {
             "columns": [
@@ -329,7 +337,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT\r\nmake_date(CAST(LEFT(CAST(period AS TEXT),4) AS INT), CAST(RIGHT(CAST(period AS TEXT),2) AS INT) * 3 -2 , 1)::date AS \"time\",\r\n(SELECT SUM(values) FROM prediccio t WHERE t.period <= p.period AND t.id = p.id) AS \"Acumulados\"\r\nFROM\r\nprediccio p LEFT JOIN ayudas ON p.id = ayudas.sa_socialaid_id\r\nWHERE ayudas.sa_name = '$ajuda'\r\nAND NOT p.predict;",
+          "rawSql": "SELECT\r\nmake_date(CAST(LEFT(CAST(period AS TEXT),4) AS INT), CAST(RIGHT(CAST(period AS TEXT),2) AS INT) * 3 -2 , 1)::date AS \"time\",\r\n(SELECT SUM(values) FROM prediccio t WHERE t.period <= p.period AND t.id = p.id AND t.status = p.status) AS \"Acumulados\"\r\nFROM\r\nprediccio p LEFT JOIN ayudas ON p.id = ayudas.sa_socialaid_id\r\nWHERE ayudas.sa_name = '$ajuda'\r\nAND p.status = '$estat'\r\nAND NOT p.predict;",
           "refId": "Acumulados",
           "sql": {
             "columns": [
@@ -383,6 +391,30 @@
         "skipUrlSync": false,
         "sort": 3,
         "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "Approved",
+          "value": "Approved"
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "PCC52D03280B7034C"
+        },
+        "definition": "SELECT DISTINCT status FROM prediccio;",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Estat",
+        "multi": false,
+        "name": "estat",
+        "options": [],
+        "query": "SELECT DISTINCT status FROM prediccio;",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
       }
     ]
   },
@@ -394,6 +426,6 @@
   "timezone": "",
   "title": "Predicció",
   "uid": "rlK_z5AVk",
-  "version": 4,
+  "version": 2,
   "weekStart": ""
 }

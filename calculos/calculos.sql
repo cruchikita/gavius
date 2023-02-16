@@ -1,6 +1,6 @@
 create view ayudas as select sa_socialaid_id, sa_name, count(*) as total from gavius group by sa_socialaid_id, sa_name;
 create view poblacion as SELECT DATE_TRUNC('year',birthdate) AS anyo, COUNT(*) AS total FROM cens GROUP BY DATE_TRUNC('year',birthdate);
-CREATE VIEW renoven AS SELECT gaviususer_id, DATE_TRUNC('year',daterequested) AS anyo, sa_socialaid_id FROM gavius WHERE status = 'Approved';
+CREATE VIEW renoven AS SELECT gaviususer_id, DATE_TRUNC('year',daterequested) AS anyo, sa_socialaid_id FROM gavius;
 CREATE INDEX idx_renoven_socialaid ON gavius(sa_socialaid_id);
 CREATE INDEX idx_renoven_daterequested ON gavius(daterequested);
 update cens set agerange = 1;
@@ -36,3 +36,6 @@ UPDATE gavius SET sa_name = 'Benestar Social' WHERE sa_socialaid_id = 17;
 UPDATE gavius SET sa_name = 'Aparcament mobilitat reduïda' WHERE sa_socialaid_id = 18;
 UPDATE gavius SET sa_name = 'Atenció social bàsica' WHERE sa_socialaid_id = 19;
 UPDATE gavius SET sa_name = 'Urgència social' WHERE sa_socialaid_id = 20;
+UPDATE cronicitat SET times = times + 1;
+INSERT INTO cronicitat(id,times,survival,lower_estimate,upper_estimate) (SELECT  c.id,0,1,1,1 FROM cronicitat c GROUP BY c.id);
+INSERT INTO cronicitat(id,times,survival,lower_estimate,upper_estimate) (SELECT  c.id,0.5,1,1,1 FROM cronicitat c GROUP BY c.id);
