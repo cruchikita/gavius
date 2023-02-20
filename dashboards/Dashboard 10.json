@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 9,
+  "id": 34,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -33,7 +33,6 @@
         "type": "datasource",
         "uid": "grafana"
       },
-      "description": "",
       "gridPos": {
         "h": 2,
         "w": 24,
@@ -47,7 +46,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "    <script src=\"http://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script>\n    $(function(){\n        $('a').each(function(){\n            if ($(this).prop('href') == window.location.href) {\n                $(this).addClass('active'); $(this).addClass('active');\n            }\n        });\n    });\n</script>\n\n<style>\n    .navbar {\n        overflow: hidden;\n        background-color: #116ACC;\n        font-family: Arial, Helvetica, sans-serif;\n    }\n\n    .navbar a {\n        float: left;\n        font-size: 18px;\n        color: white;\n        text-align: center;\n        padding: 8px 12px;\n        text-decoration: none;\n    }\n\n    .navbar a:hover {\n        color: white;\n        text-decoration: underline;\n    }\n\n    /*.navbar .active{\n        color:            white;\n        background-color: #4f81bd;\n    }*/\n\n</style>\n\n<div class=\"navbar\">\n    <a href=\"/d/kEtG3wD4z/estat-de-les-tramitacions?orgId=1\">Estat de les tramitacions</a>\n    <a href=\"/d/EJrGvUcVk/perfil-sociodemografic?orgId=1\">Perfil sociodemogràfic</a>\n    <a href=\"/d/0PwjJe5Vz/camins-probables?orgId=1\">Camins probables</a>\n    <a href=\"/d/lU48FST4z/diagnosi-social?orgId=1\">Diagnosi social</a>\n    <a href=\"/d/3cwNQQ14z/detall-dels-grups-comorbid?orgId=1\">Detall dels grups Comòrbids</a>\n    <a href=\"/d/nBXKCKA4k/cronicitat?orgId=1\">Cronicitat</a>\n    <a>|</a>\n    <a href=\"/d/Ij-VuwJVk/prediccio-de-levolucio-temporal-dajudes?orgId=1\">Prognosi</a>\n    <a>|</a>\n    <a href=\"/d/0zQpdUAVz/assignacio-de-pressupost?orgId=1\">Projecció</a>\n</div>",
+        "content": "    <script src=\"http://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script>\n    $(function(){\n        $('a').each(function(){\n            if ($(this).prop('href') == window.location.href) {\n                $(this).addClass('active'); $(this).addClass('active');\n            }\n        });\n    });\n</script>\n\n<style>\n    .navbar {\n        overflow: hidden;\n        background-color: #116ACC;\n        font-family: Arial, Helvetica, sans-serif;\n    }\n\n    .navbar a {\n        float: left;\n        font-size: 18px;\n        color: white;\n        text-align: center;\n        padding: 8px 10px;\n        text-decoration: none;\n    }\n\n    .navbar a:hover {\n        color: white;\n        text-decoration: underline;\n    }\n\n    /*.navbar .active{\n        color:            white;\n        background-color: #4f81bd;\n    }*/\n\n</style>\n\n<div class=\"navbar\">\n    <a href=\"/d/kEtG3wD4z/estat-de-les-tramitacions?orgId=1\">Diagnosi</a>\n    <a>|</a>    \n    <a href=\"/d/Ij-VuwJVk/prediccio-de-levolucio-temporal-dajudes?orgId=1\">Prognosi</a>\n    <a>|</a>\n    <a href=\"/d/0zQpdUAVz/assignacio-de-pressupost?orgId=1\">Assignació de pressupost</a>\n    <a href=\"/d/Iwi9480Vk/visualitzacio-dels-resultats?orgId=1\">Visualització dels resultats</a>    \n</div>",
         "mode": "html"
       },
       "pluginVersion": "9.3.6",
@@ -89,31 +88,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "% s/ciutadans"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "percentunit"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "% usuaris"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "percentunit"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "% Homes"
+              "options": "Cobertura"
             },
             "properties": [
               {
@@ -125,7 +100,7 @@
         ]
       },
       "gridPos": {
-        "h": 9,
+        "h": 11,
         "w": 24,
         "x": 0,
         "y": 2
@@ -151,7 +126,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  COALESCE (c.cggu_cg_name, 'No perfil recurs SSB') AS \"Diagnosi Social\", \r\n  count(*) AS \"Nombre ciutadans\",\r\n  CAST(count(*) AS DECIMAL) / (SELECT count(*) FROM cens t) AS \"% s/ciutadans\",\r\n  (SELECT count (DISTINCT g.gaviususer_id) FROM gavius g INNER JOIN cens p ON g.gaviususer_id = p.gaviususer_id WHERE p.cggu_cg_name = c.cggu_cg_name) / CAST(count(*) AS DECIMAL)  AS \"% usuaris\",\r\n  (SELECT count(*) FROM cens s WHERE s.ge_name = 'Home' AND s.cggu_cg_name = c.cggu_cg_name) / CAST(count(*) AS DECIMAL) AS \"% Homes\",\r\n  EXTRACT(years FROM avg(age(birthdate))) AS \"Edat promig\"\r\nFROM\r\n  cens c\r\nGROUP BY c.cggu_cg_name\r\nORDER BY 1;",
+          "rawSql": "SELECT\r\n  (SELECT sa_name FROM ayudas WHERE ayudas.sa_socialaid_id = id) AS \"Ajuda\",\r\n  (SELECT i.budget FROM budgets i WHERE i.id = s.id AND i.type = 'ideal') AS \"Pressupost ideal (€)\",\r\n  budget AS \"Pressupost suggerit (€)\",\r\n  assigned AS \"Beneficiaris coberts\",\r\n  declined AS \"Beneficiaris no coberts\",\r\n  s.budget / (SELECT i.budget FROM budgets i WHERE i.id = s.id AND i.type = 'ideal') AS \"Cobertura\"\r\nFROM\r\n  budgets s\r\nWHERE type = 'suggested'\r\nORDER BY 1;",
           "refId": "A",
           "sql": {
             "columns": [
@@ -172,7 +147,7 @@
           }
         }
       ],
-      "title": "Detall dels grups Comòrbids",
+      "title": "Assignació de pressupost",
       "type": "table"
     }
   ],
@@ -188,8 +163,8 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Detall dels grups Comòrbid",
-  "uid": "3cwNQQ14z",
-  "version": 11,
+  "title": "Assignació de pressupost",
+  "uid": "0zQpdUAVz",
+  "version": 2,
   "weekStart": ""
 }

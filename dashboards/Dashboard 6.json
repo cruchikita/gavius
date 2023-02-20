@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 7,
+  "id": 27,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -39,14 +39,14 @@
         "x": 0,
         "y": 0
       },
-      "id": 4,
+      "id": 6,
       "options": {
         "code": {
           "language": "plaintext",
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "    <script src=\"http://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script>\n    $(function(){\n        $('a').each(function(){\n            if ($(this).prop('href') == window.location.href) {\n                $(this).addClass('active'); $(this).addClass('active');\n            }\n        });\n    });\n</script>\n\n<style>\n    .navbar {\n        overflow: hidden;\n        background-color: #116ACC;\n        font-family: Arial, Helvetica, sans-serif;\n    }\n\n    .navbar a {\n        float: left;\n        font-size: 18px;\n        color: white;\n        text-align: center;\n        padding: 8px 10px;\n        text-decoration: none;\n    }\n\n    .navbar a:hover {\n        color: white;\n        text-decoration: underline;\n    }\n\n    /*.navbar .active{\n        color:            white;\n        background-color: #4f81bd;\n    }*/\n\n</style>\n\n<div class=\"navbar\">\n    <a href=\"/d/kEtG3wD4z/estat-de-les-tramitacions?orgId=1\">Estat de les tramitacions</a>\n    <a href=\"/d/EJrGvUcVk/perfil-sociodemografic?orgId=1\">Perfil sociodemogràfic</a>\n    <a href=\"/d/0PwjJe5Vz/camins-probables?orgId=1\">Camins probables</a>\n    <a href=\"/d/lU48FST4z/diagnosi-social?orgId=1\">Diagnosi social</a>\n    <a href=\"/d/nBXKCKA4k/cronicitat?orgId=1\">Cronicitat</a>\n    <a>|</a>\n    <a href=\"/d/rlK_z5AVk/prediccio?orgId=1\">Predicció</a>\n    <a href=\"/d/0zQpdUAVz/assignacio-de-pressupost?orgId=1\">Assignació de pressupost</a>\n    <a href=\"/d/Iwi9480Vk/visualitzacio-dels-resultats?orgId=1\">Visualització dels resultats</a>\n</div>",
+        "content": "    <script src=\"http://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script>\n    $(function(){\n        $('a').each(function(){\n            if ($(this).prop('href') == window.location.href) {\n                $(this).addClass('active'); $(this).addClass('active');\n            }\n        });\n    });\n</script>\n\n<style>\n    .navbar {\n        overflow: hidden;\n        background-color: #116ACC;\n        font-family: Arial, Helvetica, sans-serif;\n    }\n\n    .navbar a {\n        float: left;\n        font-size: 18px;\n        color: white;\n        text-align: center;\n        padding: 8px 10px;\n        text-decoration: none;\n    }\n\n    .navbar a:hover {\n        color: white;\n        text-decoration: underline;\n    }\n\n    /*.navbar .active{\n        color:            white;\n        background-color: #4f81bd;\n    }*/\n\n</style>\n\n<div class=\"navbar\">\n    <a href=\"/d/kEtG3wD4z/estat-de-les-tramitacions?orgId=1\">Estat de les tramitacions</a>\n    <a href=\"/d/EJrGvUcVk/perfil-sociodemografic?orgId=1\">Perfil sociodemogràfic</a>\n    <a href=\"/d/0PwjJe5Vz/camins-probables?orgId=1\">Camins probables</a>\n    <a href=\"/d/lU48FST4z/diagnosi-social?orgId=1\">Diagnosi social</a>\n    <a href=\"/d/3cwNQQ14z/detall-dels-grups-comorbid?orgId=1\">Detall dels grups Comòrbids</a>\n    <a href=\"/d/nBXKCKA4k/cronicitat?orgId=1\">Cronicitat</a>\n    <a>|</a>\n    <a href=\"/d/Ij-VuwJVk/prediccio-de-levolucio-temporal-dajudes?orgId=1\">Prognosi</a>\n    <a>|</a>\n    <a href=\"/d/0zQpdUAVz/assignacio-de-pressupost?orgId=1\">Projecció</a>\n</div>",
         "mode": "html"
       },
       "pluginVersion": "9.3.6",
@@ -58,188 +58,162 @@
         "type": "postgres",
         "uid": "PCC52D03280B7034C"
       },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "green",
-            "mode": "fixed"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "smooth",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "locale"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": "Acumulados"
-            },
-            "properties": [
-              {
-                "id": "custom.drawStyle",
-                "value": "line"
-              },
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "blue",
-                  "mode": "fixed"
-                }
-              },
-              {
-                "id": "custom.pointSize",
-                "value": 10
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": "Modelados"
-            },
-            "properties": [
-              {
-                "id": "custom.drawStyle",
-                "value": "line"
-              },
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "red",
-                  "mode": "fixed"
-                }
-              },
-              {
-                "id": "custom.showPoints",
-                "value": "never"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": "Límite inferior"
-            },
-            "properties": [
-              {
-                "id": "custom.lineStyle",
-                "value": {
-                  "dash": [
-                    10,
-                    10
-                  ],
-                  "fill": "dash"
-                }
-              },
-              {
-                "id": "custom.showPoints",
-                "value": "never"
-              },
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "purple",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": "Límite superior"
-            },
-            "properties": [
-              {
-                "id": "custom.lineStyle",
-                "value": {
-                  "dash": [
-                    10,
-                    10
-                  ],
-                  "fill": "dash"
-                }
-              },
-              {
-                "id": "custom.showPoints",
-                "value": "never"
-              },
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "super-light-red",
-                  "mode": "fixed"
-                }
-              },
-              {
-                "id": "custom.fillBelowTo",
-                "value": "Límite inferior"
-              },
-              {
-                "id": "custom.fillOpacity",
-                "value": 10
-              }
-            ]
-          }
-        ]
-      },
       "gridPos": {
-        "h": 18,
-        "w": 24,
+        "h": 17,
+        "w": 12,
         "x": 0,
         "y": 2
       },
       "id": 2,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
+      "pconfig": {
+        "fixScale": "",
+        "layout": {
+          "dragmode": "zoom",
+          "font": {
+            "family": "\"Open Sans\", Helvetica, Arial, sans-serif"
+          },
+          "hovermode": "closest",
+          "legend": {
+            "orientation": "v"
+          },
+          "showlegend": true,
+          "xaxis": {
+            "rangemode": "tozero",
+            "showgrid": true,
+            "type": "linear",
+            "zeroline": true
+          },
+          "yaxis": {
+            "rangemode": "tozero",
+            "showgrid": true,
+            "type": "linear",
+            "zeroline": true
+          },
+          "zaxis": {
+            "rangemode": "normal",
+            "showgrid": true,
+            "type": "linear",
+            "zeroline": false
+          }
         },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
+        "loadFromCDN": false,
+        "settings": {
+          "displayModeBar": false,
+          "type": "scatter"
+        },
+        "showAnnotations": true,
+        "traces": [
+          {
+            "mapping": {
+              "color": "times",
+              "text": "survival",
+              "x": "times",
+              "y": "survival"
+            },
+            "name": "Survival",
+            "settings": {
+              "color_option": "solid",
+              "line": {
+                "color": "#24292e",
+                "dash": "solid",
+                "shape": "linear",
+                "width": 4
+              },
+              "marker": {
+                "color": "#33B5E5",
+                "colorscale": "YlOrRd",
+                "line": {
+                  "color": "#DDD",
+                  "width": 0
+                },
+                "showscale": false,
+                "size": 15,
+                "sizemin": 3,
+                "sizemode": "diameter",
+                "sizeref": 0.2,
+                "symbol": "circle"
+              },
+              "textposition": ""
+            },
+            "show": {
+              "line": true,
+              "lines": true,
+              "markers": false
+            }
+          },
+          {
+            "mapping": {
+              "color": "times",
+              "x": "times",
+              "y": "lower_estimate"
+            },
+            "name": "Lower",
+            "settings": {
+              "color_option": "solid",
+              "line": {
+                "color": "#56A64B",
+                "dash": "solid",
+                "shape": "linear",
+                "width": 4
+              },
+              "marker": {
+                "color": "#33B5E5",
+                "colorscale": "YlOrRd",
+                "line": {
+                  "color": "#DDD",
+                  "width": 0
+                },
+                "showscale": false,
+                "size": 15,
+                "sizemin": 3,
+                "sizemode": "diameter",
+                "sizeref": 0.2,
+                "symbol": "circle"
+              }
+            },
+            "show": {
+              "line": true,
+              "lines": true,
+              "markers": false
+            }
+          },
+          {
+            "mapping": {
+              "color": "times",
+              "x": "times",
+              "y": "upper_estimate"
+            },
+            "name": "Upper",
+            "settings": {
+              "color_option": "solid",
+              "line": {
+                "color": "#E02F44",
+                "dash": "solid",
+                "shape": "linear",
+                "width": 4
+              },
+              "marker": {
+                "color": "#33B5E5",
+                "colorscale": "YlOrRd",
+                "line": {
+                  "color": "#DDD",
+                  "width": 0
+                },
+                "showscale": false,
+                "size": 15,
+                "sizemin": 3,
+                "sizemode": "diameter",
+                "sizeref": 0.2,
+                "symbol": "circle"
+              }
+            },
+            "show": {
+              "line": true,
+              "lines": true,
+              "markers": false
+            }
+          }
+        ]
       },
       "targets": [
         {
@@ -249,96 +223,9 @@
           },
           "editorMode": "code",
           "format": "table",
-          "hide": false,
           "rawQuery": true,
-          "rawSql": "SELECT\r\nmake_date(CAST(LEFT(CAST(period AS TEXT),4) AS INT), CAST(RIGHT(CAST(period AS TEXT),2) AS INT) * 3 -2 , 1)::date AS \"time\",\r\n(SELECT SUM(values) FROM prediccio t WHERE t.period <= p.period AND t.id = p.id AND t.status = p.status) AS \"Modelados\"\r\nFROM\r\nprediccio p LEFT JOIN ayudas ON p.id = ayudas.sa_socialaid_id\r\nWHERE ayudas.sa_name = '$ajuda'\r\nAND p.status = '$estat'\r\nAND p.period >= (SELECT MAX(s.period) FROM prediccio s LEFT JOIN ayudas a ON p.id = a.sa_socialaid_id WHERE a.sa_name = '$ajuda' AND NOT s.predict AND s.status = '$estat');",
-          "refId": "Modelados",
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          }
-        },
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "editorMode": "code",
-          "format": "table",
-          "hide": false,
-          "rawQuery": true,
-          "rawSql": "SELECT\r\nmake_date(CAST(LEFT(CAST(period AS TEXT),4) AS INT), CAST(RIGHT(CAST(period AS TEXT),2) AS INT) * 3 -2 , 1)::date AS \"time\",\r\n(SELECT SUM(COALESCE(mean_ci_lower,values)) FROM prediccio t WHERE t.period <= p.period AND t.id = p.id AND t.status = p.status) AS \"Límite inferior\"\r\nFROM\r\nprediccio p LEFT JOIN ayudas ON p.id = ayudas.sa_socialaid_id\r\nWHERE ayudas.sa_name = '$ajuda'\r\nAND p.status = '$estat'\r\nAND p.period >= (SELECT MAX(s.period) FROM prediccio s LEFT JOIN ayudas a ON p.id = a.sa_socialaid_id WHERE a.sa_name = '$ajuda' AND NOT s.predict AND s.status = '$estat');",
-          "refId": "Límite inferior",
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          }
-        },
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "editorMode": "code",
-          "format": "table",
-          "hide": false,
-          "rawQuery": true,
-          "rawSql": "SELECT\r\nmake_date(CAST(LEFT(CAST(period AS TEXT),4) AS INT), CAST(RIGHT(CAST(period AS TEXT),2) AS INT) * 3 -2 , 1)::date AS \"time\",\r\n(SELECT SUM(COALESCE(mean_ci_upper,values)) FROM prediccio t WHERE t.period <= p.period AND t.id = p.id AND t.status = p.status) AS \"Límite superior\"\r\nFROM\r\nprediccio p LEFT JOIN ayudas ON p.id = ayudas.sa_socialaid_id\r\nWHERE ayudas.sa_name = '$ajuda'\r\nAND p.status = '$estat'\r\nAND p.period >= (SELECT MAX(s.period) FROM prediccio s LEFT JOIN ayudas a ON p.id = a.sa_socialaid_id WHERE a.sa_name = '$ajuda' AND NOT s.predict AND s.status = '$estat');",
-          "refId": "Límite superior",
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          }
-        },
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "editorMode": "code",
-          "format": "table",
-          "rawQuery": true,
-          "rawSql": "SELECT\r\nmake_date(CAST(LEFT(CAST(period AS TEXT),4) AS INT), CAST(RIGHT(CAST(period AS TEXT),2) AS INT) * 3 -2 , 1)::date AS \"time\",\r\n(SELECT SUM(values) FROM prediccio t WHERE t.period <= p.period AND t.id = p.id AND t.status = p.status) AS \"Acumulados\"\r\nFROM\r\nprediccio p LEFT JOIN ayudas ON p.id = ayudas.sa_socialaid_id\r\nWHERE ayudas.sa_name = '$ajuda'\r\nAND p.status = '$estat'\r\nAND NOT p.predict;",
-          "refId": "Acumulados",
+          "rawSql": "SELECT\r\n  times,\r\n  survival,\r\n  lower_estimate,\r\n  upper_estimate\r\nFROM\r\n  cronicitat LEFT JOIN ayudas ON cronicitat.id = ayudas.sa_socialaid_id\r\nWHERE ayudas.sa_name = '$ajuda'\r\nORDER BY 1;\r\n",
+          "refId": "A",
           "sql": {
             "columns": [
               {
@@ -358,8 +245,95 @@
           }
         }
       ],
-      "title": "Totals per ajuda seleccionada",
-      "type": "timeseries"
+      "title": "Total",
+      "type": "natel-plotly-panel",
+      "version": 1
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "PCC52D03280B7034C"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "displayMode": "auto",
+            "filterable": false,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 12,
+        "x": 12,
+        "y": 2
+      },
+      "id": 4,
+      "options": {
+        "footer": {
+          "enablePagination": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "frameIndex": 0,
+        "showHeader": true
+      },
+      "pluginVersion": "9.3.6",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\nEXTRACT(year FROM p.anyo) AS \"Ciutadans\",\r\ncount(DISTINCT(p.gaviususer_id)) AS \"Start\",\r\n(SELECT count(DISTINCT(o.gaviususer_id)) FROM renoven o INNER JOIN renoven d ON o.sa_socialaid_id = d.sa_socialaid_id AND (o.anyo + interval '1 year') = d.anyo AND o.gaviususer_id = d.gaviususer_id  WHERE o.sa_socialaid_id = p.sa_socialaid_id AND o.anyo = p.anyo GROUP BY o.anyo ORDER BY 1)  AS \"Renoven 1 any\",\r\n(SELECT count(DISTINCT(o.gaviususer_id)) FROM renoven o INNER JOIN renoven d ON o.sa_socialaid_id = d.sa_socialaid_id AND (o.anyo + interval '1 year') = d.anyo AND o.gaviususer_id = d.gaviususer_id INNER JOIN renoven s ON o.sa_socialaid_id = s.sa_socialaid_id AND (o.anyo + interval '2 years') = s.anyo AND o.gaviususer_id = s.gaviususer_id  WHERE o.sa_socialaid_id = p.sa_socialaid_id AND o.anyo = p.anyo GROUP BY o.anyo ORDER BY 1)  AS \"2on any\" ,\r\n(SELECT count(DISTINCT(o.gaviususer_id)) FROM renoven o INNER JOIN renoven d ON o.sa_socialaid_id = d.sa_socialaid_id AND (o.anyo + interval '1 year') = d.anyo AND o.gaviususer_id = d.gaviususer_id INNER JOIN renoven s ON o.sa_socialaid_id = s.sa_socialaid_id AND (o.anyo + interval '2 years') = s.anyo AND o.gaviususer_id = s.gaviususer_id INNER JOIN renoven t ON o.sa_socialaid_id = t.sa_socialaid_id AND (o.anyo + interval '3 years') = t.anyo AND o.gaviususer_id = t.gaviususer_id  WHERE o.sa_socialaid_id = p.sa_socialaid_id AND o.anyo = p.anyo GROUP BY o.anyo ORDER BY 1)  AS \"3er any\",\r\n(SELECT count(DISTINCT(o.gaviususer_id)) FROM renoven o INNER JOIN renoven d ON o.sa_socialaid_id = d.sa_socialaid_id AND (o.anyo + interval '1 year') = d.anyo AND o.gaviususer_id = d.gaviususer_id INNER JOIN renoven s ON o.sa_socialaid_id = s.sa_socialaid_id AND (o.anyo + interval '2 years') = s.anyo AND o.gaviususer_id = s.gaviususer_id INNER JOIN renoven t ON o.sa_socialaid_id = t.sa_socialaid_id AND (o.anyo + interval '3 years') = t.anyo AND o.gaviususer_id = t.gaviususer_id INNER JOIN renoven r ON o.sa_socialaid_id = r.sa_socialaid_id AND (o.anyo + interval '4 years') = r.anyo AND o.gaviususer_id = r.gaviususer_id WHERE o.sa_socialaid_id = p.sa_socialaid_id AND o.anyo = p.anyo GROUP BY o.anyo ORDER BY 1)  AS \"4t any\"\r\nFROM renoven p LEFT JOIN ayudas ON p.sa_socialaid_id = ayudas.sa_socialaid_id\r\nWHERE ayudas.sa_name = '$ajuda'\r\nGROUP BY p.anyo, p.sa_socialaid_id \r\nORDER BY 1;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Permanència del recurs",
+      "type": "table"
     }
   ],
   "refresh": false,
@@ -389,43 +363,19 @@
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
-        "sort": 3,
-        "type": "query"
-      },
-      {
-        "current": {
-          "selected": false,
-          "text": "Approved",
-          "value": "Approved"
-        },
-        "datasource": {
-          "type": "postgres",
-          "uid": "PCC52D03280B7034C"
-        },
-        "definition": "SELECT DISTINCT status FROM prediccio;",
-        "hide": 0,
-        "includeAll": false,
-        "label": "Estat",
-        "multi": false,
-        "name": "estat",
-        "options": [],
-        "query": "SELECT DISTINCT status FROM prediccio;",
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
+        "sort": 1,
         "type": "query"
       }
     ]
   },
   "time": {
-    "from": "now-3y",
-    "to": "now+3y"
+    "from": "now-10y",
+    "to": "now"
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Predicció",
-  "uid": "rlK_z5AVk",
-  "version": 2,
+  "title": "Cronicitat",
+  "uid": "nBXKCKA4k",
+  "version": 3,
   "weekStart": ""
 }

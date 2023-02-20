@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 14,
+  "id": 5,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -47,7 +47,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "    <script src=\"http://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script>\n    $(function(){\n        $('a').each(function(){\n            if ($(this).prop('href') == window.location.href) {\n                $(this).addClass('active'); $(this).addClass('active');\n            }\n        });\n    });\n</script>\n\n<style>\n    .navbar {\n        overflow: hidden;\n        background-color: #116ACC;\n        font-family: Arial, Helvetica, sans-serif;\n    }\n\n    .navbar a {\n        float: left;\n        font-size: 18px;\n        color: white;\n        text-align: center;\n        padding: 8px 12px;\n        text-decoration: none;\n    }\n\n    .navbar a:hover {\n        color: white;\n        text-decoration: underline;\n    }\n\n    /*.navbar .active{\n        color:            white;\n        background-color: #4f81bd;\n    }*/\n\n</style>\n\n<div class=\"navbar\">\n    <a href=\"/d/kEtG3wD4z/estat-de-les-tramitacions?orgId=1\">Estat de les tramitacions</a>\n    <a href=\"/d/EJrGvUcVk/perfil-sociodemografic?orgId=1\">Perfil sociodemogràfic</a>\n    <a href=\"/d/0PwjJe5Vz/camins-probables?orgId=1\">Camins probables</a>\n    <a href=\"/d/lU48FST4z/diagnosi-social?orgId=1\">Diagnosi social</a>\n    <a href=\"/d/nBXKCKA4k/cronicitat?orgId=1\">Cronicitat</a>\n    <a>|</a>\n    <a href=\"/d/rlK_z5AVk/prediccio?orgId=1\">Predicció</a>\n    <a href=\"/d/0zQpdUAVz/assignacio-de-pressupost?orgId=1\">Assignació de pressupost</a>\n    <a href=\"/d/Iwi9480Vk/visualitzacio-dels-resultats?orgId=1\">Visualització dels resultats</a>\n</div>",
+        "content": "    <script src=\"http://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script>\n    $(function(){\n        $('a').each(function(){\n            if ($(this).prop('href') == window.location.href) {\n                $(this).addClass('active'); $(this).addClass('active');\n            }\n        });\n    });\n</script>\n\n<style>\n    .navbar {\n        overflow: hidden;\n        background-color: #116ACC;\n        font-family: Arial, Helvetica, sans-serif;\n    }\n\n    .navbar a {\n        float: left;\n        font-size: 18px;\n        color: white;\n        text-align: center;\n        padding: 8px 12px;\n        text-decoration: none;\n    }\n\n    .navbar a:hover {\n        color: white;\n        text-decoration: underline;\n    }\n\n    /*.navbar .active{\n        color:            white;\n        background-color: #4f81bd;\n    }*/\n\n</style>\n\n<div class=\"navbar\">\n    <a href=\"/d/kEtG3wD4z/estat-de-les-tramitacions?orgId=1\">Estat de les tramitacions</a>\n    <a href=\"/d/EJrGvUcVk/perfil-sociodemografic?orgId=1\">Perfil sociodemogràfic</a>\n    <a href=\"/d/0PwjJe5Vz/camins-probables?orgId=1\">Camins probables</a>\n    <a href=\"/d/lU48FST4z/diagnosi-social?orgId=1\">Diagnosi social</a>\n    <a href=\"/d/3cwNQQ14z/detall-dels-grups-comorbid?orgId=1\">Detall dels grups Comòrbids</a>\n    <a href=\"/d/nBXKCKA4k/cronicitat?orgId=1\">Cronicitat</a>\n    <a>|</a>\n    <a href=\"/d/Ij-VuwJVk/prediccio-de-levolucio-temporal-dajudes?orgId=1\">Prognosi</a>\n    <a>|</a>\n    <a href=\"/d/0zQpdUAVz/assignacio-de-pressupost?orgId=1\">Projecció</a>\n</div>",
         "mode": "html"
       },
       "pluginVersion": "9.3.6",
@@ -1541,9 +1541,9 @@
     "list": [
       {
         "current": {
-          "selected": true,
-          "text": "Home",
-          "value": "Home"
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
         },
         "datasource": {
           "type": "postgres",
@@ -1613,7 +1613,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "All",
           "value": "$__all"
         },
@@ -1645,6 +1645,6 @@
   "timezone": "",
   "title": "Estat de les tramitacions",
   "uid": "kEtG3wD4z",
-  "version": 2,
+  "version": 5,
   "weekStart": ""
 }

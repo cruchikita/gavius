@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 4,
+  "id": 10,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -39,14 +39,14 @@
         "x": 0,
         "y": 0
       },
-      "id": 4,
+      "id": 6,
       "options": {
         "code": {
           "language": "plaintext",
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "    <script src=\"http://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script>\n    $(function(){\n        $('a').each(function(){\n            if ($(this).prop('href') == window.location.href) {\n                $(this).addClass('active'); $(this).addClass('active');\n            }\n        });\n    });\n</script>\n\n<style>\n    .navbar {\n        overflow: hidden;\n        background-color: #116ACC;\n        font-family: Arial, Helvetica, sans-serif;\n    }\n\n    .navbar a {\n        float: left;\n        font-size: 18px;\n        color: white;\n        text-align: center;\n        padding: 8px 10px;\n        text-decoration: none;\n    }\n\n    .navbar a:hover {\n        color: white;\n        text-decoration: underline;\n    }\n\n    /*.navbar .active{\n        color:            white;\n        background-color: #4f81bd;\n    }*/\n\n</style>\n\n<div class=\"navbar\">\n    <a href=\"/d/kEtG3wD4z/estat-de-les-tramitacions?orgId=1\">Estat de les tramitacions</a>\n    <a href=\"/d/EJrGvUcVk/perfil-sociodemografic?orgId=1\">Perfil sociodemogràfic</a>\n    <a href=\"/d/0PwjJe5Vz/camins-probables?orgId=1\">Camins probables</a>\n    <a href=\"/d/lU48FST4z/diagnosi-social?orgId=1\">Diagnosi social</a>\n    <a href=\"/d/nBXKCKA4k/cronicitat?orgId=1\">Cronicitat</a>\n    <a>|</a>\n    <a href=\"/d/rlK_z5AVk/prediccio?orgId=1\">Predicció</a>\n    <a href=\"/d/0zQpdUAVz/assignacio-de-pressupost?orgId=1\">Assignació de pressupost</a>\n    <a href=\"/d/Iwi9480Vk/visualitzacio-dels-resultats?orgId=1\">Visualització dels resultats</a>\n</div>",
+        "content": "    <script src=\"http://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script>\n    $(function(){\n        $('a').each(function(){\n            if ($(this).prop('href') == window.location.href) {\n                $(this).addClass('active'); $(this).addClass('active');\n            }\n        });\n    });\n</script>\n\n<style>\n    .navbar {\n        overflow: hidden;\n        background-color: #116ACC;\n        font-family: Arial, Helvetica, sans-serif;\n    }\n\n    .navbar a {\n        float: left;\n        font-size: 18px;\n        color: white;\n        text-align: center;\n        padding: 8px 10px;\n        text-decoration: none;\n    }\n\n    .navbar a:hover {\n        color: white;\n        text-decoration: underline;\n    }\n\n    /*.navbar .active{\n        color:            white;\n        background-color: #4f81bd;\n    }*/\n\n</style>\n\n<div class=\"navbar\">\n    <a href=\"/d/kEtG3wD4z/estat-de-les-tramitacions?orgId=1\">Diagnosi</a>\n    <a>|</a>\n    <a href=\"/d/Ij-VuwJVk/prediccio-de-levolucio-temporal-dajudes?orgId=1\">Predicció de l'evolució temporal d'ajudes</a>\n    <a href=\"/d/rlK_z5AVk/grafica-de-la-prediccio\">Gràfica de la Predicció</a>\n    <a>|</a>\n    <a href=\"/d/0zQpdUAVz/assignacio-de-pressupost?orgId=1\">Projecció</a>\n</div>",
         "mode": "html"
       },
       "pluginVersion": "9.3.6",
@@ -82,18 +82,47 @@
               }
             ]
           },
-          "unit": "locale"
+          "unit": "percentunit"
         },
         "overrides": [
           {
             "matcher": {
               "id": "byName",
-              "options": "Cobertura"
+              "options": "Sol·licituds actuals"
             },
             "properties": [
               {
                 "id": "unit",
-                "value": "percentunit"
+                "value": "locale"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sol·licituds concedides"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "locale"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Evolució temporal"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "title": "Evolució temporal - ${__data.fields[Ajuda]}",
+                    "url": "/d/rlK_z5AVk/prediccio?orgId=1&var-ajuda=${__data.fields[Ajuda]}"
+                  }
+                ]
               }
             ]
           }
@@ -105,7 +134,7 @@
         "x": 0,
         "y": 2
       },
-      "id": 2,
+      "id": 4,
       "options": {
         "footer": {
           "fields": "",
@@ -126,7 +155,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  (SELECT sa_name FROM ayudas WHERE ayudas.sa_socialaid_id = id) AS \"Ajuda\",\r\n  (SELECT i.budget FROM budgets i WHERE i.id = s.id AND i.type = 'ideal') AS \"Pressupost ideal (€)\",\r\n  budget AS \"Pressupost suggerit (€)\",\r\n  assigned AS \"Beneficiaris coberts\",\r\n  declined AS \"Beneficiaris no coberts\",\r\n  s.budget / (SELECT i.budget FROM budgets i WHERE i.id = s.id AND i.type = 'ideal') AS \"Cobertura\"\r\nFROM\r\n  budgets s\r\nWHERE type = 'suggested'\r\nORDER BY 1;",
+          "rawSql": "SELECT \r\n  (SELECT sa_name FROM ayudas a WHERE a.sa_socialaid_id = p.id) AS \"Ajuda\",\r\n  (SUM(p.values)) AS \"Sol·licituds actuals\",\r\n  (SELECT SUM(n.values) FROM prediccio n WHERE NOT n.predict AND n.id = p.id AND n.status = 'Approved') AS \"Sol·licituds concedides\",\r\n  (SELECT SUM(n.values) FROM prediccio n WHERE NOT n.predict AND n.id = p.id AND n.status = 'Approved') / CAST(SUM(p.values) AS DECIMAL) AS \"% Sol·licituds concedides\",\r\n  (SELECT SUM(f.values) FROM prediccio f WHERE f.id = p.id AND f.status = 'Requested' AND f.period <= (SELECT MAX(a.period) + 100 FROM prediccio a WHERE a.id = p.id AND NOT predict))  / (SUM(p.values)) - 1 AS \"Predicció sol·licitades +1 any\",\r\n  ((SELECT SUM(f.values) FROM prediccio f WHERE f.id = p.id AND f.status = 'Approved' AND f.period <= (SELECT MAX(a.period) + 100 FROM prediccio a WHERE a.id = p.id AND NOT predict)) ) / (SELECT SUM(n.values) FROM prediccio n WHERE NOT n.predict AND n.id = p.id AND n.status = 'Approved') - 1 AS \"Predicció concedides +1 any\",\r\n  (SELECT SUM(f.values) FROM prediccio f WHERE f.id = p.id AND f.status = 'Requested' AND f.period <= (SELECT MAX(a.period) + 300 FROM prediccio a WHERE a.id = p.id AND NOT predict))  / (SUM(p.values)) - 1 AS \"Predicció sol·licitades +3 anys\",\r\n  ((SELECT SUM(f.values) FROM prediccio f WHERE f.id = p.id AND f.status = 'Approved' AND f.period <= (SELECT MAX(a.period) + 300 FROM prediccio a WHERE a.id = p.id AND NOT predict)) ) / (SELECT SUM(n.values) FROM prediccio n WHERE NOT n.predict AND n.id = p.id AND n.status = 'Approved') - 1 AS \"Predicció concedides +3 anys\",\r\n  'Gràfica 📈' AS \"Evolució temporal\"\r\nFROM\r\n  prediccio p \r\nWHERE\r\n  p.status = 'Requested' AND NOT p.predict\r\nGROUP BY p.id\r\nORDER BY 1;",
           "refId": "A",
           "sql": {
             "columns": [
@@ -147,10 +176,11 @@
           }
         }
       ],
-      "title": "Assignació de pressupost",
+      "title": "Totals",
       "type": "table"
     }
   ],
+  "refresh": false,
   "schemaVersion": 37,
   "style": "dark",
   "tags": [],
@@ -163,8 +193,8 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Assignació de pressupost",
-  "uid": "0zQpdUAVz",
-  "version": 2,
+  "title": "Predicció de l'evolució temporal d'ajudes",
+  "uid": "Ij-VuwJVk",
+  "version": 23,
   "weekStart": ""
 }
