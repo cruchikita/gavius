@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 28,
+  "id": 2,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -424,7 +424,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Predicció",
+  "title": "Gràfica de la Predicció",
   "uid": "rlK_z5AVk",
   "version": 2,
   "weekStart": ""

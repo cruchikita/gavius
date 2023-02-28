@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 9,
+  "id": 25,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -151,7 +151,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  COALESCE (c.cggu_cg_name, 'No perfil recurs SSB') AS \"Diagnosi Social\", \r\n  count(*) AS \"Nombre ciutadans\",\r\n  CAST(count(*) AS DECIMAL) / (SELECT count(*) FROM cens t) AS \"% s/ciutadans\",\r\n  (SELECT count (DISTINCT g.gaviususer_id) FROM gavius g INNER JOIN cens p ON g.gaviususer_id = p.gaviususer_id WHERE p.cggu_cg_name = c.cggu_cg_name) / CAST(count(*) AS DECIMAL)  AS \"% usuaris\",\r\n  (SELECT count(*) FROM cens s WHERE s.ge_name = 'Home' AND s.cggu_cg_name = c.cggu_cg_name) / CAST(count(*) AS DECIMAL) AS \"% Homes\",\r\n  EXTRACT(years FROM avg(age(birthdate))) AS \"Edat promig\"\r\nFROM\r\n  cens c\r\nGROUP BY c.cggu_cg_name\r\nORDER BY 1;",
+          "rawSql": "SELECT\r\n  COALESCE (c.cggu_cg_name, 'No perfil recurs SSB') AS \"Diagnosi Social\", \r\n  count(*) AS \"Nombre ciutadans\",\r\n  CAST(count(*) AS DECIMAL) / (SELECT count(*) FROM cens t) AS \"% s/ciutadans\",\r\n  (SELECT count (DISTINCT g.gaviususer_id) FROM gavius g INNER JOIN cens p ON g.gaviususer_id = p.gaviususer_id WHERE COALESCE (p.cggu_cg_name, 'No perfil recurs SSB') = COALESCE (c.cggu_cg_name, 'No perfil recurs SSB')) / CAST(count(*) AS DECIMAL)  AS \"% usuaris\",\r\n  (SELECT count(*) FROM cens s WHERE s.ge_name = 'Home' AND COALESCE (s.cggu_cg_name, 'No perfil recurs SSB') = COALESCE (c.cggu_cg_name, 'No perfil recurs SSB')) / CAST(count(*) AS DECIMAL) AS \"% Homes\",\r\n  EXTRACT(years FROM avg(age(birthdate))) AS \"Edat promig\"\r\nFROM\r\n  cens c\r\nGROUP BY c.cggu_cg_name\r\nORDER BY 1;",
           "refId": "A",
           "sql": {
             "columns": [
@@ -190,6 +190,6 @@
   "timezone": "",
   "title": "Detall dels grups Comòrbid",
   "uid": "3cwNQQ14z",
-  "version": 11,
+  "version": 2,
   "weekStart": ""
 }
