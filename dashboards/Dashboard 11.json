@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 35,
+  "id": 24,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -46,7 +46,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "    <script src=\"http://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script>\n    $(function(){\n        $('a').each(function(){\n            if ($(this).prop('href') == window.location.href) {\n                $(this).addClass('active'); $(this).addClass('active');\n            }\n        });\n    });\n</script>\n\n<style>\n    .navbar {\n        overflow: hidden;\n        background-color: #116ACC;\n        font-family: Arial, Helvetica, sans-serif;\n    }\n\n    .navbar a {\n        float: left;\n        font-size: 18px;\n        color: white;\n        text-align: center;\n        padding: 8px 10px;\n        text-decoration: none;\n    }\n\n    .navbar a:hover {\n        color: white;\n        text-decoration: underline;\n    }\n\n    /*.navbar .active{\n        color:            white;\n        background-color: #4f81bd;\n    }*/\n\n</style>\n\n<div class=\"navbar\">\n    <a href=\"/d/kEtG3wD4z/estat-de-les-tramitacions?orgId=1\">Diagnosi</a>\n    <a>|</a>    \n    <a href=\"/d/Ij-VuwJVk/prediccio-de-levolucio-temporal-dajudes?orgId=1\">Prognosi</a>\n    <a>|</a>\n    <a href=\"/d/0zQpdUAVz/assignacio-de-pressupost?orgId=1\">Assignació de pressupost</a>\n    <a href=\"/d/Iwi9480Vk/visualitzacio-dels-resultats?orgId=1\">Visualització dels resultats</a>    \n</div>",
+        "content": "    <script src=\"http://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script>\n    $(function(){\n        $('a').each(function(){\n            if ($(this).prop('href') == window.location.href) {\n                $(this).addClass('active'); $(this).addClass('active');\n            }\n        });\n    });\n</script>\n\n<style>\n    .navbar {\n        overflow: hidden;\n        background-color: #116ACC;\n        font-family: Arial, Helvetica, sans-serif;\n    }\n\n    .navbar a {\n        float: left;\n        font-size: 18px;\n        color: white;\n        text-align: center;\n        padding: 8px 10px;\n        text-decoration: none;\n    }\n\n    .navbar a:hover {\n        color: white;\n        text-decoration: underline;\n    }\n\n    .navbar .active{\n        font-weight: bold;\n    }\n\n</style>\n\n<div class=\"navbar\">\n    <a href=\"/d/kEtG3wD4z/estat-de-les-tramitacions?orgId=1\">Diagnosi</a>\n    <a>|</a>    \n    <a href=\"/d/Ij-VuwJVk/prediccio-de-levolucio-temporal-dajudes?orgId=1\">Prognosi</a>\n    <a>|</a>\n    <a href=\"d/0oDR83J4k/seleccio-parametres-dentrada?orgId=1\">Selecció paràmetres d'entrada</a>    \n    <a href=\"/d/0zQpdUAVz/assignacio-de-pressupost?orgId=1\">Assignació de pressupost</a>\n</div>",
         "mode": "html"
       },
       "pluginVersion": "9.3.6",
