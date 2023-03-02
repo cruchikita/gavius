@@ -1,0 +1,381 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 10,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 6,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "    <script src=\"http://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script>\n    $(function(){\n        $('a').each(function(){\n            if ($(this).prop('href') == window.location.href) {\n                $(this).addClass('active'); $(this).addClass('active');\n            }\n        });\n    });\n</script>\n\n<style>\n    .navbar {\n        overflow: hidden;\n        background-color: #116ACC;\n        font-family: Arial, Helvetica, sans-serif;\n    }\n\n    .navbar a {\n        float: left;\n        font-size: 18px;\n        color: white;\n        text-align: center;\n        padding: 8px 10px;\n        text-decoration: none;\n    }\n\n    .navbar a:hover {\n        color: white;\n        text-decoration: underline;\n    }\n\n    .navbar .active{\n        font-weight: bold;\n    }\n\n</style>\n\n<div class=\"navbar\">\n    <a href=\"/d/kEtG3wD4z/estat-de-les-tramitacions?orgId=1\">Estat de les tramitacions</a>\n    <a href=\"/d/EJrGvUcVk/perfil-sociodemografic?orgId=1\">Perfil sociodemogràfic</a>\n    <a href=\"/d/0PwjJe5Vz/camins-probables?orgId=1\">Camins probables</a>\n    <a href=\"/d/lU48FST4z/diagnosi-social?orgId=1\">Diagnosi social</a>\n    <a href=\"/d/3cwNQQ14z/detall-dels-grups-comorbid?orgId=1\">Detall dels grups Comòrbids</a>\n    <a href=\"/d/nBXKCKA4k/cronicitat?orgId=1\" class=\"active\">Cronicitat</a>\n    <a>|</a>\n    <a href=\"/d/Ij-VuwJVk/prediccio-de-levolucio-temporal-dajudes?orgId=1\">Prognosi</a>\n    <a>|</a>\n    <a href=\"/d/0oDR83J4k/seleccio-parametres-dentrada?orgId=1\">Projecció</a>\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "9.3.6",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "PCC52D03280B7034C"
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 12,
+        "x": 0,
+        "y": 2
+      },
+      "id": 2,
+      "pconfig": {
+        "fixScale": "",
+        "layout": {
+          "dragmode": "zoom",
+          "font": {
+            "family": "\"Open Sans\", Helvetica, Arial, sans-serif"
+          },
+          "hovermode": "closest",
+          "legend": {
+            "orientation": "v"
+          },
+          "showlegend": true,
+          "xaxis": {
+            "rangemode": "tozero",
+            "showgrid": true,
+            "type": "linear",
+            "zeroline": true
+          },
+          "yaxis": {
+            "rangemode": "tozero",
+            "showgrid": true,
+            "type": "linear",
+            "zeroline": true
+          },
+          "zaxis": {
+            "rangemode": "normal",
+            "showgrid": true,
+            "type": "linear",
+            "zeroline": false
+          }
+        },
+        "loadFromCDN": false,
+        "settings": {
+          "displayModeBar": false,
+          "type": "scatter"
+        },
+        "showAnnotations": true,
+        "traces": [
+          {
+            "mapping": {
+              "color": "times",
+              "text": "survival",
+              "x": "times",
+              "y": "survival"
+            },
+            "name": "Survival",
+            "settings": {
+              "color_option": "solid",
+              "line": {
+                "color": "#24292e",
+                "dash": "solid",
+                "shape": "linear",
+                "width": 4
+              },
+              "marker": {
+                "color": "#33B5E5",
+                "colorscale": "YlOrRd",
+                "line": {
+                  "color": "#DDD",
+                  "width": 0
+                },
+                "showscale": false,
+                "size": 15,
+                "sizemin": 3,
+                "sizemode": "diameter",
+                "sizeref": 0.2,
+                "symbol": "circle"
+              },
+              "textposition": ""
+            },
+            "show": {
+              "line": true,
+              "lines": true,
+              "markers": false
+            }
+          },
+          {
+            "mapping": {
+              "color": "times",
+              "x": "times",
+              "y": "lower_estimate"
+            },
+            "name": "Lower",
+            "settings": {
+              "color_option": "solid",
+              "line": {
+                "color": "#56A64B",
+                "dash": "solid",
+                "shape": "linear",
+                "width": 4
+              },
+              "marker": {
+                "color": "#33B5E5",
+                "colorscale": "YlOrRd",
+                "line": {
+                  "color": "#DDD",
+                  "width": 0
+                },
+                "showscale": false,
+                "size": 15,
+                "sizemin": 3,
+                "sizemode": "diameter",
+                "sizeref": 0.2,
+                "symbol": "circle"
+              }
+            },
+            "show": {
+              "line": true,
+              "lines": true,
+              "markers": false
+            }
+          },
+          {
+            "mapping": {
+              "color": "times",
+              "x": "times",
+              "y": "upper_estimate"
+            },
+            "name": "Upper",
+            "settings": {
+              "color_option": "solid",
+              "line": {
+                "color": "#E02F44",
+                "dash": "solid",
+                "shape": "linear",
+                "width": 4
+              },
+              "marker": {
+                "color": "#33B5E5",
+                "colorscale": "YlOrRd",
+                "line": {
+                  "color": "#DDD",
+                  "width": 0
+                },
+                "showscale": false,
+                "size": 15,
+                "sizemin": 3,
+                "sizemode": "diameter",
+                "sizeref": 0.2,
+                "symbol": "circle"
+              }
+            },
+            "show": {
+              "line": true,
+              "lines": true,
+              "markers": false
+            }
+          }
+        ]
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  times,\r\n  survival,\r\n  lower_estimate,\r\n  upper_estimate\r\nFROM\r\n  cronicitat LEFT JOIN ayudas ON cronicitat.id = ayudas.sa_socialaid_id\r\nWHERE ayudas.sa_name = '$ajuda'\r\nORDER BY 1;\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Total",
+      "type": "natel-plotly-panel",
+      "version": 1
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "PCC52D03280B7034C"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "displayMode": "auto",
+            "filterable": false,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 12,
+        "x": 12,
+        "y": 2
+      },
+      "id": 4,
+      "options": {
+        "footer": {
+          "enablePagination": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "frameIndex": 0,
+        "showHeader": true
+      },
+      "pluginVersion": "9.3.6",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\nEXTRACT(year FROM p.anyo) AS \"Ciutadans\",\r\ncount(DISTINCT(p.gaviususer_id)) AS \"Start\",\r\n(SELECT count(DISTINCT(o.gaviususer_id)) FROM renoven o INNER JOIN renoven d ON o.sa_socialaid_id = d.sa_socialaid_id AND (o.anyo + interval '1 year') = d.anyo AND o.gaviususer_id = d.gaviususer_id  WHERE o.sa_socialaid_id = p.sa_socialaid_id AND o.anyo = p.anyo GROUP BY o.anyo ORDER BY 1)  AS \"Renoven 1 any\",\r\n(SELECT count(DISTINCT(o.gaviususer_id)) FROM renoven o INNER JOIN renoven d ON o.sa_socialaid_id = d.sa_socialaid_id AND (o.anyo + interval '1 year') = d.anyo AND o.gaviususer_id = d.gaviususer_id INNER JOIN renoven s ON o.sa_socialaid_id = s.sa_socialaid_id AND (o.anyo + interval '2 years') = s.anyo AND o.gaviususer_id = s.gaviususer_id  WHERE o.sa_socialaid_id = p.sa_socialaid_id AND o.anyo = p.anyo GROUP BY o.anyo ORDER BY 1)  AS \"2on any\" ,\r\n(SELECT count(DISTINCT(o.gaviususer_id)) FROM renoven o INNER JOIN renoven d ON o.sa_socialaid_id = d.sa_socialaid_id AND (o.anyo + interval '1 year') = d.anyo AND o.gaviususer_id = d.gaviususer_id INNER JOIN renoven s ON o.sa_socialaid_id = s.sa_socialaid_id AND (o.anyo + interval '2 years') = s.anyo AND o.gaviususer_id = s.gaviususer_id INNER JOIN renoven t ON o.sa_socialaid_id = t.sa_socialaid_id AND (o.anyo + interval '3 years') = t.anyo AND o.gaviususer_id = t.gaviususer_id  WHERE o.sa_socialaid_id = p.sa_socialaid_id AND o.anyo = p.anyo GROUP BY o.anyo ORDER BY 1)  AS \"3er any\",\r\n(SELECT count(DISTINCT(o.gaviususer_id)) FROM renoven o INNER JOIN renoven d ON o.sa_socialaid_id = d.sa_socialaid_id AND (o.anyo + interval '1 year') = d.anyo AND o.gaviususer_id = d.gaviususer_id INNER JOIN renoven s ON o.sa_socialaid_id = s.sa_socialaid_id AND (o.anyo + interval '2 years') = s.anyo AND o.gaviususer_id = s.gaviususer_id INNER JOIN renoven t ON o.sa_socialaid_id = t.sa_socialaid_id AND (o.anyo + interval '3 years') = t.anyo AND o.gaviususer_id = t.gaviususer_id INNER JOIN renoven r ON o.sa_socialaid_id = r.sa_socialaid_id AND (o.anyo + interval '4 years') = r.anyo AND o.gaviususer_id = r.gaviususer_id WHERE o.sa_socialaid_id = p.sa_socialaid_id AND o.anyo = p.anyo GROUP BY o.anyo ORDER BY 1)  AS \"4t any\"\r\nFROM renoven p LEFT JOIN ayudas ON p.sa_socialaid_id = ayudas.sa_socialaid_id\r\nWHERE ayudas.sa_name = '$ajuda'\r\nGROUP BY p.anyo, p.sa_socialaid_id \r\nORDER BY 1;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Permanència del recurs",
+      "type": "table"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 37,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "AjutIBIMonoparental",
+          "value": "AjutIBIMonoparental"
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "PCC52D03280B7034C"
+        },
+        "definition": "SELECT DISTINCT ayudas.sa_name FROM cronicitat INNER JOIN ayudas ON cronicitat.id = ayudas.sa_socialaid_id",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Ajuda",
+        "multi": false,
+        "name": "ajuda",
+        "options": [],
+        "query": "SELECT DISTINCT ayudas.sa_name FROM cronicitat INNER JOIN ayudas ON cronicitat.id = ayudas.sa_socialaid_id",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-10y",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Cronicitat",
+  "uid": "nBXKCKA4k",
+  "version": 2,
+  "weekStart": ""
+}

@@ -1,0 +1,431 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 28,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "    <script src=\"http://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script>\n    $(function(){\n        $('a').each(function(){\n            if ($(this).prop('href') == window.location.href) {\n                $(this).addClass('active'); $(this).addClass('active');\n            }\n        });\n    });\n</script>\n\n<style>\n    .navbar {\n        overflow: hidden;\n        background-color: #116ACC;\n        font-family: Arial, Helvetica, sans-serif;\n    }\n\n    .navbar a {\n        float: left;\n        font-size: 18px;\n        color: white;\n        text-align: center;\n        padding: 8px 10px;\n        text-decoration: none;\n    }\n\n    .navbar a:hover {\n        color: white;\n        text-decoration: underline;\n    }\n\n    .navbar .active{\n        font-weight: bold;\n    }\n\n</style>\n\n<div class=\"navbar\">\n    <a href=\"/d/kEtG3wD4z/estat-de-les-tramitacions?orgId=1\">Diagnosi</a>\n    <a>|</a>\n    <a href=\"/d/Ij-VuwJVk/prediccio-de-levolucio-temporal-dajudes?orgId=1\">Predicció de l'evolució temporal d'ajudes</a>\n    <a href=\"/d/rlK_z5AVk/grafica-de-la-prediccio\" class=\"active\">Gràfica de la Predicció</a>\n    <a>|</a>\n    <a href=\"/d/0oDR83J4k/seleccio-parametres-dentrada?orgId=1\">Projecció</a>\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "9.3.6",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "PCC52D03280B7034C"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "green",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Acumulados"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "line"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 10
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Modelados"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "line"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.showPoints",
+                "value": "never"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Límite inferior"
+            },
+            "properties": [
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "dash": [
+                    10,
+                    10
+                  ],
+                  "fill": "dash"
+                }
+              },
+              {
+                "id": "custom.showPoints",
+                "value": "never"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Límite superior"
+            },
+            "properties": [
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "dash": [
+                    10,
+                    10
+                  ],
+                  "fill": "dash"
+                }
+              },
+              {
+                "id": "custom.showPoints",
+                "value": "never"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "super-light-red",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.fillBelowTo",
+                "value": "Límite inferior"
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 10
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 18,
+        "w": 24,
+        "x": 0,
+        "y": 2
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\nmake_date(CAST(LEFT(CAST(period AS TEXT),4) AS INT), CAST(RIGHT(CAST(period AS TEXT),2) AS INT) * 3 -2 , 1)::date AS \"time\",\r\n(SELECT SUM(values) FROM prediccio t WHERE t.period <= p.period AND t.id = p.id AND t.status = p.status) AS \"Modelados\"\r\nFROM\r\nprediccio p LEFT JOIN ayudas ON p.id = ayudas.sa_socialaid_id\r\nWHERE ayudas.sa_name = '$ajuda'\r\nAND p.status = '$estat'\r\nAND p.period >= (SELECT MAX(s.period) FROM prediccio s LEFT JOIN ayudas a ON p.id = a.sa_socialaid_id WHERE a.sa_name = '$ajuda' AND NOT s.predict AND s.status = '$estat');",
+          "refId": "Modelados",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\nmake_date(CAST(LEFT(CAST(period AS TEXT),4) AS INT), CAST(RIGHT(CAST(period AS TEXT),2) AS INT) * 3 -2 , 1)::date AS \"time\",\r\n(SELECT SUM(COALESCE(mean_ci_lower,values)) FROM prediccio t WHERE t.period <= p.period AND t.id = p.id AND t.status = p.status) AS \"Límite inferior\"\r\nFROM\r\nprediccio p LEFT JOIN ayudas ON p.id = ayudas.sa_socialaid_id\r\nWHERE ayudas.sa_name = '$ajuda'\r\nAND p.status = '$estat'\r\nAND p.period >= (SELECT MAX(s.period) FROM prediccio s LEFT JOIN ayudas a ON p.id = a.sa_socialaid_id WHERE a.sa_name = '$ajuda' AND NOT s.predict AND s.status = '$estat');",
+          "refId": "Límite inferior",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\nmake_date(CAST(LEFT(CAST(period AS TEXT),4) AS INT), CAST(RIGHT(CAST(period AS TEXT),2) AS INT) * 3 -2 , 1)::date AS \"time\",\r\n(SELECT SUM(COALESCE(mean_ci_upper,values)) FROM prediccio t WHERE t.period <= p.period AND t.id = p.id AND t.status = p.status) AS \"Límite superior\"\r\nFROM\r\nprediccio p LEFT JOIN ayudas ON p.id = ayudas.sa_socialaid_id\r\nWHERE ayudas.sa_name = '$ajuda'\r\nAND p.status = '$estat'\r\nAND p.period >= (SELECT MAX(s.period) FROM prediccio s LEFT JOIN ayudas a ON p.id = a.sa_socialaid_id WHERE a.sa_name = '$ajuda' AND NOT s.predict AND s.status = '$estat');",
+          "refId": "Límite superior",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\nmake_date(CAST(LEFT(CAST(period AS TEXT),4) AS INT), CAST(RIGHT(CAST(period AS TEXT),2) AS INT) * 3 -2 , 1)::date AS \"time\",\r\n(SELECT SUM(values) FROM prediccio t WHERE t.period <= p.period AND t.id = p.id AND t.status = p.status) AS \"Acumulados\"\r\nFROM\r\nprediccio p LEFT JOIN ayudas ON p.id = ayudas.sa_socialaid_id\r\nWHERE ayudas.sa_name = '$ajuda'\r\nAND p.status = '$estat'\r\nAND NOT p.predict;",
+          "refId": "Acumulados",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Totals per ajuda seleccionada",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 37,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "AjutIBIMonoparental",
+          "value": "AjutIBIMonoparental"
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "PCC52D03280B7034C"
+        },
+        "definition": "SELECT DISTINCT ayudas.sa_name FROM prediccio INNER JOIN ayudas ON prediccio.id = ayudas.sa_socialaid_id",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Ajuda",
+        "multi": false,
+        "name": "ajuda",
+        "options": [],
+        "query": "SELECT DISTINCT ayudas.sa_name FROM prediccio INNER JOIN ayudas ON prediccio.id = ayudas.sa_socialaid_id",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 3,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "Approved",
+          "value": "Approved"
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "PCC52D03280B7034C"
+        },
+        "definition": "SELECT DISTINCT status FROM prediccio INNER JOIN ayudas ON prediccio.id = ayudas.sa_socialaid_id WHERE ayudas.sa_name = '${ajuda}';",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Estat",
+        "multi": false,
+        "name": "estat",
+        "options": [],
+        "query": "SELECT DISTINCT status FROM prediccio INNER JOIN ayudas ON prediccio.id = ayudas.sa_socialaid_id WHERE ayudas.sa_name = '${ajuda}';",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-3y",
+    "to": "now+3y"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Gràfica de la Predicció",
+  "uid": "rlK_z5AVk",
+  "version": 3,
+  "weekStart": ""
+}

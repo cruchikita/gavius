@@ -1,0 +1,429 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 24,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 10,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "    <script src=\"http://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script>\n    $(function(){\n        $('a').each(function(){\n            if ($(this).prop('href') == window.location.href) {\n                $(this).addClass('active'); $(this).addClass('active');\n            }\n        });\n    });\n</script>\n\n<style>\n    .navbar {\n        overflow: hidden;\n        background-color: #116ACC;\n        font-family: Arial, Helvetica, sans-serif;\n    }\n\n    .navbar a {\n        float: left;\n        font-size: 18px;\n        color: white;\n        text-align: center;\n        padding: 8px 10px;\n        text-decoration: none;\n    }\n\n    .navbar a:hover {\n        color: white;\n        text-decoration: underline;\n    }\n\n    .navbar .active{\n        font-weight: bold;\n    }\n\n</style>\n\n<div class=\"navbar\">\n    <a href=\"/d/kEtG3wD4z/estat-de-les-tramitacions?orgId=1\">Diagnosi</a>\n    <a>|</a>    \n    <a href=\"/d/Ij-VuwJVk/prediccio-de-levolucio-temporal-dajudes?orgId=1\">Prognosi</a>\n    <a>|</a>\n    <a href=\"d/0oDR83J4k/seleccio-parametres-dentrada?orgId=1\">Selecció paràmetres d'entrada</a>    \n    <a href=\"/d/Iwi9480Vk/visualitzacio-dels-resultats?orgId=1\">Assignació de pressupost</a>\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "9.3.6",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "PCC52D03280B7034C"
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 2
+      },
+      "id": 14,
+      "options": {
+        "baidu": {
+          "callback": "bmapReady",
+          "key": ""
+        },
+        "editor": {
+          "format": "auto",
+          "height": 600
+        },
+        "gaode": {
+          "key": "",
+          "plugin": "AMap.Scale,AMap.ToolBar"
+        },
+        "getOption": "let ajudas = [];\nlet budgets = [];\n\ndata.series.map((s) => {\n  ajudas = s.fields.find((f) => f.name === 'Ajuda').values.buffer;\n  budgets = s.fields.find((f) => f.name === 'budget').values.buffer;\n  assigned = s.fields.find((f) => f.name === 'assigned').values.buffer;\n});\n\nconst oReturn = new Object();\noReturn.tooltip = {};\noReturn.legend = {};\noReturn.grid = {};\noReturn.grid.left = '3%';\noReturn.grid.right = '4%';\noReturn.grid.bottom = '3%';\noReturn.grid.containLabel = true;\noReturn.yAxis = [];\noReturn.yAxis.push({\n  type: 'value',\n  splitLine: { show: false }\n})\noReturn.yAxis.push({\n  type: 'value',\n  splitLine: { show: false }\n})\noReturn.xAxis = {};\noReturn.xAxis.type = 'category';\noReturn.xAxis.data = ['Import', 'Beneficiaris'];\noReturn.series = [];\n\nfor (let i = 0; i < ajudas.length; i++) {\n  oReturn.series.push({\n    name: ajudas[i],\n    type: 'bar',\n    yAxisIndex: 0,\n    stack: 'total',\n    label: { show: true, fontSize: 16 },\n    emphasis: { focus: 'series' },\n    data: [budgets[i],]\n  });\n}\nfor (let i = 0; i < ajudas.length; i++) {\n  oReturn.series.push({\n    name: ajudas[i],\n    type: 'bar',\n    yAxisIndex: 1,\n    stack: 'total',\n    label: { show: true, fontSize: 16 },\n    emphasis: { focus: 'series' },\n    data: [, assigned[i]]\n  });\n}\n\nreturn oReturn;",
+        "google": {
+          "callback": "gmapReady",
+          "key": ""
+        },
+        "map": "none",
+        "renderer": "canvas"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  (SELECT sa_name FROM ayudas WHERE sa_socialaid_id = budgets.id) AS \"Ajuda\",\r\n  budget,\r\n  assigned\r\nFROM\r\n  budgets\r\nWHERE\r\n  type = 'suggested' AND assigned != 0\r\nORDER BY id",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "id",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              },
+              {
+                "parameters": [
+                  {
+                    "name": "budget",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50,
+            "whereJsonTree": {
+              "children1": [
+                {
+                  "id": "8aa9b8ba-0123-4456-b89a-b1864a998dd8",
+                  "properties": {
+                    "field": "type",
+                    "operator": "equal",
+                    "value": [
+                      "ideal"
+                    ],
+                    "valueSrc": [
+                      "value"
+                    ],
+                    "valueType": [
+                      "text"
+                    ]
+                  },
+                  "type": "rule"
+                }
+              ],
+              "id": "8abaaaba-89ab-4cde-b012-31864a5c81f8",
+              "type": "group"
+            },
+            "whereString": "type = 'ideal'"
+          },
+          "table": "budgets"
+        }
+      ],
+      "title": "Imports vs concessions",
+      "type": "volkovlabs-echarts-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "PCC52D03280B7034C"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Cobertura"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percentunit"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 2
+      },
+      "id": 6,
+      "options": {
+        "colorByField": "Beneficiaris coberts",
+        "labelFields": [
+          "Beneficiaris coberts"
+        ],
+        "sizeField": "Cobertura",
+        "textField": "Ajuda",
+        "tiling": "treemapBinary"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  (SELECT sa_name FROM ayudas WHERE sa_socialaid_id = s.id) AS \"Ajuda\",\r\n  assigned AS \"Beneficiaris coberts\",\r\n  s.budget / (SELECT i.budget FROM budgets i WHERE i.id = s.id AND i.type = 'ideal') AS \"Cobertura\"\r\n\r\nFROM\r\n  budgets s\r\nWHERE type = 'suggested'",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Cobertura",
+      "type": "marcusolsson-treemap-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "PCC52D03280B7034C"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 12
+      },
+      "id": 2,
+      "options": {
+        "displayMode": "gradient",
+        "minVizHeight": 10,
+        "minVizWidth": 0,
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^cost_assignment$/",
+          "values": true
+        },
+        "showUnfilled": false,
+        "text": {
+          "valueSize": 22
+        }
+      },
+      "pluginVersion": "9.3.6",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  (SELECT sa_name FROM ayudas WHERE sa_socialaid_id = s.id) AS \"Ajuda\",\r\n  cost_assignment\r\nFROM \r\n  budget_metrics_costs s\r\nWHERE \r\n  s.cost_assignment != 0\r\nORDER BY id;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Cost per concessió (€)",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "PCC52D03280B7034C"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 12
+      },
+      "id": 8,
+      "options": {
+        "displayMode": "gradient",
+        "minVizHeight": 10,
+        "minVizWidth": 0,
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^cost_inhabitant$/",
+          "values": true
+        },
+        "showUnfilled": false,
+        "text": {
+          "valueSize": 22
+        }
+      },
+      "pluginVersion": "9.3.6",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  (SELECT sa_name FROM ayudas WHERE sa_socialaid_id = s.id) AS \"Ajuda\",\r\n  cost_inhabitant\r\nFROM \r\n  budget_metrics_costs s\r\nWHERE \r\n  s.cost_assignment != 0\r\nORDER BY id;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Cost per habitant (€)",
+      "type": "bargauge"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 37,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Visualització dels resultats",
+  "uid": "Iwi9480Vk",
+  "version": 2,
+  "weekStart": ""
+}

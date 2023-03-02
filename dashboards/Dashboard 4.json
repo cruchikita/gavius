@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 2,
+  "id": 5,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -47,7 +47,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "    <script src=\"http://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script>\n    $(function(){\n        $('a').each(function(){\n            if ($(this).prop('href') == window.location.href) {\n                $(this).addClass('active'); $(this).addClass('active');\n            }\n        });\n    });\n</script>\n\n<style>\n    .navbar {\n        overflow: hidden;\n        background-color: #116ACC;\n        font-family: Arial, Helvetica, sans-serif;\n    }\n\n    .navbar a {\n        float: left;\n        font-size: 18px;\n        color: white;\n        text-align: center;\n        padding: 8px 12px;\n        text-decoration: none;\n    }\n\n    .navbar a:hover {\n        color: white;\n        text-decoration: underline;\n    }\n\n    /*.navbar .active{\n        color:            white;\n        background-color: #4f81bd;\n    }*/\n\n</style>\n\n<div class=\"navbar\">\n    <a href=\"/d/kEtG3wD4z/estat-de-les-tramitacions?orgId=1\">Estat de les tramitacions</a>\n    <a href=\"/d/EJrGvUcVk/perfil-sociodemografic?orgId=1\">Perfil sociodemogràfic</a>\n    <a href=\"/d/0PwjJe5Vz/camins-probables?orgId=1\">Camins probables</a>\n    <a href=\"/d/lU48FST4z/diagnosi-social?orgId=1\">Diagnosi social</a>\n</div>",
+        "content": "    <script src=\"http://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script>\n    $(function(){\n        $('a').each(function(){\n            if ($(this).prop('href') == window.location.href) {\n                $(this).addClass('active'); $(this).addClass('active');\n            }\n        });\n    });\n</script>\n\n<style>\n    .navbar {\n        overflow: hidden;\n        background-color: #116ACC;\n        font-family: Arial, Helvetica, sans-serif;\n    }\n\n    .navbar a {\n        float: left;\n        font-size: 18px;\n        color: white;\n        text-align: center;\n        padding: 8px 12px;\n        text-decoration: none;\n    }\n\n    .navbar a:hover {\n        color: white;\n        text-decoration: underline;\n    }\n\n    .navbar .active{\n        font-weight: bold;\n    }\n\n</style>\n\n<div class=\"navbar\">\n    <a href=\"/d/kEtG3wD4z/estat-de-les-tramitacions?orgId=1\">Estat de les tramitacions</a>\n    <a href=\"/d/EJrGvUcVk/perfil-sociodemografic?orgId=1\">Perfil sociodemogràfic</a>\n    <a href=\"/d/0PwjJe5Vz/camins-probables?orgId=1\">Camins probables</a>\n    <a href=\"/d/lU48FST4z/diagnosi-social?orgId=1\" class=\"active\">Diagnosi social</a>\n    <a href=\"/d/3cwNQQ14z/detall-dels-grups-comorbid?orgId=1\">Detall dels grups Comòrbids</a>\n    <a href=\"/d/nBXKCKA4k/cronicitat?orgId=1\">Cronicitat</a>\n    <a>|</a>\n    <a href=\"/d/Ij-VuwJVk/prediccio-de-levolucio-temporal-dajudes?orgId=1\">Prognosi</a>\n    <a>|</a>\n    <a href=\"/d/0oDR83J4k/seleccio-parametres-dentrada?orgId=1\">Projecció</a>\n</div>",
         "mode": "html"
       },
       "pluginVersion": "9.3.6",
@@ -73,55 +73,59 @@
           },
           "mappings": [],
           "thresholds": {
-            "mode": "percentage",
+            "mode": "absolute",
             "steps": [
               {
                 "color": "green",
                 "value": null
               },
               {
-                "color": "dark-green",
+                "color": "dark-purple",
                 "value": 0
               },
               {
-                "color": "semi-dark-green",
-                "value": 10
-              },
-              {
-                "color": "green",
-                "value": 20
-              },
-              {
-                "color": "light-green",
-                "value": 30
-              },
-              {
                 "color": "super-light-orange",
-                "value": 40
+                "value": 1
               },
               {
-                "color": "orange",
-                "value": 50
+                "color": "dark-green",
+                "value": 2
               },
               {
-                "color": "semi-dark-orange",
-                "value": 60
+                "color": "dark-yellow",
+                "value": 3
               },
               {
                 "color": "dark-orange",
-                "value": 70
-              },
-              {
-                "color": "red",
-                "value": 80
-              },
-              {
-                "color": "semi-dark-red",
-                "value": 90
+                "value": 4
               },
               {
                 "color": "dark-red",
-                "value": 100
+                "value": 5
+              },
+              {
+                "color": "super-light-red",
+                "value": 6
+              },
+              {
+                "color": "super-light-blue",
+                "value": 7
+              },
+              {
+                "color": "super-light-green",
+                "value": 8
+              },
+              {
+                "color": "dark-blue",
+                "value": 9
+              },
+              {
+                "color": "super-light-purple",
+                "value": 10
+              },
+              {
+                "color": "yellow",
+                "value": 11
               }
             ]
           },
@@ -148,6 +152,22 @@
             "matcher": {
               "id": "byName",
               "options": "lon"
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": true,
+                  "tooltip": true,
+                  "viz": true
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "index"
             },
             "properties": [
               {
@@ -189,7 +209,7 @@
               "showLegend": false,
               "style": {
                 "color": {
-                  "field": "Població",
+                  "field": "index",
                   "fixed": "dark-blue"
                 },
                 "opacity": 0.5,
@@ -257,7 +277,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  gu_da_0_municipality_name AS \"Municipi\",\r\n  gu_da_0_n_name AS \"Barri\",\r\n  count(*) AS \"Població\",\r\n  barris.lat,\r\n  barris.lon\r\nFROM\r\ncens LEFT JOIN barris ON cens.gu_da_0_n_name = barris.name\r\nWHERE \r\n  (ge_name IN (${sexe}))\r\n  AND (COALESCE (cggu_cg_name, 'No perfil recurs SSB')  IN (${comorbid}))\r\n  AND (agerange IN (${edat}))\r\nGROUP BY gu_da_0_n_name, gu_da_0_municipality_name, barris.lat, barris.lon\r\nORDER BY 2;",
+          "rawSql": "SELECT\r\n  gu_da_0_municipality_name AS \"Municipi\",\r\n  gu_da_0_n_name AS \"Barri\",\r\n  count(*) AS \"Població\",\r\n  barris.lat,\r\n  barris.lon,\r\n  barris.index\r\nFROM\r\ncens LEFT JOIN barris ON cens.gu_da_0_n_name = barris.name\r\nWHERE \r\n  (ge_name IN (${sexe}))\r\n  AND (COALESCE (cggu_cg_name, 'No perfil recurs SSB')  IN (${comorbid}))\r\n  AND (agerange IN (${edat}))\r\nGROUP BY gu_da_0_n_name, gu_da_0_municipality_name, barris.lat, barris.lon, barris.index\r\nORDER BY 2;",
           "refId": "A",
           "sql": {
             "columns": [

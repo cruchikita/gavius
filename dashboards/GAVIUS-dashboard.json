@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 4,
+  "id": 7,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -47,7 +47,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "    <script src=\"http://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script>\n    $(function(){\n        $('a').each(function(){\n            if ($(this).prop('href') == window.location.href) {\n                $(this).addClass('active'); $(this).addClass('active');\n            }\n        });\n    });\n</script>\n\n<style>\n    .navbar {\n        overflow: hidden;\n        background-color: #116ACC;\n        font-family: Arial, Helvetica, sans-serif;\n    }\n\n    .navbar a {\n        float: left;\n        font-size: 18px;\n        color: white;\n        text-align: center;\n        padding: 8px 12px;\n        text-decoration: none;\n    }\n\n    .navbar a:hover {\n        color: white;\n        text-decoration: underline;\n    }\n\n    /*.navbar .active{\n        color:            white;\n        background-color: #4f81bd;\n    }*/\n\n</style>\n\n<div class=\"navbar\">\n    <a href=\"/d/kEtG3wD4z/estat-de-les-tramitacions?orgId=1\">Estat de les tramitacions</a>\n    <a href=\"/d/EJrGvUcVk/perfil-sociodemografic?orgId=1\">Perfil sociodemogràfic</a>\n    <a href=\"/d/0PwjJe5Vz/camins-probables?orgId=1\">Camins probables</a>\n    <a href=\"/d/lU48FST4z/diagnosi-social?orgId=1\">Diagnosi social</a>\n</div>",
+        "content": "    <script src=\"http://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script>\n    $(function(){\n        $('a').each(function(){\n            if ($(this).prop('href') == window.location.href) {\n                $(this).addClass('active'); $(this).addClass('active');\n            }\n        });\n    });\n</script>\n\n<style>\n    .navbar {\n        overflow: hidden;\n        background-color: #116ACC;\n        font-family: Arial, Helvetica, sans-serif;\n    }\n\n    .navbar a {\n        float: left;\n        font-size: 18px;\n        color: white;\n        text-align: center;\n        padding: 8px 12px;\n        text-decoration: none;\n    }\n\n    .navbar a:hover {\n        color: white;\n        text-decoration: underline;\n    }\n\n    .navbar .active{\n        font-weight: bold;\n    }\n\n</style>\n\n<div class=\"navbar\">\n    <a href=\"/d/kEtG3wD4z/estat-de-les-tramitacions?orgId=1\" class=\"active\">Estat de les tramitacions</a>\n    <a href=\"/d/EJrGvUcVk/perfil-sociodemografic?orgId=1\">Perfil sociodemogràfic</a>\n    <a href=\"/d/0PwjJe5Vz/camins-probables?orgId=1\">Camins probables</a>\n    <a href=\"/d/lU48FST4z/diagnosi-social?orgId=1\">Diagnosi social</a>\n    <a href=\"/d/3cwNQQ14z/detall-dels-grups-comorbid?orgId=1\">Detall dels grups Comòrbids</a>\n    <a href=\"/d/nBXKCKA4k/cronicitat?orgId=1\">Cronicitat</a>\n    <a>|</a>\n    <a href=\"/d/Ij-VuwJVk/prediccio-de-levolucio-temporal-dajudes?orgId=1\">Prognosi</a>\n    <a>|</a>\n    <a href=\"/d/0oDR83J4k/seleccio-parametres-dentrada?orgId=1\">Projecció</a>\n</div>",
         "mode": "html"
       },
       "pluginVersion": "9.3.6",
@@ -62,30 +62,30 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "fixedColor": "blue",
+            "mode": "fixed"
           },
-          "displayName": "Usuaris registrats",
+          "displayName": "Ultima dada",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "red",
+                "color": "blue",
                 "value": null
               }
             ]
-          },
-          "unit": "locale"
+          }
         },
         "overrides": []
       },
       "gridPos": {
         "h": 3,
-        "w": 3,
+        "w": 6,
         "x": 0,
         "y": 2
       },
-      "id": 13,
+      "id": 14,
       "options": {
         "colorMode": "value",
         "graphMode": "none",
@@ -93,7 +93,7 @@
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
-            "count"
+            "lastNotNull"
           ],
           "fields": "/.*/",
           "values": false
@@ -113,7 +113,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT distinct gavius.gaviususer_id\nFROM gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \nWHERE\n  $__timeFilter(daterequested) \n  AND (ge_name IN (${sexe}))\n  AND (gu_da_0_n_name IN (${barri}))\n  AND (agerange IN (${edat}))\n",
+          "rawSql": "SELECT\n  LEFT(CAST(daterequested AS TEXT),10)\nFROM\n  gavius\nWHERE\n  $__timeFilter(daterequested)\nORDER BY daterequested\n",
           "refId": "A",
           "select": [
             [
@@ -152,7 +152,7 @@
           ]
         }
       ],
-      "title": "Usuaris Registrats",
+      "title": "Ultima dada",
       "type": "stat"
     },
     {
@@ -202,8 +202,8 @@
       },
       "gridPos": {
         "h": 9,
-        "w": 12,
-        "x": 3,
+        "w": 11,
+        "x": 6,
         "y": 2
       },
       "id": 12,
@@ -225,7 +225,6 @@
           "sort": "none"
         },
         "xField": "sa_name",
-        "xTickLabelMaxLength": 8,
         "xTickLabelRotation": 15,
         "xTickLabelSpacing": 0
       },
@@ -249,7 +248,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  \"sa_name\",\r\n  (select count(*) from gavius LEFT JOIN cens as c ON gavius.gaviususer_id = c.gaviususer_id where (c.ge_name IN (${sexe})) AND (c.gu_da_0_n_name IN (${barri})) AND (c.agerange IN (${edat})) and status = 'Approved' and llenos.\"sa_name\" = gavius.\"sa_name\" and $__timeFilter(daterequested)) as favorables,\r\n  (select count(*) from gavius LEFT JOIN cens as c ON gavius.gaviususer_id = c.gaviususer_id where (c.ge_name IN (${sexe})) AND (c.gu_da_0_n_name IN (${barri})) AND (c.agerange IN (${edat})) and status = 'Evaluating' and llenos.\"sa_name\" = gavius.\"sa_name\" and $__timeFilter(daterequested)) as en_curs,\r\n  (select count(*) from gavius LEFT JOIN cens as c ON gavius.gaviususer_id = c.gaviususer_id where (c.ge_name IN (${sexe})) AND (c.gu_da_0_n_name IN (${barri})) AND (c.agerange IN (${edat})) and status = 'Denied' and llenos.\"sa_name\" = gavius.\"sa_name\" and $__timeFilter(daterequested)) as desfavorables\r\nFROM gavius as llenos\r\nGROUP BY \"sa_socialaid_id\", \"sa_name\"\r\nORDER BY \"sa_socialaid_id\"",
+          "rawSql": "SELECT\r\n  \"sa_name\",\r\n  (select count(*) from gavius LEFT JOIN cens as c ON gavius.gaviususer_id = c.gaviususer_id where (c.ge_name IN (${sexe})) AND (c.gu_da_0_n_name IN (${barri})) AND (c.agerange IN (${edat})) and status = 'Approved' and gavius.sa_name = llenos.sa_name and $__timeFilter(daterequested)) as favorables,\r\n  (select count(*) from gavius LEFT JOIN cens as c ON gavius.gaviususer_id = c.gaviususer_id where (c.ge_name IN (${sexe})) AND (c.gu_da_0_n_name IN (${barri})) AND (c.agerange IN (${edat})) and status = 'Evaluating' and gavius.sa_name = llenos.sa_name and $__timeFilter(daterequested)) as en_curs,\r\n  (select count(*) from gavius LEFT JOIN cens as c ON gavius.gaviususer_id = c.gaviususer_id where (c.ge_name IN (${sexe})) AND (c.gu_da_0_n_name IN (${barri})) AND (c.agerange IN (${edat})) and status = 'Denied' and gavius.sa_name = llenos.sa_name and $__timeFilter(daterequested)) as desfavorables\r\nFROM gavius as llenos\r\nGROUP BY \"sa_socialaid_id\", \"sa_name\"\r\nORDER BY \"sa_socialaid_id\"",
           "refId": "1",
           "select": [
             [
@@ -313,46 +312,46 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "blue",
-            "mode": "fixed"
+            "mode": "palette-classic"
           },
-          "displayName": "Ultima dada",
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
           "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              }
-            ]
-          }
+          "unit": "locale"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
-        "w": 9,
-        "x": 15,
+        "h": 8,
+        "w": 7,
+        "x": 17,
         "y": 2
       },
-      "id": 14,
+      "id": 19,
       "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
+        "legend": {
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": true
+        },
+        "pieType": "pie",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
           ],
-          "fields": "/.*/",
-          "values": false
+          "fields": "",
+          "values": true
         },
-        "text": {},
-        "textMode": "value"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "9.3.6",
       "targets": [
         {
           "datasource": {
@@ -361,21 +360,9 @@
           },
           "editorMode": "code",
           "format": "table",
-          "group": [],
-          "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  daterequested \nFROM\n  gavius\nWHERE\n  $__timeFilter(daterequested)\nORDER BY daterequested\n",
+          "rawSql": "SELECT\r\n  sa_name,\r\n  count(*)\r\nFROM gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \r\nWHERE\r\n  $__timeFilter(daterequested) \r\n  AND (ge_name IN (${sexe}))\r\n  AND (gu_da_0_n_name IN (${barri}))\r\n  AND (agerange IN (${edat}))\r\n  GROUP BY sa_name, sa_socialaid_id\r\nORDER BY sa_socialaid_id",
           "refId": "A",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "column"
-              }
-            ]
-          ],
           "sql": {
             "columns": [
               {
@@ -392,19 +379,11 @@
               }
             ],
             "limit": 50
-          },
-          "timeColumn": "time",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
+          }
         }
       ],
-      "title": "Ultima dada",
-      "type": "stat"
+      "title": "Ajudes per Tipologia",
+      "type": "piechart"
     },
     {
       "datasource": {
@@ -515,46 +494,46 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
+            "mode": "thresholds"
           },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
+          "displayName": "Usuaris registrats",
           "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "orange",
+                "value": null
+              }
+            ]
+          },
           "unit": "locale"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
-        "w": 9,
-        "x": 15,
+        "h": 3,
+        "w": 3,
+        "x": 3,
         "y": 5
       },
-      "id": 19,
+      "id": 13,
       "options": {
-        "legend": {
-          "displayMode": "list",
-          "placement": "right",
-          "showLegend": true
-        },
-        "pieType": "pie",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
-            "lastNotNull"
+            "count"
           ],
-          "fields": "",
-          "values": true
+          "fields": "/.*/",
+          "values": false
         },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
+        "text": {},
+        "textMode": "value"
       },
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "datasource": {
@@ -563,9 +542,21 @@
           },
           "editorMode": "code",
           "format": "table",
+          "group": [],
+          "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  sa_name,\r\n  count(*)\r\nFROM gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \r\nWHERE\r\n  $__timeFilter(daterequested) \r\n  AND (ge_name IN (${sexe}))\r\n  AND (gu_da_0_n_name IN (${barri}))\r\n  AND (agerange IN (${edat}))\r\n  GROUP BY sa_name\r\nORDER BY 1",
+          "rawSql": "SELECT distinct gavius.gaviususer_id\nFROM gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \nWHERE\n  $__timeFilter(daterequested) \n  AND (ge_name IN (${sexe}))\n  AND (gu_da_0_n_name IN (${barri}))\n  AND (agerange IN (${edat}))\n",
           "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
           "sql": {
             "columns": [
               {
@@ -582,11 +573,19 @@
               }
             ],
             "limit": 50
-          }
+          },
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
         }
       ],
-      "title": "Panel Title",
-      "type": "piechart"
+      "title": "Usuaris Registrats",
+      "type": "stat"
     },
     {
       "datasource": {
@@ -694,6 +693,204 @@
         "type": "postgres",
         "uid": "PCC52D03280B7034C"
       },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "Respecte mes anterior",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": -9999999
+              },
+              {
+                "color": "#000000",
+                "value": 0
+              },
+              {
+                "color": "green",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 3,
+        "y": 8
+      },
+      "id": 24,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "value"
+      },
+      "pluginVersion": "9.3.6",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  count(*)  - (SELECT count(*) FROM gavius a LEFT JOIN cens c on a.gaviususer_id = c.gaviususer_id WHERE a.daterequested >= (date_trunc('month', CURRENT_DATE) - interval '1 month') AND a.daterequested <((date_trunc('month', CURRENT_DATE) - interval '1 month') + interval '1 month') AND (c.ge_name IN (${sexe})) AND (c.gu_da_0_n_name IN (${barri})) AND (c.agerange IN (${edat})))\r\nFROM\r\n  gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \r\nWHERE\r\n  daterequested >= date_trunc('month', CURRENT_DATE)\r\n  AND (ge_name IN (${sexe}))\r\n  AND (gu_da_0_n_name IN (${barri}))\r\n  AND (agerange IN (${edat}))\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Respecte mes anterior",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "PCC52D03280B7034C"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "inspect": false
+          },
+          "decimals": 2,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "mainstat"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 75
+              },
+              {
+                "id": "custom.align",
+                "value": "left"
+              },
+              {
+                "id": "unit",
+                "value": "percent"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 7,
+        "x": 17,
+        "y": 10
+      },
+      "id": 21,
+      "options": {
+        "footer": {
+          "enablePagination": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": false
+      },
+      "pluginVersion": "9.3.6",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n(SELECT sa_name FROM ayudas WHERE sa_socialaid_id = source) AS source,\r\n(SELECT sa_name FROM ayudas WHERE sa_socialaid_id = target) AS target,\r\nmainstat\r\nFROM caminos\r\nWHERE mainstat > 5\r\nORDER BY 3 DESC\r\nLIMIT 20;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Traça d'ajudes",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "PCC52D03280B7034C"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -795,6 +992,97 @@
         "type": "postgres",
         "uid": "PCC52D03280B7034C"
       },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "Respecte la mitjana anual",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": -9999999
+              },
+              {
+                "color": "#000000",
+                "value": 0
+              },
+              {
+                "color": "green",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 3,
+        "y": 11
+      },
+      "id": 25,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "value"
+      },
+      "pluginVersion": "9.3.6",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  count(*)  - (SELECT count(*)/EXTRACT(month FROM CURRENT_DATE) FROM gavius a LEFT JOIN cens c on a.gaviususer_id = c.gaviususer_id WHERE a.daterequested >= (date_trunc('year', CURRENT_DATE)) AND (c.ge_name IN (${sexe})) AND (c.gu_da_0_n_name IN (${barri})) AND (c.agerange IN (${edat})))\r\nFROM\r\n  gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \r\nWHERE\r\n  daterequested >= date_trunc('month', CURRENT_DATE)\r\n  AND (ge_name IN (${sexe}))\r\n  AND (gu_da_0_n_name IN (${barri}))\r\n  AND (agerange IN (${edat}))\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Respecte la mitjana anual",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "PCC52D03280B7034C"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -862,8 +1150,8 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 12,
-        "x": 3,
+        "w": 11,
+        "x": 6,
         "y": 11
       },
       "id": 4,
@@ -1062,109 +1350,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "custom": {
-            "align": "auto",
-            "displayMode": "auto",
-            "inspect": false
-          },
-          "decimals": 2,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "locale"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "mainstat"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 50
-              },
-              {
-                "id": "custom.align",
-                "value": "left"
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 9,
-        "x": 15,
-        "y": 12
-      },
-      "id": 21,
-      "options": {
-        "footer": {
-          "enablePagination": false,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "showHeader": false
-      },
-      "pluginVersion": "9.3.6",
-      "targets": [
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "PCC52D03280B7034C"
-          },
-          "editorMode": "code",
-          "format": "table",
-          "rawQuery": true,
-          "rawSql": "SELECT\r\n(SELECT sa_name FROM ayudas WHERE sa_socialaid_id = source) AS source,\r\n(SELECT sa_name FROM ayudas WHERE sa_socialaid_id = target) AS target,\r\nmainstat\r\nFROM caminos\r\nWHERE mainstat > 5\r\nORDER BY 3 DESC\r\nLIMIT 20;",
-          "refId": "A",
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          }
-        }
-      ],
-      "title": "Traça d'ajudes",
-      "type": "table"
-    },
-    {
-      "datasource": {
-        "type": "postgres",
-        "uid": "PCC52D03280B7034C"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
           "displayName": "Ajudes Desfavorables",
           "mappings": [],
           "thresholds": {
@@ -1254,6 +1439,97 @@
         }
       ],
       "title": "Ajudes Desfavorables",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "PCC52D03280B7034C"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "Respecte el mateix mes de l'any anterior",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": -9999999
+              },
+              {
+                "color": "#000000",
+                "value": 0
+              },
+              {
+                "color": "green",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 3,
+        "y": 14
+      },
+      "id": 23,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "value"
+      },
+      "pluginVersion": "9.3.6",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "PCC52D03280B7034C"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  count(*)  - (SELECT count(*) FROM gavius a LEFT JOIN cens c on a.gaviususer_id = c.gaviususer_id WHERE a.daterequested >= (date_trunc('month', CURRENT_DATE) - interval '1 year') AND a.daterequested < ((date_trunc('month', CURRENT_DATE) - interval '1 year') + interval '1 month') AND (c.ge_name IN (${sexe})) AND (c.gu_da_0_n_name IN (${barri})) AND (c.agerange IN (${edat})))\r\nFROM\r\n  gavius LEFT JOIN cens ON gavius.gaviususer_id = cens.gaviususer_id \r\nWHERE\r\n  daterequested >= date_trunc('month', CURRENT_DATE)\r\n  AND (ge_name IN (${sexe}))\r\n  AND (gu_da_0_n_name IN (${barri}))\r\n  AND (agerange IN (${edat}))\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Respecte el mateix mes de l'any anterior",
       "type": "stat"
     }
   ],
